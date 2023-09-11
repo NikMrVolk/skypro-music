@@ -1,16 +1,13 @@
 import Logo from '../Logo'
+import MyBurger from '../UI/burger/MyBurger'
 import NavMenu from './NavMenu'
 
 const Navigation = () => {
 	return (
 		<div>
 			<nav className="main__nav nav">
-				<Logo/>
-				<div className="nav__burger burger">
-					<span className="burger__line" />
-					<span className="burger__line" />
-					<span className="burger__line" />
-				</div>
+				<Logo />
+				<MyBurger />
 				<NavMenu />
 			</nav>
 		</div>
