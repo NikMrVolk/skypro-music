@@ -1,9 +1,8 @@
-const NavMenuItem = ({ props }) => {
-		// Для последующей итерации по массиву
+const NavMenuItem = (props) => {
 	return (
 		<li className="menu__item">
 			<a href="#" className="menu__link">
-				Мой плейлист
+				{props.children}
 			</a>
 		</li>
 	)
