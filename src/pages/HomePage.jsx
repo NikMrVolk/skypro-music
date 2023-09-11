@@ -1,9 +1,23 @@
+import { useContext, useEffect, useState } from 'react'
 import Navigation from '../components/nav/Navigation'
 import SideBar from '../components/side/SideBar'
 import SoundsBar from '../components/bar/SoundsBar'
 import Center from '../components/center/Center'
+import { LoadingContext } from '../context/LoadingContext'
 
 const HomePage = () => {
+	const { isLoading, setIsLoading } = useContext(LoadingContext)
+
+	useEffect(() => {
+		setIsLoading(true)
+		const timeoutId = setTimeout(() => {
+			setIsLoading(false)
+		}, 5000)
+		return () => {
+			clearInterval(timeoutId)
+		}
+	}, [])
+
 	return (
 		<div className="wrapper">
 			<div className="container">

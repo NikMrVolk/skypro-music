@@ -1,9 +1,8 @@
-const SideItem = ({ props }) => {
-	// Для последующей итерации по массиву
+const SideItem = ({ src, alt }) => {
 	return (
 		<div className="sidebar__item">
 			<a className="sidebar__link" href="#">
-				<img className="sidebar__img" src="img/playlist01.png" alt="day's playlist" />
+				<img className="sidebar__img" src={src} alt={alt} />
 			</a>
 		</div>
 	)
