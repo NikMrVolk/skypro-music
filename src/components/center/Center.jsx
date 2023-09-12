@@ -1,8 +1,9 @@
-import SearchSongs from "./SearchSongs"
-import SongsList from "./SongsList"
-import SortSongs from "./SortSongs"
+import SearchSongs from './SearchSongs'
+import SongsList from './SongsList'
+import SortSongs from './SortSongs'
 
 const Center = ({ props }) => {
+
 	return (
 		<div className="main__centerblock centerblock">
 			<SearchSongs />

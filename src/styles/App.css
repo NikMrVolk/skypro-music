@@ -285,6 +285,42 @@ body {
 	margin-right: 10px;
 }
 
+.filter__button-wrapper {
+	position: relative;
+}
+
+.filter__item {
+	margin-bottom: 28px;
+}
+
+.filter__item:last-child {
+	margin-bottom: 0px;
+}
+
+.filter__item-content {
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.filter__item-content:hover {
+	color: #b672ff;
+	text-decoration: underline;
+}
+
+.filter__item-wrapper {
+	min-width: 153px;
+	max-width: 180px;
+	max-height: 250px;
+}
+
+.filter__item-wrapper_big{
+	overflow: scroll;
+}
+
+.filter__item-wrapper_small{
+	overflow: hidden;
+}
+
 .content__title {
 	display: -webkit-box;
 	display: -ms-flexbox;

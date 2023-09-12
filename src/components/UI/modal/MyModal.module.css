@@ -1,0 +1,16 @@
+.myModal {
+	display: none;
+}
+
+.myModalContent {
+	padding: 24px;
+	background: #313131;
+	border-radius: 16px;
+}
+
+.myModal.active {
+	display: block;
+	position: absolute;
+	top: 49px;
+
+}
