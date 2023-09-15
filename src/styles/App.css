@@ -313,12 +313,22 @@ body {
 	max-height: 250px;
 }
 
-.filter__item-wrapper_big{
+.filter__item-wrapper_big {
 	overflow: scroll;
 }
 
-.filter__item-wrapper_small{
+.filter__item-wrapper_small {
 	overflow: hidden;
+}
+
+._btn-text_active {
+	border: 1px solid #ad61ff;
+	color: #ad61ff;
+}
+
+._btn-text_active:hover {
+	border: 1px solid #ad61ff;
+	color: #ad61ff;
 }
 
 .content__title {

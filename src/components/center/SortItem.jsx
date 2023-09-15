@@ -23,7 +23,7 @@ const SortItem = ({
 	return (
 		<div className="filter__button-wrapper">
 			<div
-				className={['filter__button', '_btn-text', style].join(' ')}
+				className={isVisible[keyValue] ? ['filter__button', '_btn-text', '_btn-text_active', style].join(' ') : ['filter__button', '_btn-text', style].join(' ')}
 				onClick={handleModalActive}
 			>
 				{title}
