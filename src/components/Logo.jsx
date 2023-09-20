@@ -1,8 +1,11 @@
-const Logo = ({ props }) => {
+import { StyledLogo, StyledLogoImg } from "../styles/logo"
+
+
+const Logo = () => {
 	return (
-		<div className="nav__logo logo">
-			<img className="logo__image" src="img/logo.png" alt="logo" />
-		</div>
+		<StyledLogo>
+			<StyledLogoImg src="img/logo.png" alt="logo" />
+		</StyledLogo>
 	)
 }
 
