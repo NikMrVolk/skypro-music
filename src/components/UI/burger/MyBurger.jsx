@@ -1,12 +1,12 @@
-import cl from './MyBurger.module.css'
+import * as S from './style'
 
-const MyBurger = ({onClick}) => {
+const MyBurger = ({ onClick }) => {
 	return (
-		<div className={cl.burger} onClick={onClick}>
-			<span className={cl.burger__line} />
-			<span className={cl.burger__line} />
-			<span className={cl.burger__line} />
-		</div>
+		<S.Burger onClick={onClick}>
+			<S.BurgerLine />
+			<S.BurgerLine />
+			<S.BurgerLine />
+		</S.Burger>
 	)
 }
 

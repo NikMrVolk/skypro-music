@@ -1,5 +1,4 @@
-import { StyledLogo, StyledLogoImg } from "../styles/logo"
-
+import { StyledLogo, StyledLogoImg } from '../styles/logo'
 
 const Logo = () => {
 	return (

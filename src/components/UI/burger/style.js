@@ -1,4 +1,6 @@
-.burger {
+import styled from 'styled-components'
+
+export const Burger = styled.div`
 	width: 20px;
 	height: 36px;
 	padding: 13px 0;
@@ -13,11 +15,11 @@
 	-ms-flex-pack: justify;
 	justify-content: space-between;
 	cursor: pointer;
-}
+`
 
-.burger__line {
+export const BurgerLine = styled.span`
 	display: inline-block;
 	width: 100%;
 	height: 1px;
 	background-color: #d3d3d3;
-}
+`

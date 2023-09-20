@@ -1,10 +1,10 @@
+import * as S from '../../styles/nav'
+
 const NavMenuItem = (props) => {
 	return (
-		<li className="menu__item">
-			<a href="#" className="menu__link">
-				{props.children}
-			</a>
-		</li>
+		<S.MenuItem>
+			<S.MenuItemLink href="#">{props.children}</S.MenuItemLink>
+		</S.MenuItem>
 	)
 }
 

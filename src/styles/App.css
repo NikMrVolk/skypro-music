@@ -61,12 +61,6 @@ button,
 	justify-content: space-between;
 }
 
-.main__nav {
-	width: 244px;
-	background-color: #181818;
-	padding: 20px 0 20px 36px;
-}
-
 .main__centerblock {
 	width: auto;
 	-webkit-box-flex: 3;
@@ -86,31 +80,6 @@ button,
 	padding: 13px 0 13px 0;
 	background-color: transparent;
 	margin-bottom: 20px;
-}
-
-.nav__menu {
-	display: block;
-	visibility: visible;
-}
-
-.logo__image {
-
-}
-
-.menu__list {
-	padding: 18px 0 10px 0;
-}
-
-.menu__item {
-	padding: 5px 0;
-	margin-bottom: 16px;
-}
-
-.menu__link {
-	color: #ffffff;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
 }
 
 .centerblock__search {

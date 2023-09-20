@@ -1,13 +1,11 @@
-import NavMenuItem from './NavMenuItem'
+import NavMenuList from './NavMenuList'
+import * as S from '../../styles/nav'
 
 const NavMenu = ({ data, isNavbarActive }) => {
 	return (
-		<div className="nav__menu menu">
-			<ul className="menu__list">
-				{isNavbarActive &&
-					data.map(({ title }) => <NavMenuItem key={title}>{title}</NavMenuItem>)}
-			</ul>
-		</div>
+		<S.NavMenu>
+			<NavMenuList data={data} isNavbarActive={isNavbarActive} />
+		</S.NavMenu>
 	)
 }
 

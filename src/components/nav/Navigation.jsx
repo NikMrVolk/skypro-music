@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import * as S from '../../styles/nav'
+
 import Logo from '../Logo'
 import MyBurger from '../UI/burger/MyBurger'
 import NavMenu from './NavMenu'
@@ -16,13 +18,11 @@ const Navigation = () => {
 	}
 
 	return (
-		<div>
-			<nav className="main__nav nav">
-				<Logo />
-				<MyBurger onClick={handleNavbar} />
-				<NavMenu data={data} isNavbarActive={isNavbarActive} />
-			</nav>
-		</div>
+		<S.Nav>
+			<Logo />
+			<MyBurger onClick={handleNavbar} />
+			<NavMenu data={data} isNavbarActive={isNavbarActive} />
+		</S.Nav>
 	)
 }
 
