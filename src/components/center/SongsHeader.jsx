@@ -1,15 +1,53 @@
+import styled from 'styled-components'
+
+const StyledPlaylistHeaderWrapper = styled.div`
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	margin-bottom: 24px;
+`
+
+const StyledPlaylistHeaderTitle = styled.div`
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+	letter-spacing: 2px;
+	color: #696969;
+	text-transform: uppercase;
+	width: ${(props) => props.$width}px;
+	${(props) => props.$textEnd && 'text-align: end;'}
+`
+
+const StyledPlaylistHeaderSvg = styled.svg`
+	width: 12px;
+	height: 12px;
+	fill: transparent;
+	stroke: #696969;
+`
+
 const SongsHeader = () => {
 	return (
-		<div className="content__title playlist-title">
-			<div className="playlist-title__col col01">Трек</div>
-			<div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-			<div className="playlist-title__col col03">АЛЬБОМ</div>
-			<div className="playlist-title__col col04">
-				<svg className="playlist-title__svg" alt="time">
+		<StyledPlaylistHeaderWrapper>
+			<StyledPlaylistHeaderTitle $width={'447'}>Трек</StyledPlaylistHeaderTitle>
+			<StyledPlaylistHeaderTitle $width={'321'}>ИСПОЛНИТЕЛЬ</StyledPlaylistHeaderTitle>
+			<StyledPlaylistHeaderTitle $width={'245'}>АЛЬБОМ</StyledPlaylistHeaderTitle>
+			<StyledPlaylistHeaderTitle $width={'60'} $textEnd>
+				<StyledPlaylistHeaderSvg alt="time">
 					<use xlinkHref="img/icon/sprite.svg#icon-watch" />
-				</svg>
-			</div>
-		</div>
+				</StyledPlaylistHeaderSvg>
+			</StyledPlaylistHeaderTitle>
+		</StyledPlaylistHeaderWrapper>
 	)
 }
 

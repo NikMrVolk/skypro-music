@@ -1,6 +1,16 @@
+import styled from 'styled-components'
 import SearchSongs from './SearchSongs'
 import SongsList from './SongsList'
 import SortSongs from './SortSongs'
+import CenterSubtitle from './CenterSubtitle'
+
+const StyledCenter = styled.div`
+	width: auto;
+	-webkit-box-flex: 3;
+	-ms-flex-positive: 3;
+	flex-grow: 3;
+	padding: 20px 40px 20px 111px;
+`
 
 const Center = () => {
 	const optionsArr = [
@@ -32,12 +42,12 @@ const Center = () => {
 	]
 
 	return (
-		<div className="main__centerblock centerblock">
+		<StyledCenter>
 			<SearchSongs />
-			<h2 className="centerblock__h2">Треки</h2>
-			<SortSongs optionsArr={optionsArr} sortButtons={sortButtons}/>
+			<CenterSubtitle>Треки</CenterSubtitle>
+			<SortSongs optionsArr={optionsArr} sortButtons={sortButtons} />
 			<SongsList />
-		</div>
+		</StyledCenter>
 	)
 }
 
