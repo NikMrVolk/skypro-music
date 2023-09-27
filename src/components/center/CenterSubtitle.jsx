@@ -1,16 +1,7 @@
-import styled from 'styled-components'
-
-const StyledCenterSubtitle = styled.h2`
-	font-style: normal;
-	font-weight: 400;
-	font-size: 64px;
-	line-height: 72px;
-	letter-spacing: -0.8px;
-	margin-bottom: 45px;
-`
+import * as S from '../../styles/center'
 
 const CenterSubtitle = (props) => {
-	return <StyledCenterSubtitle>{props.children}</StyledCenterSubtitle>
+	return <S.CenterSubtitle>{props.children}</S.CenterSubtitle>
 }
 
 export default CenterSubtitle

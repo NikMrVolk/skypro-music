@@ -3,28 +3,7 @@ import SongItem from './SongItem'
 import SongsHeader from './SongsHeader'
 import { LoadingContext } from '../../context/LoadingContext'
 import CenterSkilet from '../skilet/CenterSkilet'
-import styled from 'styled-components'
-
-const StyledCenterblockWrapper = styled.div`
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
-`
-
-const StyledPlaylist = styled.div`
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	overflow-y: auto;
-`
+import * as S from '../../styles/center'
 
 const SongsList = ({ props }) => {
 	const { isLoading } = useContext(LoadingContext)
@@ -152,14 +131,14 @@ const SongsList = ({ props }) => {
 	]
 	// Знаю, что индекс массива к ключ лучше не вставлять, текущее решение временное
 	return (
-		<StyledCenterblockWrapper>
+		<S.CenterblockWrapper>
 			<SongsHeader />
-			<StyledPlaylist>
+			<S.Playlist>
 				{songs.map((song, index) =>
 					isLoading ? <CenterSkilet key={index} /> : <SongItem key={index} {...song} />
 				)}
-			</StyledPlaylist>
-		</StyledCenterblockWrapper>
+			</S.Playlist>
+		</S.CenterblockWrapper>
 	)
 }
 

@@ -1,13 +1,7 @@
 import MyModal from '../UI/modal/MyModal'
+import * as S from '../../styles/center'
 
-const SortItem = ({
-	title,
-	style,
-	options,
-	isVisible,
-	setIsVisible,
-	keyValue,
-}) => {
+const SortItem = ({ title, options, isVisible, setIsVisible, keyValue }) => {
 	const handleModalActive = () => {
 		const newObject = { ...isVisible }
 		for (const key in newObject) {
@@ -21,29 +15,20 @@ const SortItem = ({
 	}
 
 	return (
-		<div className="filter__button-wrapper">
-			<div
-				className={isVisible[keyValue] ? ['filter__button', '_btn-text', '_btn-text_active', style].join(' ') : ['filter__button', '_btn-text', style].join(' ')}
-				onClick={handleModalActive}
-			>
+		<S.FilterButtonsWrapper>
+			<S.FilterButton $active={isVisible[keyValue]} onClick={handleModalActive}>
 				{title}
-			</div>
+			</S.FilterButton>
 			<MyModal visible={isVisible[keyValue]}>
-				<div
-					className={
-						options.length > 5
-							? ['filter__item-wrapper', 'filter__item-wrapper_big'].join(' ')
-							: ['filter__item-wrapper', 'filter__item-wrapper_small'].join(' ')
-					}
-				>
+				<S.FilterItemsWrapper $overflow={options.length > 5 ? 'scroll' : 'hidden'}>
 					{options.map((option, index) => (
-						<div className="filter__item" key={index}>
-							<span className="filter__item-content">{option.name}</span>
-						</div>
+						<S.FilterItem key={index}>
+							<S.FilterItemContent>{option.name}</S.FilterItemContent>
+						</S.FilterItem>
 					))}
-				</div>
+				</S.FilterItemsWrapper>
 			</MyModal>
-		</div>
+		</S.FilterButtonsWrapper>
 	)
 }
 
