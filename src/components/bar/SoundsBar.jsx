@@ -1,33 +1,19 @@
-import styled from 'styled-components'
 import SoundsPlayer from './SoundsPlayer'
 import SoundsVolume from './SoundsVolume'
+import * as S from '../../styles/bar'
 import * as SC from '../../styles/common'
-
-const StyledBarWrapper = styled.div`
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	background: rgba(28, 28, 28, 0.5);
-`
-
-const StyledBarPlayerProgress = styled.div`
-	width: 100%;
-	height: 5px;
-	background: #2e2e2e;
-`
 
 const SoundsBar = () => {
 	return (
-		<StyledBarWrapper>
+		<S.BarWrapper>
 			<SC.Flex $column>
-				<StyledBarPlayerProgress />
+				<S.BarPlayerProgress />
 				<SC.Flex $height='73px' $row $jstSB >
 					<SoundsPlayer />
 					<SoundsVolume />
 				</SC.Flex>
 			</SC.Flex>
-		</StyledBarWrapper>
+		</S.BarWrapper>
 	)
 }
 
