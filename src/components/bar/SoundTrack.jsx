@@ -10,7 +10,7 @@ const SoundTrack = () => {
 				$backCol="#313131"
 				$alignC
 				$jstC
-				$margin="0 12px 0 0"
+				$m="0 12px 0 0"
 				$gridArea="image"
 				$gridRow="1"
 				$gridRowSpan="2"

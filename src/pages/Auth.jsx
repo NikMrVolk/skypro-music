@@ -1,6 +1,11 @@
+import SignIn from '../components/SignIn'
 
 const Auth = ({}) => {
-	return <div>Здесь будет страница с авторизацией</div>
+	return (
+		<>
+			<SignIn />
+		</>
+	)
 }
 
 export default Auth

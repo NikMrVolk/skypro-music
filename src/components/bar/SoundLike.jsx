@@ -3,7 +3,7 @@ import * as SC from '../../styles/common'
 const SoundLike = () => {
 	return (
 		<SC.Flex $mL="26%" $alignC>
-			<SC.Wrapper $padding="5px">
+			<SC.Wrapper $p="5px">
 				<SC.Svg
 					$h="12px"
 					$w="14px"
@@ -17,7 +17,7 @@ const SoundLike = () => {
 					<use xlinkHref="img/icon/sprite.svg#icon-like" />
 				</SC.Svg>
 			</SC.Wrapper>
-			<SC.Wrapper $padding="5px" $mL="28.5px">
+			<SC.Wrapper $p="5px" $mL="28.5px">
 				<SC.Svg
 					$h="12px"
 					$w="14px"

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import HomePage from './pages/HomePage'
+import Auth from '../src/pages/Auth'
 import './styles/App.css'
 import { LoadingContext } from './context/LoadingContext'
 
@@ -9,7 +9,7 @@ function App() {
 	return (
 		<LoadingContext.Provider value={{ isLoading, setIsLoading }}>
 			<div className="App">
-				<HomePage />
+				<Auth />
 			</div>
 		</LoadingContext.Provider>
 	)

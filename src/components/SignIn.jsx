@@ -1,38 +1,57 @@
+import { useState } from 'react'
 import '../styles/signin.css'
+import Logo from './Logo'
+import * as SC from '../styles/common'
+import * as S from '../styles/auth'
+import LoginInput from './UI/inputes/login/LoginInput'
+import LoginButton from './UI/buttons/login/LoginButton'
 
-const SignIn = ({ props }) => {
+const SignIn = () => {
+	const [userExist, setUserExist] = useState(false)
+
 	return (
-		<div className="wrapper">
-			<div className="container-enter">
-				<div className="modal__block">
-					<form className="modal__form-login" action="#">
+		<SC.Wrapper $minH="100%" $w="100%" $overflow="hidden">
+			<SC.Wrapper $h="100vh" $m="0 auto" $position="relative" $backCol="rgba(0, 0, 0, 0.85)">
+				<SC.Absolute
+					$z="2"
+					$left="calc(50% - (366px / 2))"
+					$top="calc(50% - (439px / 2))"
+					$opacity="1"
+				>
+					<S.Form action="#">
 						<a href="../">
-							<div className="modal__logo">
-								<img src="../img/logo_modal.png" alt="logo" />
-							</div>
+							<Logo
+								hWr="21px"
+								wWr="140px"
+								pWr="0"
+								mB="34px"
+								hImg="auto"
+								wImg="140px"
+								src="/img/logo_modal.png"
+							/>
 						</a>
-						<input
-							className="modal__input login"
-							type="text"
-							name="login"
-							placeholder="Почта"
-						/>
-						<input
-							className="modal__input password"
+						<LoginInput $mB="30px" type="text" name="login" placeholder="Почта" />
+						<LoginInput
+							$mB={!userExist && '30px'}
 							type="password"
 							name="password"
 							placeholder="Пароль"
 						/>
-						<button className="modal__btn-enter">
-							<a href="../index.html">Войти</a>
-						</button>
-						<button className="modal__btn-signup">
-							<a href="signup.html">Зарегистрироваться</a>
-						</button>
-					</form>
-				</div>
-			</div>
-		</div>
+						{!userExist && (
+							<LoginInput
+								type="password"
+								name="secondPassword"
+								placeholder="Повторите пароль"
+							/>
+						)}
+						<LoginButton $black $mT="60px" $mB="20px">
+							{!userExist ? 'Зарегистрироваться' : 'Войти'}
+						</LoginButton>
+						{userExist && <LoginButton>Зарегистрироваться</LoginButton>}
+					</S.Form>
+				</SC.Absolute>
+			</SC.Wrapper>
+		</SC.Wrapper>
 	)
 }
 

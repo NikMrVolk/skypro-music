@@ -1,15 +1,15 @@
 import * as SC from '../styles/common'
 
-const Logo = () => {
+const Logo = (props) => {
 	return (
 		<SC.Wrapper
-			$height="43px"
-			$w="113.33px"
-			$padding="13px 0 13px 0"
+			$h={props.hWr}
+			$w={props.wWr}
+			$p={props.pWr}
 			$backCol="transparent"
-			$mB="20px"
+			$mB={props.mB}
 		>
-			<SC.Img $height="17px" $w="113.33px" $color="#181818" src="img/logo.png" alt="logo" />
+			<SC.Img $h={props.hImg} $w={props.wImg} $color="#181818" src={props.src} alt="logo" />
 		</SC.Wrapper>
 	)
 }

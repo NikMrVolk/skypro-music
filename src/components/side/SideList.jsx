@@ -14,7 +14,7 @@ const SideList = () => {
 	const { isLoading } = useContext(LoadingContext)
 
 	return (
-		<SC.Flex $h="100%" $padding="240px 0 0 0" $column $jstFS>
+		<SC.Flex $h="100%" $p="240px 0 0 0" $column $jstFS>
 			<SC.Flex $column $alignC>
 				{data.map((sideBar) =>
 					isLoading ? (

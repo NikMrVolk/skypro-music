@@ -3,13 +3,13 @@ import barSoundsControllers from '../../data/barSoundsControllers'
 
 const SoundsControls = () => {
 	return (
-		<SC.Flex $padding="0 27px 0 31px">
+		<SC.Flex $p="0 27px 0 31px">
 			{barSoundsControllers.map((controller) => (
 				<SC.Flex
 					key={controller.src}
-					$margin={controller.mrWr}
+					$m={controller.mrWr}
 					className={controller.class}
-					$padding="5px"
+					$p="5px"
 					$alignC
 				>
 					<SC.Svg

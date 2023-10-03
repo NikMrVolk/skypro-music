@@ -3,9 +3,9 @@ import styled from 'styled-components'
 export const Flex = styled.div`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
-	margin: ${(props) => props.$margin};
+	margin: ${(props) => props.$m};
 	margin-left: ${(props) => props.$mL};
-	padding: ${(props) => props.$padding};
+	padding: ${(props) => props.$p};
 	fill: ${(props) => props.$fill};
 	background-color: ${(props) => props.$backCol};
 	display: -webkit-box;
@@ -43,8 +43,8 @@ export const Flex = styled.div`
 export const Grid = styled.div`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
-	margin: ${(props) => props.$margin};
-	padding: ${(props) => props.$padding};
+	margin: ${(props) => props.$m};
+	padding: ${(props) => props.$p};
 	display: -ms-grid;
 	display: grid;
 	grid-template-columns: ${(props) => props.$gridTempCol};
@@ -69,10 +69,10 @@ export const Wrapper = styled.div`
 	min-height: ${(props) => props.$minH};
 	width: ${(props) => props.$w};
 	max-width: ${(props) => props.$maxW};
-	margin: ${(props) => props.$margin};
+	margin: ${(props) => props.$m};
 	margin-left: ${(props) => props.$mL};
 	margin-bottom: ${(props) => props.$mB};
-	padding: ${(props) => props.$padding};
+	padding: ${(props) => props.$p};
 	cursor: ${(props) => props.$point};
 	background-color: ${(props) => props.$backCol};
 	border-radius: ${(props) => props.$brRad};
@@ -93,6 +93,14 @@ export const Main = styled.main`
 	-webkit-box-flex: 1;
 	-ms-flex: 1 1 auto;
 	flex: 1 1 auto;
+`
+
+export const Absolute = styled.div`
+	position: absolute;
+	z-index: ${(props) => props.$z};
+	left: ${(props) => props.$left};
+	top: ${(props) => props.$top};
+	opacity: ${(props) => props.$opacity};
 `
 
 export const Svg = styled.svg`

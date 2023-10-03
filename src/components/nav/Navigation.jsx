@@ -19,7 +19,15 @@ const Navigation = () => {
 
 	return (
 		<S.Nav>
-			<Logo />
+			<Logo
+				hWr="43px"
+				wWr="113.33px"
+				pWr="13px 0 13px 0"
+				mB="20px"
+				hImg="17px"
+				wImg="113.33px"
+				src="/img/logo.png"
+			/>
 			<MyBurger onClick={handleNavbar} />
 			<NavMenu data={data} isNavbarActive={isNavbarActive} />
 		</S.Nav>
