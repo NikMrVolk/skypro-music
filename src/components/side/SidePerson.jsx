@@ -1,13 +1,15 @@
-const SidePerson = ({ props }) => {
+import * as SC from '../../styles/common'
+
+const SidePerson = () => {
 	return (
-		<div className="sidebar__personal">
-			<p className="sidebar__personal-name">Sergey.Ivanov</p>
-			<div className="sidebar__icon">
-				<svg alt="logout">
+		<SC.Flex $padding="12px 0 15px 0" $jstFE $alignC>
+			<SC.P $mR="16px">Sergey.Ivanov</SC.P>
+			<SC.Wrapper $height="43px" $width="43px" $point $backCol="#313131" $brRad="50%">
+				<SC.Svg alt="logout">
 					<use xlinkHref="img/icon/sprite.svg#logout" />
-				</svg>
-			</div>
-		</div>
+				</SC.Svg>
+			</SC.Wrapper>
+		</SC.Flex>
 	)
 }
 

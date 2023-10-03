@@ -1,12 +1,13 @@
 import SideList from './SideList'
 import SidePerson from './SidePerson'
+import * as SC from '../../styles/common'
 
-const SideBar = ({ props }) => {
+const SideBar = () => {
 	return (
-		<div className="main__sidebar sidebar">
+		<SC.Wrapper $padding='20px 90px 20px 78px' $maxW='418px'>
 			<SidePerson />
 			<SideList />
-		</div>
+		</SC.Wrapper>
 	)
 }
 
