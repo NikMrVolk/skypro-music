@@ -1,14 +1,14 @@
-import '../../styles/skilet.css'
+import * as S from '../../styles/skilet'
 
 const BarSkilet = () => {
 	return (
-		<div className="bar-skilet">
-			<div className="bar-skilet__big-item skilet__item"></div>
-			<div className="bar-skilet__small-items">
-				<div className="bar-skilet__small-item skilet__item"></div>
-				<div className="bar-skilet__small-item skilet__item"></div>
-			</div>
-		</div>
+		<S.SkiletWrapper $h="51px" $w="122px" $dF $gap="12px">
+			<S.SkiletItem $h="51px" $w="51px"></S.SkiletItem>
+			<S.SkiletWrapper $dF $column $jstSA>
+				<S.SkiletItem $h="15px" $w="59px"></S.SkiletItem>
+				<S.SkiletItem $h="15px" $w="59px"></S.SkiletItem>
+			</S.SkiletWrapper>
+		</S.SkiletWrapper>
 	)
 }
 

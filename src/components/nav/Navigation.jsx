@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import * as S from '../../styles/nav'
 
-import Logo from '../Logo'
+import Logo from '../logo/Logo'
 import MyBurger from '../UI/burger/MyBurger'
 import NavMenu from './NavMenu'
 

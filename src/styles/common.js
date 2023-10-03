@@ -17,6 +17,7 @@ export const Flex = styled.div`
 	-webkit-box-orient: ${(props) => (props.$column && 'vertical') || (props.$row && 'horizontal')};
 	justify-content: ${(props) =>
 		(props.$jstSB && 'space-between') ||
+		(props.$jstSA && 'space-around') ||
 		(props.$jstFS && 'flex-start') ||
 		(props.$jstC && 'center') ||
 		(props.$jstFE && 'flex-end')};

@@ -13,7 +13,7 @@ const HomePage = () => {
 		setIsLoading(true)
 		const timeoutId = setTimeout(() => {
 			setIsLoading(false)
-		}, 1000)
+		}, 5000)
 		return () => {
 			clearInterval(timeoutId)
 		}
