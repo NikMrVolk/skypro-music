@@ -4,6 +4,7 @@ export const Flex = styled.div`
 	height: ${(props) => props.$height};
 	width: ${(props) => props.$width};
 	margin: ${(props) => props.$margin};
+	margin-left: ${(props) => props.$mL};
 	padding: ${(props) => props.$padding};
 	fill: ${(props) => props.$fill};
 	background-color: ${(props) => props.$backCol};
@@ -60,6 +61,7 @@ export const Wrapper = styled.div`
 	height: ${(props) => props.$height};
 	width: ${(props) => props.$width};
 	margin: ${(props) => props.$margin};
+	margin-left: ${(props) => props.$mL};
 	padding: ${(props) => props.$padding};
 `
 
@@ -68,6 +70,11 @@ export const Svg = styled.svg`
 	width: ${(props) => props.$width};
 	fill: ${(props) => props.$fill};
 	stroke: ${(props) => props.$stroke};
+	cursor: ${(props) => props.$point};
+	&:active {
+		fill: ${(props) => props.$fillAct};
+		stroke: ${(props) => props.$strokeAct};
+	}
 `
 
 export const Input = styled.input`

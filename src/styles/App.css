@@ -42,13 +42,6 @@ button,
 	cursor: pointer;
 }
 
-._btn-icon:active .track-play__like-svg,
-._btn-icon:active .track-play__dislike-svg {
-	fill: #696969;
-	stroke: #ffffff;
-	cursor: pointer;
-}
-
 .main {
 	-webkit-box-flex: 1;
 	-ms-flex: 1 1 auto;
@@ -163,42 +156,6 @@ button,
 	height: auto;
 }
 
-.track-play__like-dis {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: row;
-	flex-direction: row;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	margin-left: 26%;
-}
-
-.track-play__like,
-.track-play__dislike {
-	padding: 5px;
-}
-
-.track-play__like-svg {
-	width: 14px;
-	height: 12px;
-	fill: transparent;
-	stroke: #696969;
-}
-
-.track-play__dislike {
-	margin-left: 28.5px;
-}
-
-.track-play__dislike-svg {
-	width: 14.34px;
-	height: 13px;
-	fill: transparent;
-	stroke: #696969;
-}
 
 .volume__content {
 	display: -webkit-box;
@@ -235,3 +192,5 @@ button,
 .volume__progress-line {
 	width: 109px;
 }
+
+
