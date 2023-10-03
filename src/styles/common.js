@@ -12,9 +12,9 @@ export const Flex = styled.div`
 	-webkit-box-direction: normal;
 	-ms-flex-direction: ${(props) => (props.$column && 'column') || (props.$row && 'row')};
 	-webkit-box-orient: ${(props) => (props.$column && 'vertical') || (props.$row && 'horizontal')};
-	justify-content: ${(props) => props.$jstSB && 'space-between'};
-	-webkit-box-pack: ${(props) => props.$jstSB && 'justify'};
-	-ms-flex-pack: ${(props) => props.$jstSB && 'justify'};
+	justify-content: ${(props) => (props.$jstSB && 'space-between') || (props.$jstFS && 'flex-start')};
+	-webkit-box-pack: ${(props) => (props.$jstSB && 'justify') || (props.$jstFS && 'start')};
+	-ms-flex-pack: ${(props) => (props.$jstSB && 'justify') || (props.$jstFS && 'start')};
 	align-items: ${(props) => props.$alignC && 'center'};
 	-webkit-box-align: ${(props) => props.$alignC && 'center'};
 	-ms-flex-align: ${(props) => props.$alignC && 'center'};

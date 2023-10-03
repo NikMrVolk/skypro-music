@@ -173,22 +173,6 @@ button,
 	flex-direction: column;
 }
 
-.bar__player {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: row;
-	flex-direction: row;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: start;
-	-ms-flex-pack: start;
-	justify-content: flex-start;
-}
-
 .player__controls {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -270,16 +254,6 @@ button,
 	height: 12px;
 	fill: transparent;
 	stroke: #696969;
-}
-
-.player__track-play {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: row;
-	flex-direction: row;
 }
 
 .track-play__contain {
