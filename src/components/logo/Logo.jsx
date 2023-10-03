@@ -1,4 +1,4 @@
-import * as SC from '../styles/common'
+import * as SC from '../../styles/common'
 
 const Logo = (props) => {
 	return (

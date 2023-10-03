@@ -84,4 +84,10 @@ export const LoginButton = styled.button`
 	line-height: 24px;
 	letter-spacing: -0.05px;
 	color: ${(props) => (props.$black ? '#ffffff' : '#000000')};
+	&:hover {
+		background-color: ${(props) => (props.$black ? '#3f007d' : '#f4f5f6')};
+	}
+	&:active {
+		background-color: ${(props) => (props.$black ? '#271a58' : '#d9d9d9')};
+	}
 `

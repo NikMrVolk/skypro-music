@@ -1,11 +1,9 @@
-import SignIn from '../components/SignIn'
+import { useState } from 'react'
+import Login from '../components/login/Login'
 
-const Auth = ({}) => {
-	return (
-		<>
-			<SignIn />
-		</>
-	)
+const Auth = () => {
+	const [userExist, setUserExist] = useState(true)
+	return <Login userExist={userExist} />
 }
 
 export default Auth

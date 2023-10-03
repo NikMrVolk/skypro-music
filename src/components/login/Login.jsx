@@ -1,14 +1,10 @@
-import { useState } from 'react'
-import '../styles/signin.css'
-import Logo from './Logo'
-import * as SC from '../styles/common'
-import * as S from '../styles/auth'
-import LoginInput from './UI/inputes/login/LoginInput'
-import LoginButton from './UI/buttons/login/LoginButton'
+import Logo from '../logo/Logo'
+import * as SC from '../../styles/common'
+import * as S from '../../styles/auth'
+import LoginInput from '../UI/inputes/login/LoginInput'
+import LoginButton from '../UI/buttons/login/LoginButton'
 
-const SignIn = () => {
-	const [userExist, setUserExist] = useState(false)
-
+const Login = ({ userExist }) => {
 	return (
 		<SC.Wrapper $minH="100%" $w="100%" $overflow="hidden">
 			<SC.Wrapper $h="100vh" $m="0 auto" $position="relative" $backCol="rgba(0, 0, 0, 0.85)">
@@ -55,4 +51,4 @@ const SignIn = () => {
 	)
 }
 
-export default SignIn
+export default Login
