@@ -21,7 +21,7 @@ const HomePage = () => {
 
 	return (
 		<SC.Wrapper $w="100%" $minH="100%" $overflow="hidden" $backCol="#383838">
-			<SC.Wrapper $maxW="1920px" $height="100vh" $m="0 auto" $backCol="#181818">
+			<SC.Wrapper $maxW="1920px" $h='100vh' $height="100vh" $m="0 auto" $backCol="#181818">
 				<SC.Main>
 					<Navigation />
 					<Center />

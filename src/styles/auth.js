@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Form = styled.form`
 	width: 366px;
@@ -17,7 +17,6 @@ export const Form = styled.form`
 	padding: 43px 47px 47px 40px;
 `
 
-
 export const LoginInput = styled.input`
 	width: 100%;
 	border-top: none;
@@ -25,7 +24,7 @@ export const LoginInput = styled.input`
 	border-right: none;
 	border-bottom: 1px solid #d0cece;
 	padding: 8px 1px;
-	margin-bottom: ${(props) => props.$mB};;
+	margin-bottom: ${(props) => props.$mB};
 	&::-webkit-input-placeholder {
 		font-style: normal;
 		font-weight: 400;

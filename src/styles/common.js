@@ -84,6 +84,12 @@ export const Wrapper = styled.div`
 	overflow: ${(props) => props.$overflow};
 `
 
+export const Block = styled.div`
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
+	background: ${(props) => props.$bG};
+`
+
 export const Main = styled.main`
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -97,11 +103,15 @@ export const Main = styled.main`
 `
 
 export const Absolute = styled.div`
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
 	position: absolute;
 	z-index: ${(props) => props.$z};
 	left: ${(props) => props.$left};
+	bottom: ${(props) => props.$bottom};
 	top: ${(props) => props.$top};
 	opacity: ${(props) => props.$opacity};
+	background: ${(props) => props.$bG};
 `
 
 export const Svg = styled.svg`
