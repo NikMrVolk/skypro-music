@@ -66,6 +66,7 @@ export const GridItem = styled.div`
 
 export const Wrapper = styled.div`
 	height: ${(props) => props.$height};
+	min-height: ${(props) => props.$minH};
 	width: ${(props) => props.$width};
 	max-width: ${(props) => props.$maxW};
 	margin: ${(props) => props.$margin};
@@ -78,6 +79,20 @@ export const Wrapper = styled.div`
 	&:not(:last-child) {
 		margin-bottom: ${(props) => props.$mBNotLC};
 	}
+	position: ${(props) => props.$position};
+	overflow: ${(props) => props.$overflow};
+`
+
+export const Main = styled.main`
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
 `
 
 export const Svg = styled.svg`
@@ -108,6 +123,7 @@ export const P = styled.p`
 export const Link = styled.a`
 	height: ${(props) => props.$height};
 	width: ${(props) => props.$width};
+	display: ${(props) => props.$dB};
 `
 
 export const Img = styled.img`
