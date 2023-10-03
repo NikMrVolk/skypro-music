@@ -70,6 +70,7 @@ export const Wrapper = styled.div`
 	max-width: ${(props) => props.$maxW};
 	margin: ${(props) => props.$margin};
 	margin-left: ${(props) => props.$mL};
+	margin-bottom: ${(props) => props.$mB};
 	padding: ${(props) => props.$padding};
 	cursor: ${(props) => props.$point};
 	background-color: ${(props) => props.$backCol};
@@ -112,4 +113,5 @@ export const Link = styled.a`
 export const Img = styled.img`
 	height: ${(props) => props.$height};
 	width: ${(props) => props.$width};
+	color: ${(props) => props.$color};
 `
