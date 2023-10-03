@@ -1,22 +1,32 @@
-const SoundTrack = ({ props }) => {
+import * as SC from '../../styles/common'
+import * as ST from '../../styles/temporary'
+
+const SoundTrack = () => {
 	return (
-		<div className="track-play__contain">
-			<div className="track-play__image">
-				<svg className="track-play__svg" alt="music">
+		<SC.Grid $width="auto" $gridTempCol="auto 1fr" $alignC>
+			<SC.Flex
+				$height="51px"
+				$width="51px"
+				$backCol="#313131"
+				$alignC
+				$jstC
+				$margin="0 12px 0 0"
+				$gridArea="image"
+				$gridRow="1"
+				$gridRowSpan="2"
+				$gridColumn="1"
+			>
+				<SC.Svg $width="18px" $height="17px" $fill="transparent" $stroke="#4e4e4e" alt="music">
 					<use xlinkHref="img/icon/sprite.svg#icon-note" />
-				</svg>
-			</div>
-			<div className="track-play__author">
-				<a className="track-play__author-link" href="http://">
-					Ты та...
-				</a>
-			</div>
-			<div className="track-play__album">
-				<a className="track-play__album-link" href="http://">
-					Баста
-				</a>
-			</div>
-		</div>
+				</SC.Svg>
+			</SC.Flex>
+			<SC.GridItem $mW="49px" $gridArea="author" $gridRow="1" $gridColumn="2">
+				<ST.LinkAuthor href="http://">Ты та...</ST.LinkAuthor>
+			</SC.GridItem>
+			<SC.GridItem $mW="49px" $gridArea="album" $gridRow="2" $gridColumn="2">
+				<ST.LinkAlbum href="http://">Баста</ST.LinkAlbum>
+			</SC.GridItem>
+		</SC.Grid>
 	)
 }
 
