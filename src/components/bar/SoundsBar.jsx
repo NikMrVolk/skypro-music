@@ -8,7 +8,7 @@ const SoundsBar = () => {
 		<S.BarWrapper>
 			<SC.Flex $column>
 				<S.BarPlayerProgress />
-				<SC.Flex $height='73px' $row $jstSB >
+				<SC.Flex $h="73px" $row $jstSB>
 					<SoundsPlayer />
 					<SoundsVolume />
 				</SC.Flex>

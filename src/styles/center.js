@@ -159,7 +159,7 @@ export const PlaylistHeaderTitle = styled.div`
 	letter-spacing: 2px;
 	color: #696969;
 	text-transform: uppercase;
-	width: ${(props) => props.$width}px;
+	width: ${(props) => props.$w}px;
 	${(props) => props.$textEnd && 'text-align: end;'}
 `
 

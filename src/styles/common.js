@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const Flex = styled.div`
-	height: ${(props) => props.$height};
-	width: ${(props) => props.$width};
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
 	margin: ${(props) => props.$margin};
 	margin-left: ${(props) => props.$mL};
 	padding: ${(props) => props.$padding};
@@ -41,8 +41,8 @@ export const Flex = styled.div`
 `
 
 export const Grid = styled.div`
-	height: ${(props) => props.$height};
-	width: ${(props) => props.$width};
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
 	margin: ${(props) => props.$margin};
 	padding: ${(props) => props.$padding};
 	display: -ms-grid;
@@ -65,9 +65,9 @@ export const GridItem = styled.div`
 `
 
 export const Wrapper = styled.div`
-	height: ${(props) => props.$height};
+	height: ${(props) => props.$h};
 	min-height: ${(props) => props.$minH};
-	width: ${(props) => props.$width};
+	width: ${(props) => props.$w};
 	max-width: ${(props) => props.$maxW};
 	margin: ${(props) => props.$margin};
 	margin-left: ${(props) => props.$mL};
@@ -84,20 +84,20 @@ export const Wrapper = styled.div`
 `
 
 export const Main = styled.main`
-	-webkit-box-flex: 1;
-	-ms-flex: 1 1 auto;
-	flex: 1 1 auto;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: justify;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
 `
 
 export const Svg = styled.svg`
-	height: ${(props) => props.$height};
-	width: ${(props) => props.$width};
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
 	fill: ${(props) => props.$fill};
 	stroke: ${(props) => props.$stroke};
 	cursor: ${(props) => props.$point};
@@ -108,7 +108,7 @@ export const Svg = styled.svg`
 `
 
 export const Input = styled.input`
-	width: ${(props) => props.$width};
+	width: ${(props) => props.$w};
 `
 
 export const P = styled.p`
@@ -121,13 +121,13 @@ export const P = styled.p`
 `
 
 export const Link = styled.a`
-	height: ${(props) => props.$height};
-	width: ${(props) => props.$width};
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
 	display: ${(props) => props.$dB};
 `
 
 export const Img = styled.img`
-	height: ${(props) => props.$height};
-	width: ${(props) => props.$width};
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
 	color: ${(props) => props.$color};
 `

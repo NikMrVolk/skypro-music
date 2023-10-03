@@ -20,14 +20,8 @@ const HomePage = () => {
 	}, [])
 
 	return (
-		<SC.Wrapper $width="100%" $minH="100%" $overflow="hidden" $backCol="#383838">
-			<SC.Wrapper
-				$maxW="1920px"
-				$height="100vh"
-				$margin="0 auto"
-				$position="relative"
-				$backCol="#181818"
-			>
+		<SC.Wrapper $w="100%" $minH="100%" $overflow="hidden" $backCol="#383838">
+			<SC.Wrapper $maxW="1920px" $height="100vh" $margin="0 auto" $backCol="#181818">
 				<SC.Main>
 					<Navigation />
 					<Center />

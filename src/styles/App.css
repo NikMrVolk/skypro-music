@@ -26,31 +26,3 @@ button,
 	stroke: #ffffff;
 	cursor: pointer;
 }
-
-.main {
-	-webkit-box-flex: 1;
-	-ms-flex: 1 1 auto;
-	flex: 1 1 auto;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-}
-
-.nav__logo {
-	width: 113.33px;
-	height: 43px;
-	padding: 13px 0 13px 0;
-	background-color: transparent;
-	margin-bottom: 20px;
-}
-
-.filter__item-wrapper_big {
-	overflow: scroll;
-}
-
-.filter__item-wrapper_small {
-	overflow: hidden;
-}

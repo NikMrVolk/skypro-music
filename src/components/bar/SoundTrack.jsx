@@ -3,10 +3,10 @@ import * as ST from '../../styles/temporary'
 
 const SoundTrack = () => {
 	return (
-		<SC.Grid $width="auto" $gridTempCol="auto 1fr" $alignC>
+		<SC.Grid $w="auto" $gridTempCol="auto 1fr" $alignC>
 			<SC.Flex
-				$height="51px"
-				$width="51px"
+				$h="51px"
+				$w="51px"
 				$backCol="#313131"
 				$alignC
 				$jstC
@@ -16,7 +16,7 @@ const SoundTrack = () => {
 				$gridRowSpan="2"
 				$gridColumn="1"
 			>
-				<SC.Svg $width="18px" $height="17px" $fill="transparent" $stroke="#4e4e4e" alt="music">
+				<SC.Svg $w="18px" $h="17px" $fill="transparent" $stroke="#4e4e4e" alt="music">
 					<use xlinkHref="img/icon/sprite.svg#icon-note" />
 				</SC.Svg>
 			</SC.Flex>

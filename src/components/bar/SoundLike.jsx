@@ -5,8 +5,8 @@ const SoundLike = () => {
 		<SC.Flex $mL="26%" $alignC>
 			<SC.Wrapper $padding="5px">
 				<SC.Svg
-					$height="12px"
-					$width="14px"
+					$h="12px"
+					$w="14px"
 					$fill="transparent"
 					$fillAct="#696969"
 					$stroke="#696969"
@@ -19,8 +19,8 @@ const SoundLike = () => {
 			</SC.Wrapper>
 			<SC.Wrapper $padding="5px" $mL="28.5px">
 				<SC.Svg
-					$height="12px"
-					$width="14px"
+					$h="12px"
+					$w="14px"
 					$fill="transparent"
 					$fillAct="#696969"
 					$stroke="#696969"

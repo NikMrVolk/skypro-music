@@ -13,8 +13,8 @@ const SoundsControls = () => {
 					$alignC
 				>
 					<SC.Svg
-						$height={controller.height}
-						$width={controller.width}
+						$h={controller.height}
+						$w={controller.width}
 						$fill={controller.fill}
 						$stroke={controller.stroke}
 						alt={controller.alt}
