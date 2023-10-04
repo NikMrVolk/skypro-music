@@ -1,53 +1,7 @@
-import styled from 'styled-components'
-
-const StyledSearchInfut = styled.input`
-	-webkit-box-flex: 100;
-	-ms-flex-positive: 100;
-	flex-grow: 100;
-	background-color: transparent;
-	border: none;
-	padding: 13px 10px 14px;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
-	color: #ffffff;
-	&::-webkit-input-placeholder {
-		background-color: transparent;
-		color: #ffffff;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
-	}
-	&:-ms-input-placeholder {
-		background-color: transparent;
-		color: #ffffff;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
-	}
-	&::-ms-input-placeholder {
-		background-color: transparent;
-		color: #ffffff;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
-	}
-	&::placeholder {
-		background-color: transparent;
-		color: #ffffff;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
-	}
-`
+import * as S from '../../../../styles/searchInput'
 
 const SearchInput = () => {
-	return <StyledSearchInfut className="search__text" type="search" placeholder="Поиск" name="search" />
+	return <S.SearchInfut className="search__text" type="search" placeholder="Поиск" name="search" />
 }
 
 export default SearchInput

@@ -39,6 +39,7 @@ export const Flex = styled.div`
 	-ms-grid-row: ${(props) => props.$gridRow};
 	-ms-grid-row-span: ${(props) => props.$gridRowSpan};
 	-ms-grid-column: ${(props) => props.$gridColumn};
+	cursor: ${(props) => props.$point};
 `
 
 export const Grid = styled.div`
@@ -87,7 +88,16 @@ export const Wrapper = styled.div`
 export const Block = styled.div`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
+	display: ${(props) => props.$disp};
 	background: ${(props) => props.$bG};
+`
+
+export const Span = styled.span`
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
+	display: ${(props) => props.$disp};
+	background: ${(props) => props.$bG};
+	background-color: ${(props) => props.$backCol};
 `
 
 export const Main = styled.main`

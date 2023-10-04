@@ -1,12 +1,12 @@
-import * as S from './style'
+import * as SC from '../../../styles/common'
 
 const MyBurger = ({ onClick }) => {
 	return (
-		<S.Burger onClick={onClick}>
-			<S.BurgerLine />
-			<S.BurgerLine />
-			<S.BurgerLine />
-		</S.Burger>
+		<SC.Flex $h="36px" $w="20px" $p="13px 0" $column $jstSB $point onClick={onClick}>
+			<SC.Span $disp="inline-block" $h="1px" $w="100%" $backCol="#d3d3d3" />
+			<SC.Span $disp="inline-block" $h="1px" $w="100%" $backCol="#d3d3d3" />
+			<SC.Span $disp="inline-block" $h="1px" $w="100%" $backCol="#d3d3d3" />
+		</SC.Flex>
 	)
 }
 
