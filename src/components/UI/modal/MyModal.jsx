@@ -1,4 +1,3 @@
-import cl from './MyModal.module.css'
 import * as S from '../../../styles/modal'
 
 const MyModal = ({ visible, children }) => {
