@@ -2,7 +2,7 @@ import SearchSongs from './SearchSongs'
 import SongsList from './SongsList'
 import SortSongs from './SortSongs'
 import CenterSubtitle from './CenterSubtitle'
-import * as S from '../../styles/center'
+import * as SC from '../../styles/common'
 
 const Center = () => {
 	const optionsArr = [
@@ -31,12 +31,12 @@ const Center = () => {
 	]
 
 	return (
-		<S.Center>
+		<SC.Block $w="auto" $fGrow="3" $p="20px 40px 20px 111px">
 			<SearchSongs />
 			<CenterSubtitle>Треки</CenterSubtitle>
 			<SortSongs optionsArr={optionsArr} sortButtons={sortButtons} />
 			<SongsList />
-		</S.Center>
+		</SC.Block>
 	)
 }
 

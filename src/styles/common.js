@@ -4,8 +4,11 @@ export const Flex = styled.div`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
 	margin: ${(props) => props.$m};
+	margin-top: ${(props) => props.$mT};
 	margin-left: ${(props) => props.$mL};
+	margin-bottom: ${(props) => props.$mB};
 	padding: ${(props) => props.$p};
+	border-bottom: ${(props) => props.$bordB};
 	fill: ${(props) => props.$fill};
 	background-color: ${(props) => props.$backCol};
 	display: -webkit-box;
@@ -91,6 +94,9 @@ export const Block = styled.div`
 	display: ${(props) => props.$disp};
 	background: ${(props) => props.$bG};
 	visibility: ${(props) => props.$vis};
+	-webkit-box-flex: ${(props) => props.$fGrow};
+	-ms-flex-positive: ${(props) => props.$fGrow};
+	flex-grow: ${(props) => props.$fGrow};
 `
 
 export const Span = styled.span`
@@ -148,6 +154,7 @@ export const Img = styled.img`
 export const Svg = styled.svg`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
+	margin-right: ${(props) => props.$mR};
 	fill: ${(props) => props.$fill};
 	stroke: ${(props) => props.$stroke};
 	cursor: ${(props) => props.$point};
@@ -182,4 +189,13 @@ export const Ul = styled.ul`
 export const Li = styled.li`
 	padding: ${(props) => props.$p};
 	margin-bottom: ${(props) => props.$mB};
+`
+
+export const CenterSubtitle = styled.h2`
+	font-style: normal;
+	font-weight: 400;
+	font-size: 64px;
+	line-height: 72px;
+	letter-spacing: -0.8px;
+	margin-bottom: 45px;
 `

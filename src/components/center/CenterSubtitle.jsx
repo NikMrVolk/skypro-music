@@ -1,7 +1,7 @@
-import * as S from '../../styles/center'
+import * as SC from '../../styles/common'
 
 const CenterSubtitle = (props) => {
-	return <S.CenterSubtitle>{props.children}</S.CenterSubtitle>
+	return <SC.CenterSubtitle>{props.children}</SC.CenterSubtitle>
 }
 
 export default CenterSubtitle
