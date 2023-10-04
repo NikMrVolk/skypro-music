@@ -1,6 +1,5 @@
 import SearchInput from '../UI/inputes/search/SearchInput'
 import * as SC from '../../styles/common'
-import * as S from '../../styles/center'
 
 const SearchSongs = () => {
 	return (
