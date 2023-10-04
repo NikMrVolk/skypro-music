@@ -1,15 +1,15 @@
 import NavMenuItem from './NavMenuItem'
-import * as S from '../../styles/nav'
+import * as SC from '../../styles/common'
 
 const NavMenuList = ({ data, isNavbarActive }) => {
 	return (
 		<>
 			{isNavbarActive && (
-				<S.NavMenuList>
+				<SC.Ul $p='18px 0 10px 0'>
 					{data.map(({ title }) => (
 						<NavMenuItem key={title}>{title}</NavMenuItem>
 					))}
-				</S.NavMenuList>
+				</SC.Ul>
 			)}
 		</>
 	)

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import * as S from '../../styles/nav'
+import * as SC from '../../styles/common'
 
 import Logo from '../logo/Logo'
 import MyBurger from '../UI/burger/MyBurger'
@@ -18,7 +18,7 @@ const Navigation = () => {
 	}
 
 	return (
-		<S.Nav>
+		<SC.Nav $w="244px" $p="20px 0 20px 36px" $backCol="#181818">
 			<Logo
 				hWr="43px"
 				wWr="113.33px"
@@ -30,7 +30,7 @@ const Navigation = () => {
 			/>
 			<MyBurger onClick={handleNavbar} />
 			<NavMenu data={data} isNavbarActive={isNavbarActive} />
-		</S.Nav>
+		</SC.Nav>
 	)
 }
 

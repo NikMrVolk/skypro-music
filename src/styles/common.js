@@ -90,6 +90,7 @@ export const Block = styled.div`
 	width: ${(props) => props.$w};
 	display: ${(props) => props.$disp};
 	background: ${(props) => props.$bG};
+	visibility: ${(props) => props.$vis};
 `
 
 export const Span = styled.span`
@@ -98,18 +99,6 @@ export const Span = styled.span`
 	display: ${(props) => props.$disp};
 	background: ${(props) => props.$bG};
 	background-color: ${(props) => props.$backCol};
-`
-
-export const Main = styled.main`
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-	-webkit-box-flex: 1;
-	-ms-flex: 1 1 auto;
-	flex: 1 1 auto;
 `
 
 export const Absolute = styled.div`
@@ -122,18 +111,6 @@ export const Absolute = styled.div`
 	top: ${(props) => props.$top};
 	opacity: ${(props) => props.$opacity};
 	background: ${(props) => props.$bG};
-`
-
-export const Svg = styled.svg`
-	height: ${(props) => props.$h};
-	width: ${(props) => props.$w};
-	fill: ${(props) => props.$fill};
-	stroke: ${(props) => props.$stroke};
-	cursor: ${(props) => props.$point};
-	&:active {
-		fill: ${(props) => props.$fillAct};
-		stroke: ${(props) => props.$strokeAct};
-	}
 `
 
 export const Input = styled.input`
@@ -152,11 +129,57 @@ export const P = styled.p`
 export const Link = styled.a`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
-	display: ${(props) => props.$dB};
+	display: ${(props) => props.$disp};
+	white-space: ${(props) => props.$wSpace};
+	color: ${(props) => props.$color};
+	font-style: ${(props) => props.$ftSt};
+	font-style: ${(props) => props.$ftSt};
+	font-weight: ${(props) => props.$ftW};
+	font-size: ${(props) => props.$ftSz};
+	line-height: ${(props) => props.$lH};
 `
 
 export const Img = styled.img`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
 	color: ${(props) => props.$color};
+`
+
+export const Svg = styled.svg`
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
+	fill: ${(props) => props.$fill};
+	stroke: ${(props) => props.$stroke};
+	cursor: ${(props) => props.$point};
+	&:active {
+		fill: ${(props) => props.$fillAct};
+		stroke: ${(props) => props.$strokeAct};
+	}
+`
+
+export const Main = styled.main`
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+`
+
+export const Nav = styled.nav`
+	width: ${(props) => props.$w};
+	background-color: ${(props) => props.$backCol};
+	padding: ${(props) => props.$p};
+`
+
+export const Ul = styled.ul`
+	padding: ${(props) => props.$p};
+`
+
+export const Li = styled.li`
+	padding: ${(props) => props.$p};
+	margin-bottom: ${(props) => props.$mB};
 `

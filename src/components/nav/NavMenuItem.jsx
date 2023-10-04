@@ -1,10 +1,10 @@
-import * as S from '../../styles/nav'
+import * as SC from '../../styles/common'
 
 const NavMenuItem = (props) => {
 	return (
-		<S.MenuItem>
-			<S.MenuItemLink href="#">{props.children}</S.MenuItemLink>
-		</S.MenuItem>
+		<SC.Li $p='5px 0' $mB='16px'>
+			<SC.Link $color='#ffffff' href="#">{props.children}</SC.Link>
+		</SC.Li>
 	)
 }
 

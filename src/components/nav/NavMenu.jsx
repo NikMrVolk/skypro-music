@@ -1,11 +1,11 @@
 import NavMenuList from './NavMenuList'
-import * as S from '../../styles/nav'
+import * as SC from '../../styles/common'
 
 const NavMenu = ({ data, isNavbarActive }) => {
 	return (
-		<S.NavMenu>
+		<SC.Block $disp="block" $vis="visible">
 			<NavMenuList data={data} isNavbarActive={isNavbarActive} />
-		</S.NavMenu>
+		</SC.Block>
 	)
 }
 

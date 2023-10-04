@@ -1,5 +1,4 @@
 import * as SC from '../../styles/common'
-import * as ST from '../../styles/temporary'
 
 const SoundTrack = () => {
 	return (
@@ -21,10 +20,10 @@ const SoundTrack = () => {
 				</SC.Svg>
 			</SC.Flex>
 			<SC.GridItem $mW="49px" $gridArea="author" $gridRow="1" $gridColumn="2">
-				<ST.LinkAuthor href="http://">Ты та...</ST.LinkAuthor>
+				<SC.Link $color='#ffffff' $wSpace='nowrap' href="#">Ты та...</SC.Link>
 			</SC.GridItem>
 			<SC.GridItem $mW="49px" $gridArea="album" $gridRow="2" $gridColumn="2">
-				<ST.LinkAlbum href="http://">Баста</ST.LinkAlbum>
+				<SC.Link $fSz='13px' $color='#ffffff' href="#">Баста</SC.Link>
 			</SC.GridItem>
 		</SC.Grid>
 	)
