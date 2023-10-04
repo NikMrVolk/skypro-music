@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import SortItem from './SortItem'
-import * as S from '../../styles/center'
+import * as SC from '../../styles/common'
 
 const SortSongs = ({ optionsArr, sortButtons }) => {
 	const [isVisible, setIsVisible] = useState({ author: false, year: false, genre: false })
@@ -8,8 +8,8 @@ const SortSongs = ({ optionsArr, sortButtons }) => {
 	// Скрол работает при количестве элементов 6ти и более
 
 	return (
-		<S.CenterblockFilterWrapper>
-			<S.CenterblockFilterTitle>Искать по:</S.CenterblockFilterTitle>
+		<SC.Flex $mB='51px' $row $alignC>
+			<SC.Block $mR='15px'>Искать по:</SC.Block>
 			{sortButtons.map((sort) => (
 				<SortItem
 					key={sort.title}
@@ -19,7 +19,7 @@ const SortSongs = ({ optionsArr, sortButtons }) => {
 					setIsVisible={setIsVisible}
 				/>
 			))}
-		</S.CenterblockFilterWrapper>
+		</SC.Flex>
 	)
 }
 

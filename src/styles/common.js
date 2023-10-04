@@ -5,11 +5,13 @@ export const Flex = styled.div`
 	width: ${(props) => props.$w};
 	margin: ${(props) => props.$m};
 	margin-top: ${(props) => props.$mT};
+	margin-right: ${(props) => props.$mR};
 	margin-left: ${(props) => props.$mL};
 	margin-bottom: ${(props) => props.$mB};
 	padding: ${(props) => props.$p};
-	border-bottom: ${(props) => props.$bordB};
+	border-bottom: ${(props) => props.$brB};
 	fill: ${(props) => props.$fill};
+	background: ${(props) => props.$back};
 	background-color: ${(props) => props.$backCol};
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -37,6 +39,7 @@ export const Flex = styled.div`
 	align-items: ${(props) => props.$alignC && 'center'};
 	-webkit-box-align: ${(props) => props.$alignC && 'center'};
 	-ms-flex-align: ${(props) => props.$alignC && 'center'};
+	overflow-y: ${(props) => props.$overflowY};
 	//Work with grid
 	grid-area: ${(props) => props.$gridArea};
 	-ms-grid-row: ${(props) => props.$gridRow};
@@ -71,9 +74,11 @@ export const GridItem = styled.div`
 
 export const Wrapper = styled.div`
 	height: ${(props) => props.$h};
+	max-height: ${(props) => props.$maxH};
 	min-height: ${(props) => props.$minH};
 	width: ${(props) => props.$w};
 	max-width: ${(props) => props.$maxW};
+	min-width: ${(props) => props.$minW};
 	margin: ${(props) => props.$m};
 	margin-left: ${(props) => props.$mL};
 	margin-bottom: ${(props) => props.$mB};
@@ -91,12 +96,40 @@ export const Wrapper = styled.div`
 export const Block = styled.div`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
+	padding: ${(props) => props.$p};
+	margin-right: ${(props) => props.$mR};
+	margin-bottom: ${(props) => props.$mB};
 	display: ${(props) => props.$disp};
+	border: ${(props) => props.$br};
+	border-radius: ${(props) => props.$brRad};
 	background: ${(props) => props.$bG};
 	visibility: ${(props) => props.$vis};
 	-webkit-box-flex: ${(props) => props.$fGrow};
 	-ms-flex-positive: ${(props) => props.$fGrow};
 	flex-grow: ${(props) => props.$fGrow};
+	font-style: ${(props) => props.$ftSt};
+	font-weight: ${(props) => props.$ftW};
+	font-size: ${(props) => props.$ftSz};
+	line-height: ${(props) => props.$lH};
+	color: ${(props) => props.$color};
+	letter-spacing: ${(props) => props.$lSpace};
+	text-transform: ${(props) => props.$tTransf};
+	text-align: ${(props) => props.$tAlign};
+	cursor: ${(props) => props.$point};
+	&:not(:last-child) {
+		margin-right: ${(props) => props.$mRnotL};
+		margin-bottom: ${(props) => props.$mBnotL};
+	}
+	&:hover {
+		color: ${(props) => props.$colorHov};
+		text-decoration: ${(props) => props.$tDecHov};
+		border-color: ${(props) => props.$brColorHov};
+	}
+	&:active {
+		color: ${(props) => props.$colorAct};
+		text-decoration: ${(props) => props.$tDecAct};
+		border-color: ${(props) => props.$brColorAct};
+	}
 `
 
 export const Span = styled.span`
@@ -105,6 +138,8 @@ export const Span = styled.span`
 	display: ${(props) => props.$disp};
 	background: ${(props) => props.$bG};
 	background-color: ${(props) => props.$backCol};
+	color: ${(props) => props.$color};
+	text-align: ${(props) => props.$tAlign};
 `
 
 export const Absolute = styled.div`

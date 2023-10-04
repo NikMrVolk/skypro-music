@@ -1,17 +1,17 @@
-import * as S from '../../styles/center'
+import * as SC from '../../styles/common'
 
 const SongsHeader = () => {
 	return (
-		<S.PlaylistHeaderWrapper>
-			<S.PlaylistHeaderTitle $w={'447'}>Трек</S.PlaylistHeaderTitle>
-			<S.PlaylistHeaderTitle $w={'321'}>ИСПОЛНИТЕЛЬ</S.PlaylistHeaderTitle>
-			<S.PlaylistHeaderTitle $w={'245'}>АЛЬБОМ</S.PlaylistHeaderTitle>
-			<S.PlaylistHeaderTitle $w={'60'} $textEnd>
-				<S.PlaylistHeaderSvg alt="time">
+		<SC.Flex $row $jstSB $mB='24px'>
+			<SC.Block $w='447px' $fSz='14px' $lH='25px' $lSpace='2px' $color='#696969' $tTransf='uppercase'>Трек</SC.Block>
+			<SC.Block $w='321px' $fSz='14px' $lH='25px' $lSpace='2px' $color='#696969' $tTransf='uppercase'>Исполнитель</SC.Block>
+			<SC.Block $w='245px' $fSz='14px' $lH='25px' $lSpace='2px' $color='#696969' $tTransf='uppercase'>Альбом</SC.Block>
+			<SC.Block $w='60px' $fSz='14px' $lH='25px' $lSpace='2px' $color='#696969' $tTransf='uppercase' $tAlign='end'>
+			<SC.Svg $h='12px' $w='12px' $fill='transparent' $stroke='#696969' alt="time">
 					<use xlinkHref="img/icon/sprite.svg#icon-watch" />
-				</S.PlaylistHeaderSvg>
-			</S.PlaylistHeaderTitle>
-		</S.PlaylistHeaderWrapper>
+				</SC.Svg>
+			</SC.Block>
+		</SC.Flex>
 	)
 }
 
