@@ -1,11 +1,14 @@
-const SearchSongs = ({ props }) => {
+import SearchInput from '../UI/inputes/search/SearchInput'
+import * as SC from '../../styles/common'
+
+const SearchSongs = () => {
 	return (
-		<div className="centerblock__search search">
-			<svg className="search__svg">
+		<SC.Flex $w="100%" $mT="20px" $mB="51px" $brB="1px solid #4e4e4e" $row $alignC>
+			<SC.Svg $h="17px" $w="17px" $mR="5px" $stroke="#ffffff" $fill="transparent">
 				<use xlinkHref="img/icon/sprite.svg#icon-search" />
-			</svg>
-			<input className="search__text" type="search" placeholder="Поиск" name="search" />
-		</div>
+			</SC.Svg>
+			<SearchInput />
+		</SC.Flex>
 	)
 }
 

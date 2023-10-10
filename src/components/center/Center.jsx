@@ -1,6 +1,8 @@
 import SearchSongs from './SearchSongs'
 import SongsList from './SongsList'
 import SortSongs from './SortSongs'
+import CenterSubtitle from './CenterSubtitle'
+import * as SC from '../../styles/common'
 
 const Center = () => {
 	const optionsArr = [
@@ -16,28 +18,25 @@ const Center = () => {
 	const sortButtons = [
 		{
 			title: 'исполнителю',
-			style: 'button-author',
 			keyValue: 'author',
 		},
 		{
 			title: 'году выпуска',
-			style: 'button-year',
 			keyValue: 'year',
 		},
 		{
 			title: 'жанру',
-			style: 'button-genre',
 			keyValue: 'genre',
 		},
 	]
 
 	return (
-		<div className="main__centerblock centerblock">
+		<SC.Block $w="auto" $fGrow="3" $p="20px 40px 20px 111px">
 			<SearchSongs />
-			<h2 className="centerblock__h2">Треки</h2>
-			<SortSongs optionsArr={optionsArr} sortButtons={sortButtons}/>
+			<CenterSubtitle>Треки</CenterSubtitle>
+			<SortSongs optionsArr={optionsArr} sortButtons={sortButtons} />
 			<SongsList />
-		</div>
+		</SC.Block>
 	)
 }
 

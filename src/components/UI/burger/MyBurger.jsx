@@ -1,12 +1,12 @@
-import cl from './MyBurger.module.css'
+import * as SC from '../../../styles/common'
 
-const MyBurger = ({onClick}) => {
+const MyBurger = ({ onClick }) => {
 	return (
-		<div className={cl.burger} onClick={onClick}>
-			<span className={cl.burger__line} />
-			<span className={cl.burger__line} />
-			<span className={cl.burger__line} />
-		</div>
+		<SC.Flex $h="36px" $w="20px" $p="13px 0" $column $jstSB $point onClick={onClick}>
+			<SC.Span $disp="inline-block" $h="1px" $w="100%" $backCol="#d3d3d3" />
+			<SC.Span $disp="inline-block" $h="1px" $w="100%" $backCol="#d3d3d3" />
+			<SC.Span $disp="inline-block" $h="1px" $w="100%" $backCol="#d3d3d3" />
+		</SC.Flex>
 	)
 }
 

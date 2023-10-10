@@ -1,39 +1,33 @@
+import * as SC from '../../styles/common'
+
 const SongItem = ({ title, subTitle, executor, album, time }) => {
 	return (
-		<div>
-			<div className="playlist__item">
-				<div className="playlist__track track">
-					<div className="track__title">
-						<div className="track__title-image">
-							<svg className="track__title-svg" alt="music">
-								<use xlinkHref="img/icon/sprite.svg#icon-note" />
-							</svg>
-						</div>
-						<div className="track__title-text">
-							<a className="track__title-link" href="http://">
-								{title} <span className="track__title-span">{subTitle}</span>
-							</a>
-						</div>
-					</div>
-					<div className="track__author">
-						<a className="track__author-link" href="http://">
-							{executor}
-						</a>
-					</div>
-					<div className="track__album">
-						<a className="track__album-link" href="http://">
-							{album}
-						</a>
-					</div>
-					<div className="track__time">
-						<svg className="track__time-svg" alt="time">
-							<use xlinkHref="img/icon/sprite.svg#icon-like" />
-						</svg>
-						<span className="track__time-text">{time}</span>
-					</div>
+		<SC.Block $w="100%" $mB="12px">
+			<SC.Flex $row $jstSB $alignC>
+				<SC.Flex $w="447px" $row $alignC>
+					<SC.Flex $h="51px" $w="51px" $p="16px" $mR="17px" $back="#313131" $jstC $alignC>
+						<SC.Svg $h="17px" $w="18px" $fill="transparent" $stroke="#4e4e4e" alt="music">
+							<use xlinkHref="img/icon/sprite.svg#icon-note" />
+						</SC.Svg>
+					</SC.Flex>
+					<SC.Block $color='#ffffff' $point='pointer'>
+						{title} <SC.Span $color='#4e4e4e'>{subTitle}</SC.Span>
+					</SC.Block>
+				</SC.Flex>
+				<SC.Flex $w='321px' $jstFS>
+					<SC.Link $color='#ffffff' href="#">{executor}</SC.Link>
+				</SC.Flex>
+				<SC.Block $w='245px'>
+					<SC.Link $color='#696969' href="#">{album}</SC.Link>
+				</SC.Block>
+				<div>
+					<SC.Svg $h='12px' $w='14px' $mR='17px' $fill='transparent' $stroke='#696969' alt="time">
+						<use xlinkHref="img/icon/sprite.svg#icon-like" />
+					</SC.Svg>
+					<SC.Span $color='#696969' $tAlign='right'>{time}</SC.Span>
 				</div>
-			</div>
-		</div>
+			</SC.Flex>
+		</SC.Block>
 	)
 }
 

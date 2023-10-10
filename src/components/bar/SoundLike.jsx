@@ -1,17 +1,37 @@
-const SoundLike = ({ props }) => {
+import * as SC from '../../styles/common'
+
+const SoundLike = () => {
 	return (
-		<div className="track-play__like-dis">
-			<div className="track-play__like _btn-icon">
-				<svg className="track-play__like-svg" alt="like">
+		<SC.Flex $mL="26%" $alignC>
+			<SC.Wrapper $p="5px">
+				<SC.Svg
+					$h="12px"
+					$w="14px"
+					$fill="transparent"
+					$fillAct="#696969"
+					$stroke="#696969"
+					$strokeAct="#ffffff"
+					className="_btn-icon"
+					alt="like"
+				>
 					<use xlinkHref="img/icon/sprite.svg#icon-like" />
-				</svg>
-			</div>
-			<div className="track-play__dislike _btn-icon">
-				<svg className="track-play__dislike-svg" alt="dislike">
+				</SC.Svg>
+			</SC.Wrapper>
+			<SC.Wrapper $p="5px" $mL="28.5px">
+				<SC.Svg
+					$h="12px"
+					$w="14px"
+					$fill="transparent"
+					$fillAct="#696969"
+					$stroke="#696969"
+					$strokeAct="#ffffff"
+					className="_btn-icon"
+					alt="dislike"
+				>
 					<use xlinkHref="img/icon/sprite.svg#icon-dislike" />
-				</svg>
-			</div>
-		</div>
+				</SC.Svg>
+			</SC.Wrapper>
+		</SC.Flex>
 	)
 }
 

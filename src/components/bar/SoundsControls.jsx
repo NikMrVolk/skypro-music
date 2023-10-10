@@ -1,33 +1,30 @@
-const SoundsControls = ({props}) => {
-   return (
-      <div className="player__controls">
-      <div className="player__btn-prev">
-         <svg className="player__btn-prev-svg" alt="prev">
-            <use xlinkHref="img/icon/sprite.svg#icon-prev" />
-         </svg>
-      </div>
-      <div className="player__btn-play _btn">
-         <svg className="player__btn-play-svg" alt="play">
-            <use xlinkHref="img/icon/sprite.svg#icon-play" />
-         </svg>
-      </div>
-      <div className="player__btn-next">
-         <svg className="player__btn-next-svg" alt="next">
-            <use xlinkHref="img/icon/sprite.svg#icon-next" />
-         </svg>
-      </div>
-      <div className="player__btn-repeat _btn-icon">
-         <svg className="player__btn-repeat-svg" alt="repeat">
-            <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
-         </svg>
-      </div>
-      <div className="player__btn-shuffle _btn-icon">
-         <svg className="player__btn-shuffle-svg" alt="shuffle">
-            <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
-         </svg>
-      </div>
-   </div>
-   )
+import * as SC from '../../styles/common'
+import barSoundsControllers from '../../data/barSoundsControllers'
+
+const SoundsControls = () => {
+	return (
+		<SC.Flex $p="0 27px 0 31px">
+			{barSoundsControllers.map((controller) => (
+				<SC.Flex
+					key={controller.src}
+					$m={controller.mrWr}
+					className={controller.class}
+					$p="5px"
+					$alignC
+				>
+					<SC.Svg
+						$h={controller.height}
+						$w={controller.width}
+						$fill={controller.fill}
+						$stroke={controller.stroke}
+						alt={controller.alt}
+					>
+						<use xlinkHref={controller.src} />
+					</SC.Svg>
+				</SC.Flex>
+			))}
+		</SC.Flex>
+	)
 }
 
-export default SoundsControls;
+export default SoundsControls

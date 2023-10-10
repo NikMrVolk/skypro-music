@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import HomePage from './pages/HomePage'
+import HomePage from '../src/pages/HomePage'
 import './styles/App.css'
 import { LoadingContext } from './context/LoadingContext'
 

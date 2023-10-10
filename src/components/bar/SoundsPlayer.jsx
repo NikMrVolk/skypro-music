@@ -4,17 +4,19 @@ import SoundTrack from './SoundTrack'
 import SoundsControls from './SoundsControls'
 import { LoadingContext } from '../../context/LoadingContext'
 import BarSkilet from '../skilet/BarSkilet'
+import * as SC from '../../styles/common'
 
 const SoundsPlayer = () => {
 	const { isLoading } = useContext(LoadingContext)
+
 	return (
-		<div className="bar__player player">
+		<SC.Flex $row $jstFS $alignC>
 			<SoundsControls />
-			<div className="player__track-play track-play">
+			<SC.Flex $row>
 				{isLoading ? <BarSkilet /> : <SoundTrack />}
 				<SoundLike />
-			</div>
-		</div>
+			</SC.Flex>
+		</SC.Flex>
 	)
 }
 

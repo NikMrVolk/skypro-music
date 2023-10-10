@@ -1,13 +1,7 @@
 import MyModal from '../UI/modal/MyModal'
+import * as SC from '../../styles/common'
 
-const SortItem = ({
-	title,
-	style,
-	options,
-	isVisible,
-	setIsVisible,
-	keyValue,
-}) => {
+const SortItem = ({ title, options, isVisible, setIsVisible, keyValue }) => {
 	const handleModalActive = () => {
 		const newObject = { ...isVisible }
 		for (const key in newObject) {
@@ -21,29 +15,46 @@ const SortItem = ({
 	}
 
 	return (
-		<div className="filter__button-wrapper">
-			<div
-				className={isVisible[keyValue] ? ['filter__button', '_btn-text', '_btn-text_active', style].join(' ') : ['filter__button', '_btn-text', style].join(' ')}
+		<SC.Wrapper $position="relative">
+			<SC.Block
+				$p="6px 20px"
+				$color={isVisible[keyValue] ? '#ad61ff' : '#ffffff'}
+				$br={isVisible[keyValue] ? '1px solid #ad61ff' : '1px solid #ffffff'}
+				$brRad="60px"
+				$mRnotL="10px"
+				$point="pointer"
+				$colorHov={isVisible[keyValue] ? '#ad61ff' : '#d9b6ff'}
+				$brColorHov={isVisible[keyValue] ? '#ad61ff' : '#d9b6ff'}
+				$colorAct="#ad61ff"
+				$brColorAct="#ad61ff"
+				$active={isVisible[keyValue]}
 				onClick={handleModalActive}
 			>
 				{title}
-			</div>
+			</SC.Block>
 			<MyModal visible={isVisible[keyValue]}>
-				<div
-					className={
-						options.length > 5
-							? ['filter__item-wrapper', 'filter__item-wrapper_big'].join(' ')
-							: ['filter__item-wrapper', 'filter__item-wrapper_small'].join(' ')
-					}
+				<SC.Wrapper
+					$minW="153px"
+					$maxW="180px"
+					$maxH="250px"
+					$overflow={options.length > 5 ? 'scroll' : 'hidden'}
 				>
 					{options.map((option, index) => (
-						<div className="filter__item" key={index}>
-							<span className="filter__item-content">{option.name}</span>
-						</div>
+						<SC.Block $mBnotL="28px" key={index}>
+							<SC.Block
+								$ftSz="20px"
+								$lH="24px"
+								$point="pointer"
+								$colorHov="#b672ff"
+								$tDecHov="underline"
+							>
+								{option.name}
+							</SC.Block>
+						</SC.Block>
 					))}
-				</div>
+				</SC.Wrapper>
 			</MyModal>
-		</div>
+		</SC.Wrapper>
 	)
 }
 

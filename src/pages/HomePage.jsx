@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import Navigation from '../components/nav/Navigation'
 import SideBar from '../components/side/SideBar'
 import SoundsBar from '../components/bar/SoundsBar'
 import Center from '../components/center/Center'
 import { LoadingContext } from '../context/LoadingContext'
+import * as SC from '../styles/common'
 
 const HomePage = () => {
 	const { isLoading, setIsLoading } = useContext(LoadingContext)
@@ -19,17 +20,17 @@ const HomePage = () => {
 	}, [])
 
 	return (
-		<div className="wrapper">
-			<div className="container">
-				<main className="main">
+		<SC.Wrapper $w="100%" $minH="100%" $overflow="hidden" $backCol="#383838">
+			<SC.Wrapper $maxW="1920px" $h='100vh' $height="100vh" $m="0 auto" $backCol="#181818">
+				<SC.Main>
 					<Navigation />
 					<Center />
 					<SideBar />
-				</main>
+				</SC.Main>
 				<SoundsBar />
 				<footer className="footer" />
-			</div>
-		</div>
+			</SC.Wrapper>
+		</SC.Wrapper>
 	)
 }
 

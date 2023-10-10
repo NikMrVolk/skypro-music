@@ -1,10 +1,12 @@
+import * as SC from '../../styles/common'
+
 const SideItem = ({ src, alt }) => {
 	return (
-		<div className="sidebar__item">
-			<a className="sidebar__link" href="#">
-				<img className="sidebar__img" src={src} alt={alt} />
-			</a>
-		</div>
+		<SC.Wrapper $h="150px" $w="250px" $mBNotLC="30px">
+			<SC.Link $h="100%" $w="100%" $disp='block' href="#">
+				<SC.Img $h="auto" $w="100%" src={src} alt={alt} />
+			</SC.Link>
+		</SC.Wrapper>
 	)
 }
 

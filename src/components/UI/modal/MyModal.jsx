@@ -1,17 +1,21 @@
-import cl from './MyModal.module.css'
+import * as S from '../../../styles/modal'
 
 const MyModal = ({ visible, children }) => {
-	const rootClasses = [cl.myModal]
-	if (visible) {
-		rootClasses.push(cl.active)
-	}
-
 	return (
-		<div className={rootClasses.join(' ')}>
-			<div className={cl.myModalContent} onClick={(e) => e.stopPropagation()}>
+		<S.Modal
+			$disp={visible ? 'block' : 'none'}
+			$pos={visible ? 'absolute' : ''}
+			$top={visible ? '49px' : ''}
+		>
+			<S.ModalContent
+				$p="24px"
+				$back="#313131"
+				$brRad="16px"
+				onClick={(e) => e.stopPropagation()}
+			>
 				{children}
-			</div>
-		</div>
+			</S.ModalContent>
+		</S.Modal>
 	)
 }
 

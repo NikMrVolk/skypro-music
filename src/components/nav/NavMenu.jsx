@@ -1,13 +1,11 @@
-import NavMenuItem from './NavMenuItem'
+import NavMenuList from './NavMenuList'
+import * as SC from '../../styles/common'
 
 const NavMenu = ({ data, isNavbarActive }) => {
 	return (
-		<div className="nav__menu menu">
-			<ul className="menu__list">
-				{isNavbarActive &&
-					data.map(({ title }) => <NavMenuItem key={title}>{title}</NavMenuItem>)}
-			</ul>
-		</div>
+		<SC.Block $disp="block" $vis="visible">
+			<NavMenuList data={data} isNavbarActive={isNavbarActive} />
+		</SC.Block>
 	)
 }
 

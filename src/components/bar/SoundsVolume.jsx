@@ -1,17 +1,20 @@
-const SoundsVolume = ({ props }) => {
+import * as SC from '../../styles/common'
+import VolumeInput from '../UI/inputes/volume/VolumeInput'
+
+const SoundsVolume = () => {
 	return (
-		<div className="bar__volume-block volume">
-			<div className="volume__content">
-				<div className="volume__image">
-					<svg className="volume__svg" alt="volume">
+		<SC.Flex $p="0 92px 0 0" $alignC>
+			<SC.Flex $p="0 27px 0 31px" $row>
+				<SC.Wrapper $h="18px" $w="13px" $m="0 17px 0 0">
+					<SC.Svg $h="18px" $w="13px" $fill="transparent" alt="volume">
 						<use xlinkHref="img/icon/sprite.svg#icon-volume" />
-					</svg>
-				</div>
-				<div className="volume__progress _btn">
-					<input className="volume__progress-line _btn" type="range" name="range" />
-				</div>
-			</div>
-		</div>
+					</SC.Svg>
+				</SC.Wrapper>
+				<SC.Wrapper $w="109px" className="_btn">
+					<VolumeInput $w="109px" className="_btn" />
+				</SC.Wrapper>
+			</SC.Flex>
+		</SC.Flex>
 	)
 }
 
