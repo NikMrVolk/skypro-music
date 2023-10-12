@@ -36,7 +36,7 @@ const Center = () => {
 	localStorage.setItem('user', `${location.pathname}`)
 
 	return (
-		<SC.Block $w="auto" $fGrow="3" $p="20px 40px 20px 111px">
+		<SC.Block $w="auto" $fGrow="3" $p="20px 40px 20px 50px">
 			<SearchSongs />
 			<CenterSubtitle>Треки</CenterSubtitle>
 			<SortSongs optionsArr={optionsArr} sortButtons={sortButtons} />

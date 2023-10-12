@@ -1,6 +1,6 @@
 import * as SC from '../../styles/common'
 
-const SongItem = ({ title, subTitle, executor, album, time }) => {
+const SongItem = ({ name, subTitle, author, album, duration_in_seconds }) => {
 	return (
 		<SC.Block $w="100%" $mB="12px">
 			<SC.Flex $row $jstSB $alignC>
@@ -11,12 +11,12 @@ const SongItem = ({ title, subTitle, executor, album, time }) => {
 						</SC.Svg>
 					</SC.Flex>
 					<SC.Block $color="#ffffff" $point="pointer">
-						{title} <SC.Span $color="#4e4e4e">{subTitle}</SC.Span>
+						{name} <SC.Span $color="#4e4e4e">{subTitle}</SC.Span>
 					</SC.Block>
 				</SC.Flex>
 				<SC.Flex $w="321px" $jstFS>
 					<SC.LinkA $color="#ffffff" href="#">
-						{executor}
+						{author}
 					</SC.LinkA>
 				</SC.Flex>
 				<SC.Block $w="245px">
@@ -36,7 +36,7 @@ const SongItem = ({ title, subTitle, executor, album, time }) => {
 						<use xlinkHref="img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
 					<SC.Span $color="#696969" $tAlign="right">
-						{time}
+						{duration_in_seconds}
 					</SC.Span>
 				</div>
 			</SC.Flex>
