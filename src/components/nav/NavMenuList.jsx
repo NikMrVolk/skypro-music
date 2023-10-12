@@ -6,8 +6,8 @@ const NavMenuList = ({ data, isNavbarActive }) => {
 		<>
 			{isNavbarActive && (
 				<SC.Ul $p='18px 0 10px 0'>
-					{data.map(({ title }) => (
-						<NavMenuItem key={title}>{title}</NavMenuItem>
+					{data.map(({ title, path }) => (
+						<NavMenuItem key={title} path={path}>{title}</NavMenuItem>
 					))}
 				</SC.Ul>
 			)}

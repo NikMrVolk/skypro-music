@@ -1,15 +1,18 @@
 import { useState } from 'react'
-import HomePage from '../src/pages/HomePage'
-import './styles/App.css'
+import { BrowserRouter } from 'react-router-dom'
 import { LoadingContext } from './context/LoadingContext'
+import AppRoutes from './components/routes/AppRoutes'
+import './styles/App.css'
 
 function App() {
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(true)
 
 	return (
 		<LoadingContext.Provider value={{ isLoading, setIsLoading }}>
 			<div className="App">
-				<HomePage />
+				<BrowserRouter>
+					<AppRoutes />
+				</BrowserRouter>
 			</div>
 		</LoadingContext.Provider>
 	)

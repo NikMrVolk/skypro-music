@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Flex = styled.div`
@@ -167,7 +168,20 @@ export const P = styled.p`
 	margin-right: ${(props) => props.$mR};
 `
 
-export const Link = styled.a`
+export const LinkA = styled.a`
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
+	display: ${(props) => props.$disp};
+	white-space: ${(props) => props.$wSpace};
+	color: ${(props) => props.$color};
+	font-style: ${(props) => props.$ftSt};
+	font-style: ${(props) => props.$ftSt};
+	font-weight: ${(props) => props.$ftW};
+	font-size: ${(props) => props.$ftSz};
+	line-height: ${(props) => props.$lH};
+`
+
+export const LinkComponent = styled(Link)`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
 	display: ${(props) => props.$disp};

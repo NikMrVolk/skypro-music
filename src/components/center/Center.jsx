@@ -3,8 +3,11 @@ import SongsList from './SongsList'
 import SortSongs from './SortSongs'
 import CenterSubtitle from './CenterSubtitle'
 import * as SC from '../../styles/common'
+import { useLocation } from 'react-router'
+
 
 const Center = () => {
+	const location = useLocation()
 	const optionsArr = [
 		{ value: '1', name: 'Linkin Park' },
 		{ value: '2', name: 'Linkin Park' },
@@ -29,6 +32,8 @@ const Center = () => {
 			keyValue: 'genre',
 		},
 	]
+
+	localStorage.setItem('user', `${location.pathname}`)
 
 	return (
 		<SC.Block $w="auto" $fGrow="3" $p="20px 40px 20px 111px">

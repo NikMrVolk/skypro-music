@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react'
+
 import Navigation from '../components/nav/Navigation'
 import SideBar from '../components/side/SideBar'
 import SoundsBar from '../components/bar/SoundsBar'
@@ -6,14 +7,14 @@ import Center from '../components/center/Center'
 import { LoadingContext } from '../context/LoadingContext'
 import * as SC from '../styles/common'
 
-const HomePage = () => {
+const MainPage = () => {
 	const { isLoading, setIsLoading } = useContext(LoadingContext)
 
 	useEffect(() => {
 		setIsLoading(true)
 		const timeoutId = setTimeout(() => {
 			setIsLoading(false)
-		}, 5000)
+		}, 1000)
 		return () => {
 			clearInterval(timeoutId)
 		}
@@ -21,7 +22,7 @@ const HomePage = () => {
 
 	return (
 		<SC.Wrapper $w="100%" $minH="100%" $overflow="hidden" $backCol="#383838">
-			<SC.Wrapper $maxW="1920px" $h='100vh' $height="100vh" $m="0 auto" $backCol="#181818">
+			<SC.Wrapper $maxW="1920px" $h="100vh" $height="100vh" $m="0 auto" $backCol="#181818">
 				<SC.Main>
 					<Navigation />
 					<Center />
@@ -34,4 +35,4 @@ const HomePage = () => {
 	)
 }
 
-export default HomePage
+export default MainPage

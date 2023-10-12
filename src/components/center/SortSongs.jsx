@@ -4,8 +4,6 @@ import * as SC from '../../styles/common'
 
 const SortSongs = ({ optionsArr, sortButtons }) => {
 	const [isVisible, setIsVisible] = useState({ author: false, year: false, genre: false })
-	// Массив optionsArr сделан для проверки скрола и будет заменён в дальнейшем
-	// Скрол работает при количестве элементов 6ти и более
 
 	return (
 		<SC.Flex $mB='51px' $row $alignC>
