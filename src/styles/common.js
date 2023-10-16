@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const Flex = styled.div`
 	height: ${(props) => props.$h};
+	max-height: ${props => props.$maxH};
 	width: ${(props) => props.$w};
 	margin: ${(props) => props.$m};
 	margin-top: ${(props) => props.$mT};
@@ -41,7 +42,7 @@ export const Flex = styled.div`
 	-webkit-box-align: ${(props) => props.$alignC && 'center'};
 	-ms-flex-align: ${(props) => props.$alignC && 'center'};
 	gap: ${(props) => props.$gap};
-	overflow-y: ${(props) => props.$overflowY};
+	overflow: ${(props) => props.$overflow};
 	//Work with grid
 	grid-area: ${(props) => props.$gridArea};
 	-ms-grid-row: ${(props) => props.$gridRow};

@@ -11,7 +11,7 @@ const SongsList = () => {
 	return (
 		<SC.Flex $column>
 			<SongsHeader />
-			<SC.Flex $column $overflowY="auto">
+			<SC.Flex $column $overflow="scroll" $maxH="610px">
 				{isLoading ? (
 					<CenterSkiletList />
 				) : (
