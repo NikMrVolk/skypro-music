@@ -4,8 +4,8 @@ import CenterSkilet from './CenterSkilet'
 const CenterSkiletList = () => {
 	return (
 		<>
-			{songsToSkillet.map((el) => (
-				<CenterSkilet key={el.title} />
+			{songsToSkillet.map((el, index) => (
+				<CenterSkilet key={index} />
 			))}
 		</>
 	)

@@ -6,7 +6,7 @@ import CenterSkiletList from '../skilet/CenterSkiletList'
 import * as SC from '../../styles/common'
 
 const SongsList = () => {
-	const { data, isLoading } = useContext(SoundsContext)
+	const { data, isLoading, isError } = useContext(SoundsContext)
 
 	return (
 		<SC.Flex $column>
@@ -15,8 +15,9 @@ const SongsList = () => {
 				{isLoading ? (
 					<CenterSkiletList />
 				) : (
-					data.map((sound) => <SongItem key={sound.id} {...sound} />)
+					data?.map((sound) => <SongItem key={sound.id} {...sound} />)
 				)}
+				{isError && 'Не удалось загрузить плейлист, попробуйте позже'}
 			</SC.Flex>
 		</SC.Flex>
 	)

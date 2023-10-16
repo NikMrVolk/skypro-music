@@ -2,7 +2,7 @@ import * as SC from '../../styles/common'
 
 const SoundLike = () => {
 	return (
-		<SC.Flex $mL="26%" $alignC>
+		<SC.Flex $alignC>
 			<SC.Wrapper $p="5px">
 				<SC.Svg
 					$h="12px"

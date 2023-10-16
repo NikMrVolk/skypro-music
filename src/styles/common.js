@@ -40,6 +40,7 @@ export const Flex = styled.div`
 	align-items: ${(props) => props.$alignC && 'center'};
 	-webkit-box-align: ${(props) => props.$alignC && 'center'};
 	-ms-flex-align: ${(props) => props.$alignC && 'center'};
+	gap: ${(props) => props.$gap};
 	overflow-y: ${(props) => props.$overflowY};
 	//Work with grid
 	grid-area: ${(props) => props.$gridArea};

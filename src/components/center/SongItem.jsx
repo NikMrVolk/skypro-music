@@ -1,6 +1,15 @@
-import * as SC from '../../styles/common'
+import { useContext } from 'react'
 
-const SongItem = ({ name, subTitle, author, album, duration_in_seconds }) => {
+import * as SC from '../../styles/common'
+import { SoundsContext } from '../../context/SoundsContext'
+
+const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) => {
+	const { setSongBeingPlayedId } = useContext(SoundsContext)
+
+	const play = (id) => {
+		setSongBeingPlayedId(id)
+	}
+
 	return (
 		<SC.Block $w="100%" $mB="12px">
 			<SC.Flex $row $jstSB $alignC>
@@ -10,7 +19,13 @@ const SongItem = ({ name, subTitle, author, album, duration_in_seconds }) => {
 							<use xlinkHref="img/icon/sprite.svg#icon-note" />
 						</SC.Svg>
 					</SC.Flex>
-					<SC.Block $color="#ffffff" $point="pointer">
+					<SC.Block
+						$color="#ffffff"
+						$point="pointer"
+						onClick={() => {
+							play(id)
+						}}
+					>
 						{name} <SC.Span $color="#4e4e4e">{subTitle}</SC.Span>
 					</SC.Block>
 				</SC.Flex>
