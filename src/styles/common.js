@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Flex = styled.div`
 	height: ${(props) => props.$h};
+	max-height: ${props => props.$maxH};
 	width: ${(props) => props.$w};
 	margin: ${(props) => props.$m};
 	margin-top: ${(props) => props.$mT};
@@ -39,7 +41,8 @@ export const Flex = styled.div`
 	align-items: ${(props) => props.$alignC && 'center'};
 	-webkit-box-align: ${(props) => props.$alignC && 'center'};
 	-ms-flex-align: ${(props) => props.$alignC && 'center'};
-	overflow-y: ${(props) => props.$overflowY};
+	gap: ${(props) => props.$gap};
+	overflow: ${(props) => props.$overflow};
 	//Work with grid
 	grid-area: ${(props) => props.$gridArea};
 	-ms-grid-row: ${(props) => props.$gridRow};
@@ -167,7 +170,20 @@ export const P = styled.p`
 	margin-right: ${(props) => props.$mR};
 `
 
-export const Link = styled.a`
+export const LinkA = styled.a`
+	height: ${(props) => props.$h};
+	width: ${(props) => props.$w};
+	display: ${(props) => props.$disp};
+	white-space: ${(props) => props.$wSpace};
+	color: ${(props) => props.$color};
+	font-style: ${(props) => props.$ftSt};
+	font-style: ${(props) => props.$ftSt};
+	font-weight: ${(props) => props.$ftW};
+	font-size: ${(props) => props.$ftSz};
+	line-height: ${(props) => props.$lH};
+`
+
+export const LinkComponent = styled(Link)`
 	height: ${(props) => props.$h};
 	width: ${(props) => props.$w};
 	display: ${(props) => props.$disp};

@@ -1,17 +1,19 @@
-import { useState } from 'react'
-import HomePage from '../src/pages/HomePage'
+import { BrowserRouter } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import AppRoutes from './components/routes/AppRoutes'
 import './styles/App.css'
-import { LoadingContext } from './context/LoadingContext'
 
 function App() {
-	const [isLoading, setIsLoading] = useState(false)
+	const queryClient = new QueryClient()
 
 	return (
-		<LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+		<QueryClientProvider client={queryClient}>
 			<div className="App">
-				<HomePage />
+				<BrowserRouter>
+					<AppRoutes />
+				</BrowserRouter>
 			</div>
-		</LoadingContext.Provider>
+		</QueryClientProvider>
 	)
 }
 

@@ -1,6 +1,15 @@
-import * as SC from '../../styles/common'
+import { useContext } from 'react'
 
-const SongItem = ({ title, subTitle, executor, album, time }) => {
+import * as SC from '../../styles/common'
+import { SoundsContext } from '../../context/SoundsContext'
+
+const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) => {
+	const { setSongBeingPlayedId } = useContext(SoundsContext)
+
+	const play = (id) => {
+		setSongBeingPlayedId(id)
+	}
+
 	return (
 		<SC.Block $w="100%" $mB="12px">
 			<SC.Flex $row $jstSB $alignC>
@@ -10,21 +19,40 @@ const SongItem = ({ title, subTitle, executor, album, time }) => {
 							<use xlinkHref="img/icon/sprite.svg#icon-note" />
 						</SC.Svg>
 					</SC.Flex>
-					<SC.Block $color='#ffffff' $point='pointer'>
-						{title} <SC.Span $color='#4e4e4e'>{subTitle}</SC.Span>
+					<SC.Block
+						$color="#ffffff"
+						$point="pointer"
+						onClick={() => {
+							play(id)
+						}}
+					>
+						{name} <SC.Span $color="#4e4e4e">{subTitle}</SC.Span>
 					</SC.Block>
 				</SC.Flex>
-				<SC.Flex $w='321px' $jstFS>
-					<SC.Link $color='#ffffff' href="#">{executor}</SC.Link>
+				<SC.Flex $w="321px" $jstFS>
+					<SC.LinkA $color="#ffffff" href="#">
+						{author}
+					</SC.LinkA>
 				</SC.Flex>
-				<SC.Block $w='245px'>
-					<SC.Link $color='#696969' href="#">{album}</SC.Link>
+				<SC.Block $w="245px">
+					<SC.LinkA $color="#696969" href="#">
+						{album}
+					</SC.LinkA>
 				</SC.Block>
 				<div>
-					<SC.Svg $h='12px' $w='14px' $mR='17px' $fill='transparent' $stroke='#696969' alt="time">
+					<SC.Svg
+						$h="12px"
+						$w="14px"
+						$mR="17px"
+						$fill="transparent"
+						$stroke="#696969"
+						alt="time"
+					>
 						<use xlinkHref="img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
-					<SC.Span $color='#696969' $tAlign='right'>{time}</SC.Span>
+					<SC.Span $color="#696969" $tAlign="right">
+						{duration_in_seconds}
+					</SC.Span>
 				</div>
 			</SC.Flex>
 		</SC.Block>

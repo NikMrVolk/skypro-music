@@ -4,11 +4,16 @@ import * as SC from '../../styles/common'
 import Logo from '../logo/Logo'
 import MyBurger from '../UI/burger/MyBurger'
 import NavMenu from './NavMenu'
+import { FAVORITE_ROUTE, LOGIN_ROUTE, MAIN_ROUTE } from '../../utils/constants'
 
 const Navigation = () => {
 	const [isNavbarActive, setIsNavbarActive] = useState(false)
 	// В последующем данная переменная будет хранить маршруты и вынесена в отдельный файл
-	const data = [{ title: 'Главное' }, { title: 'Мой плейлист' }, { title: 'Войти' }]
+	const data = [
+		{ title: 'Главное', path: MAIN_ROUTE },
+		{ title: 'Мой плейлист', path: FAVORITE_ROUTE },
+		{ title: 'Выйти', path: LOGIN_ROUTE },
+	]
 
 	const handleNavbar = () => {
 		if (isNavbarActive) {

@@ -1,6 +1,6 @@
 import * as SC from '../../styles/common'
 
-const SoundTrack = () => {
+const SoundTrack = ({name, author}) => {
 	return (
 		<SC.Grid $w="auto" $gridTempCol="auto 1fr" $alignC>
 			<SC.Flex
@@ -19,11 +19,15 @@ const SoundTrack = () => {
 					<use xlinkHref="img/icon/sprite.svg#icon-note" />
 				</SC.Svg>
 			</SC.Flex>
-			<SC.GridItem $mW="49px" $gridArea="author" $gridRow="1" $gridColumn="2">
-				<SC.Link $color='#ffffff' $wSpace='nowrap' href="#">Ты та...</SC.Link>
+			<SC.GridItem $mW="49px" $gridArea="album" $gridRow="1" $gridColumn="2">
+				<SC.LinkA $color="#ffffff" $wSpace="nowrap" href="#">
+					{author}
+				</SC.LinkA>
 			</SC.GridItem>
-			<SC.GridItem $mW="49px" $gridArea="album" $gridRow="2" $gridColumn="2">
-				<SC.Link $fSz='13px' $color='#ffffff' href="#">Баста</SC.Link>
+			<SC.GridItem $mW="49px" $gridArea="author" $gridRow="2" $gridColumn="2">
+				<SC.LinkA $fSz="13px" $color="#ffffff" href="#">
+					{name}
+				</SC.LinkA>
 			</SC.GridItem>
 		</SC.Grid>
 	)
