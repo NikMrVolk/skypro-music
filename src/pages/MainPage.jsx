@@ -10,6 +10,7 @@ import * as SC from '../styles/common'
 const MainPage = () => {
 	const [songBeingPlayedId, setSongBeingPlayedId] = useState(null)
 	const [data, isLoading, isError] = useGetAllSounds()
+	const [isPlaying, setIsPlaying] = useState(false)
 
 	return (
 		<SoundsContext.Provider
@@ -19,6 +20,8 @@ const MainPage = () => {
 				isError,
 				songBeingPlayedId,
 				setSongBeingPlayedId,
+				isPlaying,
+				setIsPlaying
 			}}
 		>
 			<SC.Wrapper $w="100%" $minH="100%" $overflow="hidden" $backCol="#383838">

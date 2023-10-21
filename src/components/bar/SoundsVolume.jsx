@@ -1,7 +1,7 @@
 import * as SC from '../../styles/common'
 import VolumeInput from '../UI/inputes/volume/VolumeInput'
 
-const SoundsVolume = () => {
+const SoundsVolume = ({ volume, change }) => {
 	return (
 		<SC.Flex $p="0 92px 0 0" $alignC>
 			<SC.Flex $p="0 27px 0 31px" $row>
@@ -11,7 +11,15 @@ const SoundsVolume = () => {
 					</SC.Svg>
 				</SC.Wrapper>
 				<SC.Wrapper $w="109px" className="_btn">
-					<VolumeInput $w="109px" className="_btn" />
+					<VolumeInput
+						min={0}
+						max={1}
+						step={0.1}
+						$w="109px"
+						$color="#B672FF"
+						value={volume}
+						change={change}
+					/>
 				</SC.Wrapper>
 			</SC.Flex>
 		</SC.Flex>

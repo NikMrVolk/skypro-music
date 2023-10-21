@@ -1,7 +1,7 @@
-import * as SC from '../../../../styles/common'
+import * as S from '../../../../styles/progressInput'
 
 const VolumeInput = (props) => {
-	return <SC.Input {...props} type="range" name="range" />
+	return <S.ProgressInput {...props} onChange={(e) => props.change(e)} type="range" name="range" />
 }
 
 export default VolumeInput
