@@ -1,5 +1,5 @@
 import * as SC from '../../styles/common'
-import VolumeInput from '../UI/inputes/volume/VolumeInput'
+import ProgressInput from '../UI/inputes/progress/ProgressInput'
 
 const SoundsVolume = ({ volume, change }) => {
 	return (
@@ -10,16 +10,8 @@ const SoundsVolume = ({ volume, change }) => {
 						<use xlinkHref="img/icon/sprite.svg#icon-volume" />
 					</SC.Svg>
 				</SC.Wrapper>
-				<SC.Wrapper $w="109px" className="_btn">
-					<VolumeInput
-						min={0}
-						max={1}
-						step={0.1}
-						$w="109px"
-						$color="#B672FF"
-						value={volume}
-						change={change}
-					/>
+				<SC.Wrapper $w="109px">
+					<ProgressInput max={1} $color="#B672FF" value={volume} change={change} />
 				</SC.Wrapper>
 			</SC.Flex>
 		</SC.Flex>

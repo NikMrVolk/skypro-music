@@ -4,7 +4,7 @@ import SoundsVolume from './SoundsVolume'
 import * as SC from '../../styles/common'
 import { SoundsContext } from '../../context/SoundsContext'
 import { useGetOneSound } from '../../hooks/music/useGetOneSound'
-import ProgressInput from './ProgressInput'
+import ProgressInput from '../UI/inputes/progress/ProgressInput'
 import Timer from './Timer'
 
 const SoundsBar = () => {
@@ -18,6 +18,11 @@ const SoundsBar = () => {
 
 	if (currentTime && audioRef.current.ended && !isLoop) {
 		setIsPlaying(false)
+	}
+
+	const handleChangeProgress = (e) => {
+		audioRef.current.currentTime = e.target.value
+		setCurrentTime(e.target.value)
 	}
 
 	const handleChangeVolume = (e) => {
@@ -52,10 +57,11 @@ const SoundsBar = () => {
 			<Timer currentTime={currentTime} duration={duration} />
 			<SC.Flex $column $back="rgba(28, 28, 28)">
 				<ProgressInput
-					audioRef={audioRef}
-					currentTime={currentTime}
-					setCurrentTime={setCurrentTime}
-					duration={duration}
+					max={duration}
+					value={currentTime}
+					change={handleChangeProgress}
+					$color="#B672FF"
+					$customCursor
 				/>
 				<SC.Flex $h="73px" $row $jstSB>
 					<SoundsPlayer
@@ -65,7 +71,7 @@ const SoundsBar = () => {
 						setIsLoop={setIsLoop}
 						audioPlayer={audioRef.current}
 					/>
-					<SoundsVolume volume={volume} change={handleChangeVolume}/>
+					<SoundsVolume volume={volume} change={handleChangeVolume} />
 				</SC.Flex>
 			</SC.Flex>
 		</SC.Absolute>
