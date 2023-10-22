@@ -2,12 +2,14 @@ import { useContext } from 'react'
 
 import * as SC from '../../styles/common'
 import { SoundsContext } from '../../context/SoundsContext'
+import DurationTime from './DurationTime'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) => {
-	const { setSongBeingPlayedId } = useContext(SoundsContext)
+	const { setIsPlaying, setSongBeingPlayedId } = useContext(SoundsContext)
 
 	const play = (id) => {
 		setSongBeingPlayedId(id)
+		setIsPlaying(true)
 	}
 
 	return (
@@ -50,9 +52,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) =>
 					>
 						<use xlinkHref="img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
-					<SC.Span $color="#696969" $tAlign="right">
-						{duration_in_seconds}
-					</SC.Span>
+					<DurationTime duration={duration_in_seconds} />
 				</div>
 			</SC.Flex>
 		</SC.Block>
