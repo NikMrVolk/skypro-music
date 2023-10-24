@@ -50,7 +50,9 @@ const AuthForm = () => {
 	}
 
 	if (regOrLogMut.isError && !isLogin) {
-		toast(regOrLogMut.error.response.data.email[0])
+		const regDataError = regOrLogMut.error.response.data
+		const regMessageError = regDataError?.username ?? regDataError?.email ?? regDataError?.password
+		toast(regMessageError[0])
 		regOrLogMut.reset()
 	}
 
@@ -68,58 +70,12 @@ const AuthForm = () => {
 
 	return (
 		<S.Form onSubmit={(e) => e.preventDefault()}>
-			<Logo
-				hWr="21px"
-				wWr="140px"
-				pWr="0"
-				mB="34px"
-				hImg="auto"
-				wImg="140px"
-				src="/img/logo_modal.png"
-			/>
-			{!isLogin && (
-				<LoginInput
-					value={value.username}
-					change={handleChange}
-					$mB="30px"
-					type="text"
-					name="username"
-					placeholder="Имя пользователя"
-				/>
-			)}
-			<LoginInput
-				value={value.email}
-				change={handleChange}
-				type="text"
-				name="email"
-				placeholder="Почта"
-				$mB="30px"
-			/>
-			<LoginInput
-				value={value.password}
-				change={handleChange}
-				type="password"
-				name="password"
-				placeholder="Пароль"
-			/>
-			{!isLogin && (
-				<LoginInput
-					value={value.secondPassword}
-					change={handleChange}
-					type="password"
-					name="secondPassword"
-					placeholder="Повторите пароль"
-					$mT={!isLogin && '30px'}
-				/>
-			)}
-			<LoginButton
-				$black
-				$mT="60px"
-				$mB="20px"
-				onClick={regLog}
-				disabled={regOrLogMut.isLoading}
-				$dis={regOrLogMut.isLoading}
-			>
+			<Logo hWr="21px" wWr="140px" pWr="0" mB="34px" hImg="auto" wImg="140px" src="/img/logo_modal.png" />
+			{!isLogin && <LoginInput value={value.username} change={handleChange} $mB="30px" type="text" name="username" placeholder="Имя пользователя" />}
+			<LoginInput value={value.email} change={handleChange} type="text" name="email" placeholder="Почта" $mB="30px" />
+			<LoginInput value={value.password} change={handleChange} type="password" name="password" placeholder="Пароль" />
+			{!isLogin && <LoginInput value={value.secondPassword} change={handleChange} type="password" name="secondPassword" placeholder="Повторите пароль" $mT={!isLogin && '30px'} />}
+			<LoginButton $black $mT="60px" $mB="20px" onClick={regLog} disabled={regOrLogMut.isLoading} $dis={regOrLogMut.isLoading}>
 				{!isLogin ? 'Зарегистрироваться' : 'Войти'}
 			</LoginButton>
 			<LoginButton
