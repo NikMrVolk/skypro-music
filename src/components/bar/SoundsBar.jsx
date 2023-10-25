@@ -1,20 +1,21 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import SoundsPlayer from './SoundsPlayer'
 import SoundsVolume from './SoundsVolume'
-import * as SC from '../../styles/common'
 import { SoundsContext } from '../../context/SoundsContext'
-import { useGetOneSound } from '../../hooks/music/useGetOneSound'
 import ProgressInput from '../UI/inputes/progress/ProgressInput'
 import Timer from './Timer'
+import { useGetOneSoundQuery } from '../../services/sounds/SoundsService'
+import * as SC from '../../styles/common'
 
 const SoundsBar = () => {
 	const { songBeingPlayedId, setIsPlaying } = useContext(SoundsContext)
-	const [data, isLoading] = useGetOneSound(songBeingPlayedId)
 	const [duration, setDuration] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
 	const [isLoop, setIsLoop] = useState(false)
 	const [volume, setVolume] = useState(0.3)
 	const audioRef = useRef()
+
+	const { data, isLoading } = useGetOneSoundQuery(songBeingPlayedId)
 
 	if (currentTime && audioRef.current.ended && !isLoop) {
 		setIsPlaying(false)

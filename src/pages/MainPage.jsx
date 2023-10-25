@@ -3,16 +3,16 @@ import Navigation from '../components/nav/Navigation'
 import SideBar from '../components/side/SideBar'
 import SoundsBar from '../components/bar/SoundsBar'
 import Center from '../components/center/Center'
-import { useGetAllSounds } from '../hooks/music/useGetAllSounds'
 import { SoundsContext } from '../context/SoundsContext'
 import * as SC from '../styles/common'
 import { AuthContext } from '../context/AuthContext'
+import { useGetAllSoundsQuery } from '../services/sounds/SoundsService'
 
 const MainPage = () => {
 	const [songBeingPlayedId, setSongBeingPlayedId] = useState(null)
-	const [data, isLoading, isError] = useGetAllSounds()
 	const [isPlaying, setIsPlaying] = useState(false)
 	const { setUser } = useContext(AuthContext)
+	const {data, isLoading, error: isError} = useGetAllSoundsQuery()
 
 	useEffect(() => {
 		if (!!localStorage.getItem('user')) {
