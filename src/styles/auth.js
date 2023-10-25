@@ -24,6 +24,7 @@ export const LoginInput = styled.input`
 	border-right: none;
 	border-bottom: 1px solid #d0cece;
 	padding: 8px 1px;
+	margin-top: ${(props) => props.$mT};
 	margin-bottom: ${(props) => props.$mB};
 	&::-webkit-input-placeholder {
 		font-style: normal;
@@ -83,6 +84,8 @@ export const LoginButton = styled.button`
 	line-height: 24px;
 	letter-spacing: -0.05px;
 	color: ${(props) => (props.$black ? '#ffffff' : '#000000')};
+	background-color: ${(props) => props.$dis && '#d9d9d9'};
+	background-color: ${(props) => props.$black && props.$dis && '#271a58'};
 	&:hover {
 		background-color: ${(props) => (props.$black ? '#3f007d' : '#f4f5f6')};
 	}
