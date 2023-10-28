@@ -1,7 +1,10 @@
+import { useSelector } from 'react-redux'
 import * as SC from '../../styles/common'
 import PlayPause from './PlayPause'
 
-const SoundsControls = ({ audioPlayer, isLoop, setIsLoop, playNext, playPrevious }) => {
+const SoundsControls = ({ audioPlayer, isLoop, setIsLoop, playNext, playPrevious, shuffle }) => {
+	const { isShuffle } = useSelector((state) => state.songs)
+
 	const loop = () => {
 		if (isLoop) {
 			setIsLoop(false)
@@ -30,8 +33,8 @@ const SoundsControls = ({ audioPlayer, isLoop, setIsLoop, playNext, playPrevious
 				$m="0 24px 0 0"
 				$p="5px"
 				$alignC
-				className={isLoop ? '' : '_btn-icon'}
 				onClick={loop}
+				className={isLoop ? '' : '_btn-icon'}
 			>
 				<SC.Svg
 					$h="12px"
@@ -43,15 +46,14 @@ const SoundsControls = ({ audioPlayer, isLoop, setIsLoop, playNext, playPrevious
 					<use xlinkHref="img/icon/sprite.svg#icon-repeat" />
 				</SC.Svg>
 			</SC.Flex>
-			<SC.Flex
-				$p="5px"
-				$alignC
-				className="_btn-icon"
-				onClick={() => {
-					alert('Еще не реализовано')
-				}}
-			>
-				<SC.Svg $h="12px" $w="19px" fill="transparent" stroke="#696969" alt="shuffle">
+			<SC.Flex $p="5px" $alignC $point="pointer" onClick={shuffle} className={isShuffle ? '' : '_btn-icon'}>
+				<SC.Svg
+					$h="12px"
+					$w="19px"
+					fill={isShuffle ? 'transparent' : 'transparent'}
+					stroke={isShuffle ? '#ffffff' : '#696969'}
+					alt="shuffle"
+				>
 					<use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
 				</SC.Svg>
 			</SC.Flex>

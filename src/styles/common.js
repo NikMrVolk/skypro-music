@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const Flex = styled.div`
 	height: ${(props) => props.$h};
-	max-height: ${props => props.$maxH};
+	max-height: ${(props) => props.$maxH};
 	width: ${(props) => props.$w};
 	margin: ${(props) => props.$m};
 	margin-top: ${(props) => props.$mT};
@@ -29,15 +29,9 @@ export const Flex = styled.div`
 		(props.$jstC && 'center') ||
 		(props.$jstFE && 'flex-end')};
 	-webkit-box-pack: ${(props) =>
-		(props.$jstSB && 'justify') ||
-		(props.$jstFS && 'start') ||
-		(props.$jstC && 'center') ||
-		(props.$jstFE && 'end')};
+		(props.$jstSB && 'justify') || (props.$jstFS && 'start') || (props.$jstC && 'center') || (props.$jstFE && 'end')};
 	-ms-flex-pack: ${(props) =>
-		(props.$jstSB && 'justify') ||
-		(props.$jstFS && 'start') ||
-		(props.$jstC && 'center') ||
-		(props.$jstFE && 'end')};
+		(props.$jstSB && 'justify') || (props.$jstFS && 'start') || (props.$jstC && 'center') || (props.$jstFE && 'end')};
 	align-items: ${(props) => props.$alignC && 'center'};
 	-webkit-box-align: ${(props) => props.$alignC && 'center'};
 	-ms-flex-align: ${(props) => props.$alignC && 'center'};
@@ -209,6 +203,10 @@ export const Svg = styled.svg`
 	fill: ${(props) => props.$fill};
 	stroke: ${(props) => props.$stroke};
 	cursor: ${(props) => props.$point};
+	&:hover {
+		fill: ${(props) => props.$fillAct};
+		stroke: ${(props) => props.$strokeAct};
+	}
 	&:active {
 		fill: ${(props) => props.$fillAct};
 		stroke: ${(props) => props.$strokeAct};

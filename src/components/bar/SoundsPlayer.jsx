@@ -4,7 +4,7 @@ import SoundsControls from './SoundsControls'
 import BarSkilet from '../skilet/BarSkilet'
 import * as SC from '../../styles/common'
 
-const SoundsPlayer = ({ isLoading, data, audioPlayer, isLoop, setIsLoop, playNext, playPrevious }) => {
+const SoundsPlayer = ({ isLoading, data, audioPlayer, isLoop, setIsLoop, playNext, playPrevious, shuffle }) => {
 	return (
 		<SC.Flex $row $jstFS $alignC>
 			<SoundsControls
@@ -13,6 +13,7 @@ const SoundsPlayer = ({ isLoading, data, audioPlayer, isLoop, setIsLoop, playNex
 				setIsLoop={setIsLoop}
 				playNext={playNext}
 				playPrevious={playPrevious}
+				shuffle={shuffle}
 			/>
 			<SC.Flex $row $jstSB $gap="20px">
 				{isLoading ? <BarSkilet /> : <SoundTrack {...data} />}
