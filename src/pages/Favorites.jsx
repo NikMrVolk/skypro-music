@@ -1,5 +1,15 @@
+import CenterSubtitle from '../components/center/CenterSubtitle'
+import SortSongs from '../components/center/SortSongs'
+import SongsList from '../components/center/SongsList'
+
 const Favorites = () => {
-	return <div style={{ color: 'red', fontSize: '60px' }}>Favorites</div>
+	return (
+		<>
+			<CenterSubtitle>Мои треки</CenterSubtitle>
+			<SortSongs />
+			{/* <SongsList data={data} isLoading={isLoading} error={error} /> */}
+		</>
+	)
 }
 
 export default Favorites

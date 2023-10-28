@@ -4,6 +4,7 @@ import SoundsBar from '../bar/SoundsBar'
 import Navigation from '../nav/Navigation'
 import SideBar from '../side/SideBar'
 import { useSelector } from 'react-redux'
+import SearchSongs from '../center/SearchSongs'
 
 const MainLayout = () => {
 	const { song } = useSelector((state) => state.songs)
@@ -14,7 +15,10 @@ const MainLayout = () => {
 				<SC.Main>
 					<Navigation />
 					<SC.Block $w="auto" $fGrow="3" $p="20px 40px 20px 50px">
-						<Outlet />
+						<>
+							<SearchSongs />
+							<Outlet />
+						</>
 					</SC.Block>
 					<SideBar />
 				</SC.Main>

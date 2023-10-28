@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { AuthContext } from '../context/AuthContext'
 import { useGetAllSoundsQuery } from '../services/sounds/SoundsService'
 import { setPlaylist } from '../store/reducers/sounds'
-import SearchSongs from '../components/center/SearchSongs'
 import CenterSubtitle from '../components/center/CenterSubtitle'
 import SortSongs from '../components/center/SortSongs'
 import SongsList from '../components/center/SongsList'
@@ -23,7 +22,6 @@ const MainPage = () => {
 
 	return (
 		<>
-			<SearchSongs />
 			<CenterSubtitle>Треки</CenterSubtitle>
 			<SortSongs />
 			<SongsList data={data} isLoading={isLoading} error={error} />
