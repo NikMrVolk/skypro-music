@@ -30,10 +30,12 @@ const SoundsBar = () => {
 		dispatch(setPlaying(false))
 	}
 
+	const handlePlayPreviousSong = () => {
+		if (!!trackIndex) dispatch(setSong(playlist[trackIndex - 1].id))
+	}
+
 	const handlerPlayNextSong = () => {
-		if (!checkLastSong) {
-			dispatch(setSong(playlist[trackIndex + 1].id))
-		}
+		if (!checkLastSong) dispatch(setSong(playlist[trackIndex + 1].id))
 	}
 
 	const handleChangeProgress = (e) => {
@@ -87,6 +89,7 @@ const SoundsBar = () => {
 						setIsLoop={setIsLoop}
 						audioPlayer={audioRef.current}
 						playNext={handlerPlayNextSong}
+						playPrevious={handlePlayPreviousSong}
 					/>
 					<SoundsVolume volume={volume} change={handleChangeVolume} />
 				</SC.Flex>
