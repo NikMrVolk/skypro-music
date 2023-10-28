@@ -1,7 +1,8 @@
 import MyModal from '../UI/modal/MyModal'
 import * as SC from '../../styles/common'
+import { optionsArr } from '../../data/sortElements'
 
-const SortItem = ({ title, options, isVisible, setIsVisible, keyValue }) => {
+const SortItem = ({ title, isVisible, setIsVisible, keyValue }) => {
 	const handleModalActive = () => {
 		const newObject = { ...isVisible }
 		for (const key in newObject) {
@@ -37,17 +38,11 @@ const SortItem = ({ title, options, isVisible, setIsVisible, keyValue }) => {
 					$minW="153px"
 					$maxW="180px"
 					$maxH="250px"
-					$overflow={options.length > 5 ? 'scroll' : 'hidden'}
+					$overflow={optionsArr.length > 5 ? 'scroll' : 'hidden'}
 				>
-					{options.map((option, index) => (
+					{optionsArr.map((option, index) => (
 						<SC.Block $mBnotL="28px" key={index}>
-							<SC.Block
-								$ftSz="20px"
-								$lH="24px"
-								$point="pointer"
-								$colorHov="#b672ff"
-								$tDecHov="underline"
-							>
+							<SC.Block $ftSz="20px" $lH="24px" $point="pointer" $colorHov="#b672ff" $tDecHov="underline">
 								{option.name}
 							</SC.Block>
 						</SC.Block>
