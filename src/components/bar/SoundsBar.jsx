@@ -1,16 +1,14 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SoundsPlayer from './SoundsPlayer'
 import SoundsVolume from './SoundsVolume'
-import { SoundsContext } from '../../context/SoundsContext'
 import ProgressInput from '../UI/inputes/progress/ProgressInput'
 import Timer from './Timer'
 import { useGetOneSoundQuery } from '../../services/sounds/SoundsService'
 import * as SC from '../../styles/common'
 import { useDispatch, useSelector } from 'react-redux'
-import { setSong } from '../../store/reducers/sounds'
+import { setSong, setPlaying } from '../../store/reducers/sounds'
 
 const SoundsBar = () => {
-	const { setIsPlaying } = useContext(SoundsContext)
 	const [duration, setDuration] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
 	const [isLoop, setIsLoop] = useState(false)
@@ -19,7 +17,7 @@ const SoundsBar = () => {
 	const dispatch = useDispatch()
 
 	const { playlist, song } = useSelector((state) => state.songs)
-	const { data, isLoading, refetch } = useGetOneSoundQuery(song?.id)
+	const { data, isLoading } = useGetOneSoundQuery(song?.id)
 	const trackIndex = playlist.findIndex(({ id }) => id === song.id)
 	const checkLastSong = trackIndex === playlist.length - 1
 
@@ -29,7 +27,7 @@ const SoundsBar = () => {
 	}
 
 	if (audioRef.current?.ended && !isLoop && checkLastSong) {
-		setIsPlaying(false)
+		dispatch(setPlaying(false))
 	}
 
 	const handlerPlayNextSong = () => {

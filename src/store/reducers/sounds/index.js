@@ -15,9 +15,10 @@ const soundsSlice = createSlice({
 		},
 		setSong(state, action) {
 			state.song = state.playlist.filter((el) => el.id === action.payload)[0]
+			state.playing = true
 		},
-		setPlaying(state) {
-			state.playing = !state.playing
+		setPlaying(state, action) {
+			state.playing = action.payload
 		},
 	},
 })

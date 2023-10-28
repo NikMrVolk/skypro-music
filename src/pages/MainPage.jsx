@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPlaylist } from '../store/reducers/sounds'
 
 const MainPage = () => {
-	const [isPlaying, setIsPlaying] = useState(false)
 	const { setUser } = useContext(AuthContext)
 	const { data, isLoading, error: isError, isSuccess } = useGetAllSoundsQuery()
 	const { song } = useSelector((state) => state.songs)
@@ -31,8 +30,6 @@ const MainPage = () => {
 				data,
 				isLoading,
 				isError,
-				isPlaying,
-				setIsPlaying,
 			}}
 		>
 			<SC.Wrapper $w="100%" $minH="100%" $overflow="hidden" $backCol="#383838">

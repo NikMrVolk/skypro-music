@@ -1,20 +1,21 @@
-import { useContext} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPlaying } from '../../store/reducers/sounds'
 import * as SC from '../../styles/common'
-import { SoundsContext } from '../../context/SoundsContext'
 
 const PlayPause = ({ audioPlayer }) => {
-	const {isPlaying, setIsPlaying} = useContext(SoundsContext)
+	const { playing } = useSelector((state) => state.songs)
+	const dispatch = useDispatch()
 
 	return (
 		<>
-			{isPlaying ? (
+			{playing ? (
 				<SC.Flex
 					$m="0 26px 0 0"
 					$p="5px"
 					$alignC
 					className="_btn"
 					onClick={() => {
-						setIsPlaying(false)
+						dispatch(setPlaying(false))
 						audioPlayer.pause()
 					}}
 				>
@@ -29,7 +30,7 @@ const PlayPause = ({ audioPlayer }) => {
 					$alignC
 					className="_btn"
 					onClick={() => {
-						setIsPlaying(true)
+						dispatch(setPlaying(true))
 						audioPlayer.play()
 					}}
 				>

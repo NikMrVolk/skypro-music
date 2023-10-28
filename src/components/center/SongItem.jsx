@@ -1,17 +1,13 @@
-import { useContext } from 'react'
 import { useDispatch } from 'react-redux'
 
 import * as SC from '../../styles/common'
-import { SoundsContext } from '../../context/SoundsContext'
 import DurationTime from './DurationTime'
 import { setSong } from '../../store/reducers/sounds'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) => {
-	const { setIsPlaying } = useContext(SoundsContext)
 	const dispatch = useDispatch()
 
 	const play = (id) => {
-		setIsPlaying(true)
 		dispatch(setSong(id))
 	}
 
