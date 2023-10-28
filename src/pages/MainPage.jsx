@@ -7,12 +7,18 @@ import { SoundsContext } from '../context/SoundsContext'
 import * as SC from '../styles/common'
 import { AuthContext } from '../context/AuthContext'
 import { useGetAllSoundsQuery } from '../services/sounds/SoundsService'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPlaylist } from '../store/reducers/sounds'
 
 const MainPage = () => {
 	const [songBeingPlayedId, setSongBeingPlayedId] = useState(null)
 	const [isPlaying, setIsPlaying] = useState(false)
 	const { setUser } = useContext(AuthContext)
-	const {data, isLoading, error: isError} = useGetAllSoundsQuery()
+	const { data, isLoading, error: isError, isSuccess } = useGetAllSoundsQuery()
+	const { song } = useSelector((state) => state.songs)
+	const dispatch = useDispatch()
+
+	if (isSuccess) dispatch(setPlaylist(data))
 
 	useEffect(() => {
 		if (!!localStorage.getItem('user')) {
@@ -39,7 +45,7 @@ const MainPage = () => {
 						<Center />
 						<SideBar />
 					</SC.Main>
-					{songBeingPlayedId && <SoundsBar />}
+					{song?.id && <SoundsBar />}
 				</SC.Wrapper>
 			</SC.Wrapper>
 		</SoundsContext.Provider>

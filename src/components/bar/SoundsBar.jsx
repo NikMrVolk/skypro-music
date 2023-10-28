@@ -6,6 +6,8 @@ import ProgressInput from '../UI/inputes/progress/ProgressInput'
 import Timer from './Timer'
 import { useGetOneSoundQuery } from '../../services/sounds/SoundsService'
 import * as SC from '../../styles/common'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSong } from '../../store/reducers/sounds'
 
 const SoundsBar = () => {
 	const { songBeingPlayedId, setIsPlaying } = useContext(SoundsContext)
@@ -14,10 +16,20 @@ const SoundsBar = () => {
 	const [isLoop, setIsLoop] = useState(false)
 	const [volume, setVolume] = useState(0.3)
 	const audioRef = useRef()
+	const dispatch = useDispatch()
 
-	const { data, isLoading } = useGetOneSoundQuery(songBeingPlayedId)
+	const { playlist, song } = useSelector((state) => state.songs)
+	const { data, isLoading, refetch } = useGetOneSoundQuery(song?.id)
+	const trackIndex = playlist.findIndex(({ id }) => id === song.id)
+	const checkLastSong = trackIndex === playlist.length - 1
 
-	if (currentTime && audioRef.current.ended && !isLoop) {
+	if (currentTime && audioRef.current.ended && !isLoop && !checkLastSong) {
+		const index = playlist.findIndex(({ id }) => id === song.id)
+		dispatch(setSong(playlist[index + 1].id))
+		setCurrentTime(0)
+	}
+
+	if (audioRef.current?.ended && !isLoop && checkLastSong) {
 		setIsPlaying(false)
 	}
 
