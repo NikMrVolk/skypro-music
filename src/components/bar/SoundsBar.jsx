@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setSong } from '../../store/reducers/sounds'
 
 const SoundsBar = () => {
-	const { songBeingPlayedId, setIsPlaying } = useContext(SoundsContext)
+	const { setIsPlaying } = useContext(SoundsContext)
 	const [duration, setDuration] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
 	const [isLoop, setIsLoop] = useState(false)
@@ -24,13 +24,18 @@ const SoundsBar = () => {
 	const checkLastSong = trackIndex === playlist.length - 1
 
 	if (currentTime && audioRef.current.ended && !isLoop && !checkLastSong) {
-		const index = playlist.findIndex(({ id }) => id === song.id)
-		dispatch(setSong(playlist[index + 1].id))
+		dispatch(setSong(playlist[trackIndex + 1].id))
 		setCurrentTime(0)
 	}
 
 	if (audioRef.current?.ended && !isLoop && checkLastSong) {
 		setIsPlaying(false)
+	}
+
+	const handlerPlayNextSong = () => {
+		if (!checkLastSong) {
+			dispatch(setSong(playlist[trackIndex + 1].id))
+		}
 	}
 
 	const handleChangeProgress = (e) => {
@@ -83,6 +88,7 @@ const SoundsBar = () => {
 						isLoop={isLoop}
 						setIsLoop={setIsLoop}
 						audioPlayer={audioRef.current}
+						playNext={handlerPlayNextSong}
 					/>
 					<SoundsVolume volume={volume} change={handleChangeVolume} />
 				</SC.Flex>

@@ -7,11 +7,10 @@ import DurationTime from './DurationTime'
 import { setSong } from '../../store/reducers/sounds'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) => {
-	const { setIsPlaying, setSongBeingPlayedId } = useContext(SoundsContext)
+	const { setIsPlaying } = useContext(SoundsContext)
 	const dispatch = useDispatch()
 
 	const play = (id) => {
-		// setSongBeingPlayedId(id)
 		setIsPlaying(true)
 		dispatch(setSong(id))
 	}
@@ -46,14 +45,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) =>
 					</SC.LinkA>
 				</SC.Block>
 				<div>
-					<SC.Svg
-						$h="12px"
-						$w="14px"
-						$mR="17px"
-						$fill="transparent"
-						$stroke="#696969"
-						alt="time"
-					>
+					<SC.Svg $h="12px" $w="14px" $mR="17px" $fill="transparent" $stroke="#696969" alt="time">
 						<use xlinkHref="img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
 					<DurationTime duration={duration_in_seconds} />

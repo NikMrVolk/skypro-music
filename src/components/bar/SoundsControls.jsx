@@ -1,7 +1,8 @@
 import * as SC from '../../styles/common'
 import PlayPause from './PlayPause'
 
-const SoundsControls = ({ audioPlayer, isLoop, setIsLoop }) => {
+const SoundsControls = ({ audioPlayer, isLoop, setIsLoop, playNext }) => {
+
 	const loop = () => {
 		if (isLoop) {
 			setIsLoop(false)
@@ -33,9 +34,7 @@ const SoundsControls = ({ audioPlayer, isLoop, setIsLoop }) => {
 				$p="5px"
 				$alignC
 				className="_btn"
-				onClick={() => {
-					alert('Еще не реализовано')
-				}}
+				onClick={playNext}
 			>
 				<SC.Svg $h="14px" $w="15px" fill="inherit" stroke="#d9d9d9" alt="next">
 					<use xlinkHref="img/icon/sprite.svg#icon-next" />
