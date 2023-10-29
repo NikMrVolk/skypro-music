@@ -8,6 +8,7 @@ const SongsList = ({ data, isLoading, error }) => {
 		<SC.Flex $column>
 			<SongsHeader />
 			<SC.Flex $column $overflow="scroll" $maxH="610px">
+				{!data?.length && 'Ваш плейлист пуст'}
 				{isLoading ? <CenterSkiletList /> : data?.map((sound) => <SongItem key={sound.id} {...sound} />)}
 				{error && 'Не удалось загрузить плейлист, попробуйте позже'}
 			</SC.Flex>

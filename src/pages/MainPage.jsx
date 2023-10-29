@@ -6,6 +6,7 @@ import { setPlaylist } from '../store/reducers/sounds'
 import CenterSubtitle from '../components/center/CenterSubtitle'
 import SortSongs from '../components/center/SortSongs'
 import SongsList from '../components/center/SongsList'
+import SearchSongs from '../components/center/SearchSongs'
 
 const MainPage = () => {
 	const { setUserDataWithContext } = useContext(AuthContext)
@@ -22,6 +23,7 @@ const MainPage = () => {
 
 	return (
 		<>
+			<SearchSongs />
 			<CenterSubtitle>Треки</CenterSubtitle>
 			<SortSongs />
 			<SongsList data={data} isLoading={isLoading} error={error} />

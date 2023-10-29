@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import SoundsBar from '../bar/SoundsBar'
 import Navigation from '../nav/Navigation'
 import SideBar from '../side/SideBar'
-import SearchSongs from '../center/SearchSongs'
 import '../../styles/App.css'
 import * as SC from '../../styles/common'
 
@@ -17,10 +16,7 @@ const MainLayout = () => {
 					<SC.Main>
 						<Navigation />
 						<SC.Block $w="auto" $fGrow="3" $p="20px 40px 20px 50px">
-							<>
-								<SearchSongs />
 								<Outlet />
-							</>
 						</SC.Block>
 						<SideBar />
 					</SC.Main>

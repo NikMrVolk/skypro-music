@@ -17,7 +17,15 @@ export const soundsApi = createApi({
 				url: `catalog/track/${id}`,
 			}),
 		}),
+		getAllFavorites: builder.query({
+			query: (token) => ({
+				url: 'catalog/track/favorite/all',
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			}),
+		}),
 	}),
 })
 
-export const { useGetAllSoundsQuery, useGetOneSoundQuery } = soundsApi
+export const { useGetAllSoundsQuery, useGetOneSoundQuery, useGetAllFavoritesQuery } = soundsApi
