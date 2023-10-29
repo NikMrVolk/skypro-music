@@ -3,16 +3,20 @@ import Navigation from '../components/nav/Navigation'
 import SideBar from '../components/side/SideBar'
 import SoundsBar from '../components/bar/SoundsBar'
 import Center from '../components/center/Center'
-import { useGetAllSounds } from '../hooks/music/useGetAllSounds'
 import { SoundsContext } from '../context/SoundsContext'
 import * as SC from '../styles/common'
 import { AuthContext } from '../context/AuthContext'
+import { useGetAllSoundsQuery } from '../services/sounds/SoundsService'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPlaylist } from '../store/reducers/sounds'
 
 const MainPage = () => {
-	const [songBeingPlayedId, setSongBeingPlayedId] = useState(null)
-	const [data, isLoading, isError] = useGetAllSounds()
-	const [isPlaying, setIsPlaying] = useState(false)
 	const { setUser } = useContext(AuthContext)
+	const { data, isLoading, error: isError, isSuccess } = useGetAllSoundsQuery()
+	const { song } = useSelector((state) => state.songs)
+	const dispatch = useDispatch()
+
+	if (isSuccess) dispatch(setPlaylist(data))
 
 	useEffect(() => {
 		if (!!localStorage.getItem('user')) {
@@ -26,10 +30,6 @@ const MainPage = () => {
 				data,
 				isLoading,
 				isError,
-				songBeingPlayedId,
-				setSongBeingPlayedId,
-				isPlaying,
-				setIsPlaying,
 			}}
 		>
 			<SC.Wrapper $w="100%" $minH="100%" $overflow="hidden" $backCol="#383838">
@@ -39,7 +39,7 @@ const MainPage = () => {
 						<Center />
 						<SideBar />
 					</SC.Main>
-					{songBeingPlayedId && <SoundsBar />}
+					{song?.id && <SoundsBar />}
 				</SC.Wrapper>
 			</SC.Wrapper>
 		</SoundsContext.Provider>

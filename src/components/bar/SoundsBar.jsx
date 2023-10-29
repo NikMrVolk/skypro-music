@@ -1,23 +1,56 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SoundsPlayer from './SoundsPlayer'
 import SoundsVolume from './SoundsVolume'
-import * as SC from '../../styles/common'
-import { SoundsContext } from '../../context/SoundsContext'
-import { useGetOneSound } from '../../hooks/music/useGetOneSound'
 import ProgressInput from '../UI/inputes/progress/ProgressInput'
 import Timer from './Timer'
+import { useGetOneSoundQuery } from '../../services/sounds/SoundsService'
+import * as SC from '../../styles/common'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSong, setPlaying, setIsShuffle, setShuffledPlaylist } from '../../store/reducers/sounds'
+import { toShuffle } from '../../utils/toShuffle'
 
 const SoundsBar = () => {
-	const { songBeingPlayedId, setIsPlaying } = useContext(SoundsContext)
-	const [data, isLoading] = useGetOneSound(songBeingPlayedId)
 	const [duration, setDuration] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
 	const [isLoop, setIsLoop] = useState(false)
 	const [volume, setVolume] = useState(0.3)
 	const audioRef = useRef()
+	const dispatch = useDispatch()
+	const { playlist, song, isShuffle, shuffledPlaylist } = useSelector((state) => state.songs)
+	const { data, isLoading } = useGetOneSoundQuery(song?.id)
+	const currentPlaylist = shuffledPlaylist.length ? shuffledPlaylist : playlist
 
-	if (currentTime && audioRef.current.ended && !isLoop) {
-		setIsPlaying(false)
+	const trackIndex = currentPlaylist.findIndex(({ id }) => id === song.id)
+	const checkLastSong = trackIndex === currentPlaylist.length - 1
+
+	if (currentTime && audioRef.current.ended && !isLoop && !checkLastSong) {
+		dispatch(setSong(currentPlaylist[trackIndex + 1].id))
+		setCurrentTime(0)
+	}
+
+	if (audioRef.current?.ended && !isLoop && checkLastSong) {
+		dispatch(setPlaying(false))
+		audioRef.current.currentTime = 0
+		setCurrentTime(0)
+	}
+
+	const handlePlayPreviousSong = () => {
+		if (currentTime > 5) return (audioRef.current.currentTime = 0)
+		if (!!trackIndex) dispatch(setSong(currentPlaylist[trackIndex - 1].id))
+	}
+
+	const handlerPlayNextSong = () => {
+		if (!checkLastSong) dispatch(setSong(currentPlaylist[trackIndex + 1].id))
+	}
+
+	const handleShuffle = () => {
+		if (isShuffle) {
+			dispatch(setIsShuffle(!isShuffle))
+			dispatch(setShuffledPlaylist([]))
+		} else {
+			dispatch(setIsShuffle(!isShuffle))
+			dispatch(setShuffledPlaylist(toShuffle(playlist)))
+		}
 	}
 
 	const handleChangeProgress = (e) => {
@@ -70,6 +103,9 @@ const SoundsBar = () => {
 						isLoop={isLoop}
 						setIsLoop={setIsLoop}
 						audioPlayer={audioRef.current}
+						playNext={handlerPlayNextSong}
+						playPrevious={handlePlayPreviousSong}
+						shuffle={handleShuffle}
 					/>
 					<SoundsVolume volume={volume} change={handleChangeVolume} />
 				</SC.Flex>

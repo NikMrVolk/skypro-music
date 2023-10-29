@@ -1,31 +1,32 @@
-import { useContext } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import * as SC from '../../styles/common'
-import { SoundsContext } from '../../context/SoundsContext'
 import DurationTime from './DurationTime'
+import { setSong } from '../../store/reducers/sounds'
+import { TrackBubble } from '../../styles/trackBubble'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) => {
-	const { setIsPlaying, setSongBeingPlayedId } = useContext(SoundsContext)
-
-	const play = (id) => {
-		setSongBeingPlayedId(id)
-		setIsPlaying(true)
-	}
+	const { song, playing } = useSelector((state) => state.songs)
+	const dispatch = useDispatch()
 
 	return (
 		<SC.Block $w="100%" $mB="12px">
 			<SC.Flex $row $jstSB $alignC>
 				<SC.Flex $w="447px" $row $alignC>
 					<SC.Flex $h="51px" $w="51px" $p="16px" $mR="17px" $back="#313131" $jstC $alignC>
-						<SC.Svg $h="17px" $w="18px" $fill="transparent" $stroke="#4e4e4e" alt="music">
-							<use xlinkHref="img/icon/sprite.svg#icon-note" />
-						</SC.Svg>
+						{song.id === id ? (
+							<TrackBubble $active={playing} />
+						) : (
+							<SC.Svg $h="17px" $w="18px" $fill="transparent" $stroke="#4e4e4e" alt="music">
+								<use xlinkHref="img/icon/sprite.svg#icon-note" />
+							</SC.Svg>
+						)}
 					</SC.Flex>
 					<SC.Block
 						$color="#ffffff"
 						$point="pointer"
 						onClick={() => {
-							play(id)
+							dispatch(setSong(id))
 						}}
 					>
 						{name} <SC.Span $color="#4e4e4e">{subTitle}</SC.Span>
@@ -42,14 +43,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) =>
 					</SC.LinkA>
 				</SC.Block>
 				<div>
-					<SC.Svg
-						$h="12px"
-						$w="14px"
-						$mR="17px"
-						$fill="transparent"
-						$stroke="#696969"
-						alt="time"
-					>
+					<SC.Svg $h="12px" $w="14px" $mR="17px" $fill="transparent" $stroke="#696969" alt="time">
 						<use xlinkHref="img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
 					<DurationTime duration={duration_in_seconds} />
