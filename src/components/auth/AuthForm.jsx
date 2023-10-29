@@ -1,20 +1,15 @@
 import { useContext, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
 import Logo from '../logo/Logo'
 import LoginInput from '../UI/inputes/login/LoginInput'
 import LoginButton from '..//UI/buttons/login/LoginButton'
-import {
-	LOGIN_ROUTE,
-	MAIN_ROUTE,
-	REGISTRATION_ROUTE,
-} from '../../utils/constants'
-import { AuthContext } from '../../context/AuthContext'
-import {
-	useLoginMutation,
-	useRegistrationMutation,
-} from '../../services/user/UserService'
+import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/constants'
+import { useLoginMutation, useRegistrationMutation } from '../../services/user/UserService'
 import * as S from '../../styles/auth'
+import { setPassword, setUser } from '../../store/reducers/user'
+import { AuthContext } from '../../context/AuthContext'
 
 const AuthForm = () => {
 	const location = useLocation()
@@ -26,28 +21,17 @@ const AuthForm = () => {
 		password: '',
 		secondPassword: '',
 	})
-	const { setUser } = useContext(AuthContext)
+	const dispatch = useDispatch()
+	const { setUserDataWithContext } = useContext(AuthContext)
 
 	const [
 		registration,
-		{
-			data: regData,
-			isLoading: regIsLoading,
-			error: regError,
-			isSuccess: regIsSuccess,
-			reset: regReset,
-		},
+		{ data: regData, isLoading: regIsLoading, error: regError, isSuccess: regIsSuccess, reset: regReset },
 	] = useRegistrationMutation()
 
 	const [
 		login,
-		{
-			data: logData,
-			isLoading: logIsLoading,
-			error: logError,
-			isSuccess: logIsSuccess,
-			reset: logReset,
-		},
+		{ data: logData, isLoading: logIsLoading, error: logError, isSuccess: logIsSuccess, reset: logReset },
 	] = useLoginMutation()
 
 	const handleChange = (e, name) => {
@@ -82,10 +66,7 @@ const AuthForm = () => {
 	}
 
 	if (regError) {
-		const errorData =
-			regError.data?.username ??
-			regError.data?.email ??
-			regError.data?.password
+		const errorData = regError.data?.username ?? regError.data?.email ?? regError.data?.password
 		toast(errorData[0])
 		regReset()
 	}
@@ -97,24 +78,18 @@ const AuthForm = () => {
 	}
 
 	if (regIsSuccess || logIsSuccess) {
-		setUser(regData || logData)
 		localStorage.setItem('user', JSON.stringify(regData || logData))
 		regReset()
 		logReset()
+		setUserDataWithContext(regData || logData)
+		dispatch(setUser(regData || logData))
+		dispatch(setPassword(value.password))
 		navigate(MAIN_ROUTE)
 	}
 
 	return (
 		<S.Form onSubmit={(e) => e.preventDefault()}>
-			<Logo
-				hWr="21px"
-				wWr="140px"
-				pWr="0"
-				mB="34px"
-				hImg="auto"
-				wImg="140px"
-				src="/img/logo_modal.png"
-			/>
+			<Logo hWr="21px" wWr="140px" pWr="0" mB="34px" hImg="auto" wImg="140px" src="/img/logo_modal.png" />
 			{!isLogin && (
 				<LoginInput
 					value={value.username}

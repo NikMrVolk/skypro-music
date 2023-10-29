@@ -8,7 +8,7 @@ import SortSongs from '../components/center/SortSongs'
 import SongsList from '../components/center/SongsList'
 
 const MainPage = () => {
-	const { setUser } = useContext(AuthContext)
+	const { setUserDataWithContext } = useContext(AuthContext)
 	const { data, isLoading, error, isSuccess } = useGetAllSoundsQuery()
 	const dispatch = useDispatch()
 
@@ -16,7 +16,7 @@ const MainPage = () => {
 
 	useEffect(() => {
 		if (!!localStorage.getItem('user')) {
-			setUser(JSON.parse(localStorage.getItem('user')))
+			setUserDataWithContext(JSON.parse(localStorage.getItem('user')))
 		}
 	}, [])
 
