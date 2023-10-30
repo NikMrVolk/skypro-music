@@ -72,8 +72,8 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 						$h="12px"
 						$w="14px"
 						$mR="17px"
-						$fill={isLiked ? '#ffffff' : 'transparent'}
-						$stroke="#696969"
+						$fill={isLiked ? '#B672FF' : 'transparent'}
+						$stroke={isLiked ? '#B672FF' : '#696969'}
 						alt="time"
 						onClick={() => {
 							like(id)

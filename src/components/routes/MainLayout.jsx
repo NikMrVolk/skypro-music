@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router'
+import { Outlet} from 'react-router'
 import { useSelector } from 'react-redux'
 import SoundsBar from '../bar/SoundsBar'
 import Navigation from '../nav/Navigation'
@@ -8,6 +8,7 @@ import * as SC from '../../styles/common'
 
 const MainLayout = () => {
 	const { song } = useSelector((state) => state.songs)
+
 
 	return (
 		<div className="App">

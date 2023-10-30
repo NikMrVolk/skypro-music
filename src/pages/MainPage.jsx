@@ -13,7 +13,6 @@ import SongsList from '../components/center/SongsList'
 import SearchSongs from '../components/center/SearchSongs'
 
 const MainPage = () => {
-	const { setUserDataWithContext } = useContext(AuthContext)
 	const { data, isLoading, error, isSuccess } = useGetAllSoundsQuery()
 	const dispatch = useDispatch()
 
@@ -21,12 +20,6 @@ const MainPage = () => {
 	const [remove, removeData] = useRemoveFavoriteMutation()
 
 	if (isSuccess) dispatch(setPlaylist(data))
-
-	useEffect(() => {
-		if (!!localStorage.getItem('user')) {
-			setUserDataWithContext(JSON.parse(localStorage.getItem('user')))
-		}
-	}, [])
 
 	return (
 		<>
