@@ -4,11 +4,11 @@ import CenterSkiletList from '../skilet/CenterSkiletList'
 import * as SC from '../../styles/common'
 
 const SongsList = ({ data, isLoading, error, add, remove }) => {
-	console.log(1)
+
 	return (
 		<SC.Flex $column>
 			<SongsHeader />
-			<SC.Flex $column $overflow="scroll" $maxH="610px">
+			<SC.Flex $column $overflow="scroll" $maxH="500px">
 				{isLoading ? (
 					<CenterSkiletList />
 				) : (

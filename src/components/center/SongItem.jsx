@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import * as SC from '../../styles/common'
 import DurationTime from './DurationTime'
-import { setSong } from '../../store/reducers/sounds'
+import { setSong, setWhatIsPlaylist } from '../../store/reducers/sounds'
 import { TrackBubble } from '../../styles/trackBubble'
 import { AuthContext } from '../../context/AuthContext'
+import { useLocation } from 'react-router'
+import { FAVORITE_ROUTE, MAIN_ROUTE } from '../../utils/constants'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add, remove }) => {
+	const location = useLocation()
 	const { song, playing, playlist, favorites } = useSelector((state) => state.songs)
 	const { userDataWithContext } = useContext(AuthContext)
 	const dispatch = useDispatch()
@@ -16,6 +19,12 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 			.find((song) => song.id === id)
 			?.stared_user.find((user) => user.username === userDataWithContext.username) ||
 		favorites.find((song) => song.id === id)
+
+	const play = (id) => {
+		if (location.pathname === MAIN_ROUTE) dispatch(setWhatIsPlaylist(MAIN_ROUTE))
+		if (location.pathname === FAVORITE_ROUTE) dispatch(setWhatIsPlaylist(FAVORITE_ROUTE))
+		dispatch(setSong(id))
+	}
 
 	const like = (id) => {
 		const token = localStorage.getItem('access')
@@ -29,7 +38,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 		<SC.Block $w="100%" $mB="12px">
 			<SC.Flex $row $jstSB $alignC>
 				<SC.Flex $w="447px" $row $alignC>
-					<SC.Flex $h="51px" $w="51px" $p="16px" $mR="17px" $back="#313131" $jstC $alignC>
+					<SC.Flex $h="51px" $w="51px" $p="16px" $mR="17px" $back="#313131" $jstC $alignC onClick={play}>
 						{song.id === id ? (
 							<TrackBubble $active={playing} />
 						) : (
@@ -42,7 +51,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 						$color="#ffffff"
 						$point="pointer"
 						onClick={() => {
-							dispatch(setSong(id))
+							play(id)
 						}}
 					>
 						{name} <SC.Span $color="#4e4e4e">{subTitle}</SC.Span>
