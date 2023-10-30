@@ -10,7 +10,7 @@ export const soundsApi = createApi({
 			query: () => ({
 				url: 'catalog/track/all',
 			}),
-			providesTags: () => ['AllTracks'],
+			providesTags: () => ['AllTracks', 'Favorites'],
 		}),
 		getOneSound: builder.query({
 			query: (id) => ({
@@ -34,7 +34,7 @@ export const soundsApi = createApi({
 					Authorization: `Bearer ${token}`,
 				},
 			}),
-			invalidatesTags: ['AllTracks', 'Favorites'],
+			invalidatesTags: (result) => result ? ['AllTracks', 'Favorites'] : '',
 		}),
 		removeFavorite: builder.mutation({
 			query: ({ id, token }) => ({
@@ -44,7 +44,7 @@ export const soundsApi = createApi({
 					Authorization: `Bearer ${token}`,
 				},
 			}),
-			invalidatesTags: ['AllTracks', 'Favorites'],
+			invalidatesTags: (result) => result ? ['AllTracks', 'Favorites'] : '',
 		}),
 	}),
 })

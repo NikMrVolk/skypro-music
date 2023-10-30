@@ -30,9 +30,7 @@ export const userApi = createApi({
 			query: (token) => ({
 				url: 'user/token/refresh/',
 				method: 'POST',
-				body: {
-					refresh: token,
-				},
+				body: token,
 			}),
 		}),
 	}),
