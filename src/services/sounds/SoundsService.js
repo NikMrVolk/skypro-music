@@ -4,13 +4,13 @@ import { API_ROUTE } from '../../utils/constants'
 export const soundsApi = createApi({
 	reducerPath: 'soundsApi',
 	baseQuery: fetchBaseQuery({ baseUrl: API_ROUTE }),
-	tagTypes: ['Sounds'],
+	tagTypes: ['AllTracks', 'Favorites'],
 	endpoints: (builder) => ({
 		getAllSounds: builder.query({
 			query: () => ({
 				url: 'catalog/track/all',
 			}),
-			providesTags: () => ['Sounds'],
+			providesTags: () => ['AllTracks'],
 		}),
 		getOneSound: builder.query({
 			query: (id) => ({
@@ -24,8 +24,35 @@ export const soundsApi = createApi({
 					Authorization: `Bearer ${token}`,
 				},
 			}),
+			providesTags: () => ['Favorites'],
+		}),
+		addFavorite: builder.mutation({
+			query: ({ id, token }) => ({
+				url: `catalog/track/${id}/favorite/`,
+				method: 'POST',
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			}),
+			invalidatesTags: ['AllTracks', 'Favorites'],
+		}),
+		removeFavorite: builder.mutation({
+			query: ({ id, token }) => ({
+				url: `catalog/track/${id}/favorite/`,
+				method: 'DELETE',
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			}),
+			invalidatesTags: ['AllTracks', 'Favorites'],
 		}),
 	}),
 })
 
-export const { useGetAllSoundsQuery, useGetOneSoundQuery, useGetAllFavoritesQuery } = soundsApi
+export const {
+	useGetAllSoundsQuery,
+	useGetOneSoundQuery,
+	useGetAllFavoritesQuery,
+	useAddFavoriteMutation,
+	useRemoveFavoriteMutation,
+} = soundsApi

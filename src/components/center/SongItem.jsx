@@ -1,13 +1,29 @@
+import { useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import * as SC from '../../styles/common'
 import DurationTime from './DurationTime'
 import { setSong } from '../../store/reducers/sounds'
 import { TrackBubble } from '../../styles/trackBubble'
+import { AuthContext } from '../../context/AuthContext'
 
-const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) => {
-	const { song, playing } = useSelector((state) => state.songs)
+const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add, remove }) => {
+	const { song, playing, playlist, favorites } = useSelector((state) => state.songs)
+	const { userDataWithContext } = useContext(AuthContext)
 	const dispatch = useDispatch()
+	const isLiked =
+		playlist
+			.find((song) => song.id === id)
+			?.stared_user.find((user) => user.username === userDataWithContext.username) ||
+		favorites.find((song) => song.id === id)
+
+	const like = (id) => {
+		const token = localStorage.getItem('access')
+		const data = { token, id }
+
+		if (!!isLiked) return remove(data)
+		add(data)
+	}
 
 	return (
 		<SC.Block $w="100%" $mB="12px">
@@ -43,7 +59,17 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds }) =>
 					</SC.LinkA>
 				</SC.Block>
 				<div>
-					<SC.Svg $h="12px" $w="14px" $mR="17px" $fill="transparent" $stroke="#696969" alt="time">
+					<SC.Svg
+						$h="12px"
+						$w="14px"
+						$mR="17px"
+						$fill={isLiked ? '#ffffff' : 'transparent'}
+						$stroke="#696969"
+						alt="time"
+						onClick={() => {
+							like(id)
+						}}
+					>
 						<use xlinkHref="img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
 					<DurationTime duration={duration_in_seconds} />

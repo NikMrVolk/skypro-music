@@ -3,14 +3,19 @@ import SongsHeader from './SongsHeader'
 import CenterSkiletList from '../skilet/CenterSkiletList'
 import * as SC from '../../styles/common'
 
-const SongsList = ({ data, isLoading, error }) => {
+const SongsList = ({ data, isLoading, error, add, remove }) => {
+	console.log(1)
 	return (
 		<SC.Flex $column>
 			<SongsHeader />
 			<SC.Flex $column $overflow="scroll" $maxH="610px">
-				{!data?.length && 'Ваш плейлист пуст'}
-				{isLoading ? <CenterSkiletList /> : data?.map((sound) => <SongItem key={sound.id} {...sound} />)}
+				{isLoading ? (
+					<CenterSkiletList />
+				) : (
+					data?.map((sound) => <SongItem key={sound.id} {...sound} add={add} remove={remove} />)
+				)}
 				{error && 'Не удалось загрузить плейлист, попробуйте позже'}
+				{!data?.length && !error && 'Ваш плейлист пуст'}
 			</SC.Flex>
 		</SC.Flex>
 	)

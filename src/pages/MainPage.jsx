@@ -1,7 +1,11 @@
 import { useContext, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { AuthContext } from '../context/AuthContext'
-import { useGetAllSoundsQuery } from '../services/sounds/SoundsService'
+import {
+	useAddFavoriteMutation,
+	useGetAllSoundsQuery,
+	useRemoveFavoriteMutation,
+} from '../services/sounds/SoundsService'
 import { setPlaylist } from '../store/reducers/sounds'
 import CenterSubtitle from '../components/center/CenterSubtitle'
 import SortSongs from '../components/center/SortSongs'
@@ -12,6 +16,9 @@ const MainPage = () => {
 	const { setUserDataWithContext } = useContext(AuthContext)
 	const { data, isLoading, error, isSuccess } = useGetAllSoundsQuery()
 	const dispatch = useDispatch()
+
+	const [add, addData] = useAddFavoriteMutation()
+	const [remove, removeData] = useRemoveFavoriteMutation()
 
 	if (isSuccess) dispatch(setPlaylist(data))
 
@@ -26,7 +33,7 @@ const MainPage = () => {
 			<SearchSongs />
 			<CenterSubtitle>Треки</CenterSubtitle>
 			<SortSongs />
-			<SongsList data={data} isLoading={isLoading} error={error} />
+			<SongsList data={data} isLoading={isLoading} error={error} add={add} remove={remove} />
 		</>
 	)
 }
