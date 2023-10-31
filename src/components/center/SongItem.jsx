@@ -10,19 +10,21 @@ import { useLocation } from 'react-router'
 import { FAVORITE_ROUTE, MAIN_ROUTE } from '../../utils/constants'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add, remove }) => {
-	const location = useLocation()
-	const { song, playing, playlist, favorites } = useSelector((state) => state.songs)
+	const { pathname } = useLocation()
+	const { song, playing, playlist } = useSelector((state) => state.songs)
 	const { userDataWithContext } = useContext(AuthContext)
 	const dispatch = useDispatch()
-	const isLiked =
-		playlist
+	let isLiked
+
+	if (pathname === MAIN_ROUTE)
+		isLiked = playlist
 			.find((song) => song.id === id)
-			?.stared_user.find((user) => user.username === userDataWithContext.username) ||
-		favorites.find((song) => song.id === id)
+			?.stared_user.find((user) => user.username === userDataWithContext.username)
+	if (pathname === FAVORITE_ROUTE) isLiked = true
 
 	const play = (id) => {
-		if (location.pathname === MAIN_ROUTE) dispatch(setWhatIsPlaylist(MAIN_ROUTE))
-		if (location.pathname === FAVORITE_ROUTE) dispatch(setWhatIsPlaylist(FAVORITE_ROUTE))
+		if (pathname === MAIN_ROUTE) dispatch(setWhatIsPlaylist(MAIN_ROUTE))
+		if (pathname === FAVORITE_ROUTE) dispatch(setWhatIsPlaylist(FAVORITE_ROUTE))
 		dispatch(setSong(id))
 	}
 
