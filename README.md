@@ -9,7 +9,7 @@ The player built into the application (listening to music, pausing and unpausing
 Adding a track to favorites
 Collection list
 
-Оценка работы над контекстом:
+Оценка работы над лайками:
 10 часов
 
 Фактически затраченное время: 
