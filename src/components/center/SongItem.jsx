@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import * as SC from '../../styles/common'
 import DurationTime from './DurationTime'
-import { setSong } from '../../store/reducers/sounds'
+import { setIsSongLiked, setSong } from '../../store/reducers/sounds'
 import { TrackBubble } from '../../styles/trackBubble'
 import { AuthContext } from '../../context/AuthContext'
 import { useLocation } from 'react-router'
@@ -11,7 +11,7 @@ import { FAVORITE_ROUTE } from '../../utils/constants'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add, remove }) => {
 	const { pathname } = useLocation()
-	const { song, playing, displayedPlaylist } = useSelector((state) => state.songs)
+	const { song, playing, displayedPlaylist, isSongLiked } = useSelector((state) => state.songs)
 	const { userDataWithContext } = useContext(AuthContext)
 	const dispatch = useDispatch()
 	let isLiked
@@ -26,12 +26,14 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 
 	const play = () => {
 		dispatch(setSong(id))
+		dispatch(setIsSongLiked(isLiked))
 	}
 
 	const like = (id) => {
 		const token = localStorage.getItem('access')
 		const data = { token, id }
 
+		dispatch(setIsSongLiked(!isSongLiked))
 		if (!!isLiked) return remove(data)
 		add(data)
 	}
@@ -40,7 +42,18 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 		<SC.Block $w="100%" $mB="12px">
 			<SC.Flex $row $jstSB $alignC>
 				<SC.Flex $w="360px" $row $alignC>
-					<SC.Flex $h="51px" $w="51px" $p="16px" $mR="17px" $back="#313131" $jstC $alignC onClick={play}>
+					<SC.Flex
+						$h="51px"
+						$w="51px"
+						$p="16px"
+						$mR="17px"
+						$back="#313131"
+						$jstC
+						$alignC
+						onClick={() => {
+							play()
+						}}
+					>
 						{song.id === id ? (
 							<TrackBubble $active={playing} />
 						) : (
@@ -49,7 +62,13 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 							</SC.Svg>
 						)}
 					</SC.Flex>
-					<SC.Block $color="#ffffff" $point="pointer" onClick={play}>
+					<SC.Block
+						$color="#ffffff"
+						$point="pointer"
+						onClick={() => {
+							play()
+						}}
+					>
 						{name} <SC.Span $color="#4e4e4e">{subTitle}</SC.Span>
 					</SC.Block>
 				</SC.Flex>

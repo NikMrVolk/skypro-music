@@ -5,6 +5,7 @@ const initialState = {
 	choosedPlaylist: [],
 	shuffledPlaylist: [],
 	song: {},
+	isSongLiked: false,
 	playing: false,
 	isShuffle: false,
 }
@@ -19,11 +20,13 @@ const soundsSlice = createSlice({
 		setChoosedPlaylist(state, action) {
 			state.choosedPlaylist = action.payload
 		},
-
 		setSong(state, action) {
 			state.choosedPlaylist = state.displayedPlaylist
 			state.song = state.choosedPlaylist.filter((el) => el.id === action.payload)[0]
 			state.playing = true
+		},
+		setIsSongLiked(state, action) {
+			state.isSongLiked = action.payload
 		},
 		setPlaying(state, action) {
 			state.playing = action.payload
@@ -37,6 +40,13 @@ const soundsSlice = createSlice({
 	},
 })
 
-export const { setDisplayedPlaylist, setChoosedPlaylist, setSong, setPlaying, setShuffledPlaylist, setIsShuffle } =
-	soundsSlice.actions
+export const {
+	setDisplayedPlaylist,
+	setChoosedPlaylist,
+	setSong,
+	setPlaying,
+	setShuffledPlaylist,
+	setIsShuffle,
+	setIsSongLiked,
+} = soundsSlice.actions
 export default soundsSlice.reducer

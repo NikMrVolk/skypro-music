@@ -61,4 +61,5 @@ export const {
 	useGetAllFavoritesQuery,
 	useAddFavoriteMutation,
 	useRemoveFavoriteMutation,
+	useRef,
 } = soundsApi
