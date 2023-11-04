@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useGetAllSoundsQuery } from '../services/sounds/SoundsService'
-import { setDisplayedPlaylist, setPlaylist } from '../store/reducers/sounds'
+import { setDisplayedPlaylist } from '../store/reducers/sounds'
 import CenterSubtitle from '../components/center/CenterSubtitle'
 import SortSongs from '../components/center/SortSongs'
 import SongsList from '../components/center/SongsList'
@@ -10,10 +10,7 @@ const MainPage = () => {
 	const { data, isLoading, error, isSuccess } = useGetAllSoundsQuery()
 	const dispatch = useDispatch()
 
-	if (isSuccess) {
-		dispatch(setPlaylist(data))
-		dispatch(setDisplayedPlaylist(data))
-	}
+	if (isSuccess) dispatch(setDisplayedPlaylist(data))
 
 	return (
 		<>

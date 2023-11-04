@@ -3,24 +3,26 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import * as SC from '../../styles/common'
 import DurationTime from './DurationTime'
-import { setSong, setWhatIsPlaylist } from '../../store/reducers/sounds'
+import { setSong } from '../../store/reducers/sounds'
 import { TrackBubble } from '../../styles/trackBubble'
 import { AuthContext } from '../../context/AuthContext'
 import { useLocation } from 'react-router'
-import { CATEGORY_ROUTE, FAVORITE_ROUTE, MAIN_ROUTE } from '../../utils/constants'
+import { FAVORITE_ROUTE } from '../../utils/constants'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add, remove }) => {
 	const { pathname } = useLocation()
-	const { song, playing, playlist } = useSelector((state) => state.songs)
+	const { song, playing, displayedPlaylist } = useSelector((state) => state.songs)
 	const { userDataWithContext } = useContext(AuthContext)
 	const dispatch = useDispatch()
 	let isLiked
 
-	if (pathname === MAIN_ROUTE)
-		isLiked = playlist
+	if (pathname === FAVORITE_ROUTE) {
+		isLiked = true
+	} else {
+		isLiked = displayedPlaylist
 			.find((song) => song.id === id)
 			?.stared_user.find((user) => user.username === userDataWithContext.username)
-	if (pathname === FAVORITE_ROUTE) isLiked = true
+	}
 
 	const play = () => {
 		dispatch(setSong(id))
