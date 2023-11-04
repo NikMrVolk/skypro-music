@@ -4,7 +4,7 @@ const SongsHeader = () => {
 	return (
 		<SC.Flex $row $jstSB $mB="24px">
 			<SC.Block
-				$w="447px"
+				$w="360px"
 				$fSz="14px"
 				$lH="25px"
 				$lSpace="2px"

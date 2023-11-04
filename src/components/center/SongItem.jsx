@@ -39,7 +39,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 	return (
 		<SC.Block $w="100%" $mB="12px">
 			<SC.Flex $row $jstSB $alignC>
-				<SC.Flex $w="447px" $row $alignC>
+				<SC.Flex $w="360px" $row $alignC>
 					<SC.Flex $h="51px" $w="51px" $p="16px" $mR="17px" $back="#313131" $jstC $alignC onClick={play}>
 						{song.id === id ? (
 							<TrackBubble $active={playing} />
@@ -63,7 +63,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 						{album}
 					</SC.LinkA>
 				</SC.Block>
-				<div>
+				<SC.Block $w="80px">
 					<SC.Svg
 						$h="12px"
 						$w="14px"
@@ -78,7 +78,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 						<use xlinkHref="img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
 					<DurationTime duration={duration_in_seconds} />
-				</div>
+				</SC.Block>
 			</SC.Flex>
 		</SC.Block>
 	)
