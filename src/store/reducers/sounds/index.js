@@ -1,24 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+	displayedPlaylist: [],
+	choosedPlaylist: [],
 	playlist: [],
-	isShuffle: false,
+	favorites: [],
+	category: [],
 	shuffledPlaylist: [],
 	song: {},
 	playing: false,
-	favorites: [],
-	whatIsPlaylist: null,
+	isShuffle: false,
 }
 
 const soundsSlice = createSlice({
 	name: 'Sounds',
 	initialState,
 	reducers: {
+		setDisplayedPlaylist(state, action) {
+			state.displayedPlaylist = action.payload
+		},
+		setChoosedPlaylist(state, action) {
+			state.choosedPlaylist = action.payload
+		},
 		setPlaylist(state, action) {
 			state.playlist = action.payload
 		},
 		setSong(state, action) {
-			state.song = state.playlist.filter((el) => el.id === action.payload)[0]
+			state.choosedPlaylist = state.displayedPlaylist
+			state.song = state.choosedPlaylist.filter((el) => el.id === action.payload)[0]
 			state.playing = true
 		},
 		setPlaying(state, action) {
@@ -33,12 +42,22 @@ const soundsSlice = createSlice({
 		setFavorites(state, action) {
 			state.favorites = action.payload
 		},
-		setWhatIsPlaylist(state, action) {
-			state.whatIsPlaylist = action.payload
+		setCategory(state, action) {
+			state.category = action.payload
 		},
 	},
 })
 
-export const { setPlaylist, setSong, setPlaying, setShuffledPlaylist, setIsShuffle, setFavorites, setWhatIsPlaylist } =
-	soundsSlice.actions
+export const {
+	setDisplayedPlaylist,
+	setChoosedPlaylist,
+	setPlaylist,
+	setSong,
+	setPlaying,
+	setShuffledPlaylist,
+	setIsShuffle,
+	setFavorites,
+	setWhatIsPlaylist,
+	setCategory,
+} = soundsSlice.actions
 export default soundsSlice.reducer

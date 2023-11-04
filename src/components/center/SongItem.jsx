@@ -7,7 +7,7 @@ import { setSong, setWhatIsPlaylist } from '../../store/reducers/sounds'
 import { TrackBubble } from '../../styles/trackBubble'
 import { AuthContext } from '../../context/AuthContext'
 import { useLocation } from 'react-router'
-import { FAVORITE_ROUTE, MAIN_ROUTE } from '../../utils/constants'
+import { CATEGORY_ROUTE, FAVORITE_ROUTE, MAIN_ROUTE } from '../../utils/constants'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add, remove }) => {
 	const { pathname } = useLocation()
@@ -22,9 +22,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 			?.stared_user.find((user) => user.username === userDataWithContext.username)
 	if (pathname === FAVORITE_ROUTE) isLiked = true
 
-	const play = (id) => {
-		if (pathname === MAIN_ROUTE) dispatch(setWhatIsPlaylist(MAIN_ROUTE))
-		if (pathname === FAVORITE_ROUTE) dispatch(setWhatIsPlaylist(FAVORITE_ROUTE))
+	const play = () => {
 		dispatch(setSong(id))
 	}
 
@@ -49,13 +47,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 							</SC.Svg>
 						)}
 					</SC.Flex>
-					<SC.Block
-						$color="#ffffff"
-						$point="pointer"
-						onClick={() => {
-							play(id)
-						}}
-					>
+					<SC.Block $color="#ffffff" $point="pointer" onClick={play}>
 						{name} <SC.Span $color="#4e4e4e">{subTitle}</SC.Span>
 					</SC.Block>
 				</SC.Flex>

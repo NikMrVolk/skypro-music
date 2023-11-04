@@ -17,6 +17,11 @@ export const soundsApi = createApi({
 				url: `catalog/track/${id}`,
 			}),
 		}),
+		getOneSelection: builder.query({
+			query: (id) => ({
+				url: `catalog/selection/${id}`,
+			}),
+		}),
 		getAllFavorites: builder.query({
 			query: (token) => ({
 				url: 'catalog/track/favorite/all',
@@ -34,7 +39,7 @@ export const soundsApi = createApi({
 					Authorization: `Bearer ${token}`,
 				},
 			}),
-			invalidatesTags: (result) => result ? ['AllTracks', 'Favorites'] : '',
+			invalidatesTags: (result) => (result ? ['AllTracks', 'Favorites'] : ''),
 		}),
 		removeFavorite: builder.mutation({
 			query: ({ id, token }) => ({
@@ -44,7 +49,7 @@ export const soundsApi = createApi({
 					Authorization: `Bearer ${token}`,
 				},
 			}),
-			invalidatesTags: (result) => result ? ['AllTracks', 'Favorites'] : '',
+			invalidatesTags: (result) => (result ? ['AllTracks', 'Favorites'] : ''),
 		}),
 	}),
 })
@@ -52,6 +57,7 @@ export const soundsApi = createApi({
 export const {
 	useGetAllSoundsQuery,
 	useGetOneSoundQuery,
+	useGetOneSelectionQuery,
 	useGetAllFavoritesQuery,
 	useAddFavoriteMutation,
 	useRemoveFavoriteMutation,

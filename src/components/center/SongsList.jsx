@@ -8,7 +8,7 @@ import { useRefreshMutation } from '../../services/user/UserService'
 import { LOGIN_ROUTE } from '../../utils/constants'
 import * as SC from '../../styles/common'
 
-const SongsList = ({ data, isLoading, error, refetch }) => {
+const SongsList = ({ data, isLoading, error}) => {
 	const [requestData, setRequestData] = useState({})
 	const navigate = useNavigate()
 
