@@ -12,7 +12,7 @@ Collection list
 Main tasks:
 
 1. Selections page: wait 40 minutes; real spend - 2 hours and 20 minutes
-2. Likes in playlist: wait 40 minutes; real spend - ...
+2. Likes in playlist: wait 40 minutes; real spend - 2 hours
 3. Search, filter, sort: wait 3 hours (on hour to one task); real spend - ...
 
 Dop tasks:
