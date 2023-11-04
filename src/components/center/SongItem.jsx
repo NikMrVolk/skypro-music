@@ -45,7 +45,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 							<TrackBubble $active={playing} />
 						) : (
 							<SC.Svg $h="17px" $w="18px" $fill="transparent" $stroke="#4e4e4e" alt="music">
-								<use xlinkHref="img/icon/sprite.svg#icon-note" />
+								<use xlinkHref="../img/icon/sprite.svg#icon-note" />
 							</SC.Svg>
 						)}
 					</SC.Flex>
