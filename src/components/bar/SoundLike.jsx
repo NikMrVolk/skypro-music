@@ -19,7 +19,7 @@ const SoundLike = () => {
 					className="_btn-icon"
 					alt="like"
 				>
-					<use xlinkHref="img/icon/sprite.svg#icon-like" />
+					<use xlinkHref="../img/icon/sprite.svg#icon-like" />
 				</SC.Svg>
 			</SC.Wrapper>
 			<SC.Wrapper
@@ -39,7 +39,7 @@ const SoundLike = () => {
 					className="_btn-icon"
 					alt="dislike"
 				>
-					<use xlinkHref="img/icon/sprite.svg#icon-dislike" />
+					<use xlinkHref="../img/icon/sprite.svg#icon-dislike" />
 				</SC.Svg>
 			</SC.Wrapper>
 		</SC.Flex>
