@@ -1,15 +1,16 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import SongItem from './SongItem'
 import SongsHeader from './SongsHeader'
 import CenterSkiletList from '../skilet/CenterSkiletList'
 import { useAddFavoriteMutation, useRemoveFavoriteMutation } from '../../services/sounds/SoundsService'
 import { useRefreshMutation } from '../../services/user/UserService'
-import { LOGIN_ROUTE } from '../../utils/constants'
+import { LOGIN_ROUTE, MAIN_ROUTE } from '../../utils/constants'
 import * as SC from '../../styles/common'
 
-const SongsList = ({ data, isLoading, error, refetch }) => {
+const SongsList = ({ data, isLoading, error }) => {
 	const [requestData, setRequestData] = useState({})
+	const { pathname } = useLocation()
 	const navigate = useNavigate()
 
 	const [add, addResponse] = useAddFavoriteMutation()
@@ -42,7 +43,7 @@ const SongsList = ({ data, isLoading, error, refetch }) => {
 	return (
 		<SC.Flex $column>
 			<SongsHeader />
-			<SC.Flex $column $overflow="scroll" $maxH="500px">
+			<SC.Flex $column $overflow="scroll" $maxH={pathname === MAIN_ROUTE ? '500px' : '630px'}>
 				{isLoading ? (
 					<CenterSkiletList />
 				) : (

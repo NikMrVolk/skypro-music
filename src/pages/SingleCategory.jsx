@@ -1,11 +1,25 @@
+import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
-import data from '../data/sideElements'
+import { useGetOneSelectionQuery } from '../services/sounds/SoundsService'
+import SearchSongs from '../components/center/SearchSongs'
+import { CenterSubtitle } from '../styles/common'
+import SongsList from '../components/center/SongsList'
+import { setDisplayedPlaylist } from '../store/reducers/sounds'
 
 const SingleCategory = () => {
-	const params = useParams()
-	const currentElement = data.filter((el) => el.id === +params.id)[0]
+	const dispatch = useDispatch()
+	const { id } = useParams()
+	const { data, isLoading, error, isSuccess } = useGetOneSelectionQuery(id)
 
-	return <div style={{ color: 'red', fontSize: '60px' }}>{currentElement.alt}</div>
+	if (isSuccess) dispatch(setDisplayedPlaylist(data.items))
+
+	return (
+		<>
+			<SearchSongs />
+			<CenterSubtitle>{data?.name}</CenterSubtitle>
+			<SongsList data={data?.items} isLoading={isLoading} error={error} />
+		</>
+	)
 }
 
 export default SingleCategory

@@ -16,7 +16,7 @@ const SoundTrack = ({name, author}) => {
 				$gridColumn="1"
 			>
 				<SC.Svg $w="18px" $h="17px" $fill="transparent" $stroke="#4e4e4e" alt="music">
-					<use xlinkHref="img/icon/sprite.svg#icon-note" />
+					<use xlinkHref="../img/icon/sprite.svg#icon-note" />
 				</SC.Svg>
 			</SC.Flex>
 			<SC.GridItem $mW="49px" $gridArea="album" $gridRow="1" $gridColumn="2">

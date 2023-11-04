@@ -4,7 +4,7 @@ const SongsHeader = () => {
 	return (
 		<SC.Flex $row $jstSB $mB="24px">
 			<SC.Block
-				$w="447px"
+				$w="360px"
 				$fSz="14px"
 				$lH="25px"
 				$lSpace="2px"
@@ -44,7 +44,7 @@ const SongsHeader = () => {
 				$p="0 17px 0 0"
 			>
 				<SC.Svg $h="12px" $w="12px" $fill="transparent" $stroke="#696969" alt="time">
-					<use xlinkHref="img/icon/sprite.svg#icon-watch" />
+					<use xlinkHref="../img/icon/sprite.svg#icon-watch" />
 				</SC.Svg>
 			</SC.Block>
 		</SC.Flex>

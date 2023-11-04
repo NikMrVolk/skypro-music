@@ -8,7 +8,6 @@ import * as SC from '../../styles/common'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSong, setPlaying, setIsShuffle, setShuffledPlaylist } from '../../store/reducers/sounds'
 import { toShuffle } from '../../utils/toShuffle'
-import { FAVORITE_ROUTE, MAIN_ROUTE } from '../../utils/constants'
 
 const SoundsBar = () => {
 	const [duration, setDuration] = useState(0)
@@ -19,15 +18,11 @@ const SoundsBar = () => {
 	const audioRef = useRef()
 	const dispatch = useDispatch()
 
-	const { playlist, song, isShuffle, shuffledPlaylist, whatIsPlaylist, favorites } = useSelector(
-		(state) => state.songs
-	)
+	const { song, isShuffle, shuffledPlaylist, choosedPlaylist } =
+		useSelector((state) => state.songs)
 	const { data, isLoading } = useGetOneSoundQuery(song?.id)
 
-	let currentPlaylist
-
-	if (whatIsPlaylist === MAIN_ROUTE) currentPlaylist = shuffledPlaylist.length ? shuffledPlaylist : playlist
-	if (whatIsPlaylist === FAVORITE_ROUTE) currentPlaylist = shuffledPlaylist.length ? shuffledPlaylist : favorites
+	let currentPlaylist = shuffledPlaylist.length ? shuffledPlaylist : choosedPlaylist
 
 	const trackIndex = currentPlaylist.findIndex(({ id }) => id === song.id)
 	const checkLastSong = trackIndex === currentPlaylist.length - 1

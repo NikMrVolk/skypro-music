@@ -7,7 +7,7 @@ const SoundsVolume = ({ volume, change }) => {
 			<SC.Flex $p="0 27px 0 31px" $row>
 				<SC.Wrapper $h="18px" $w="13px" $m="0 17px 0 0">
 					<SC.Svg $h="18px" $w="13px" $fill="transparent" alt="volume">
-						<use xlinkHref="img/icon/sprite.svg#icon-volume" />
+						<use xlinkHref="../img/icon/sprite.svg#icon-volume" />
 					</SC.Svg>
 				</SC.Wrapper>
 				<SC.Wrapper $w="109px">
