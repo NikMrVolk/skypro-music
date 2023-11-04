@@ -6,6 +6,8 @@ const initialState = {
 	shuffledPlaylist: [],
 	song: {},
 	playing: false,
+	favorites: [],
+	whatIsPlaylist: null,
 }
 
 const soundsSlice = createSlice({
@@ -28,8 +30,15 @@ const soundsSlice = createSlice({
 		setIsShuffle(state, action) {
 			state.isShuffle = action.payload
 		},
+		setFavorites(state, action) {
+			state.favorites = action.payload
+		},
+		setWhatIsPlaylist(state, action) {
+			state.whatIsPlaylist = action.payload
+		},
 	},
 })
 
-export const { setPlaylist, setSong, setPlaying, setShuffledPlaylist, setIsShuffle } = soundsSlice.actions
+export const { setPlaylist, setSong, setPlaying, setShuffledPlaylist, setIsShuffle, setFavorites, setWhatIsPlaylist } =
+	soundsSlice.actions
 export default soundsSlice.reducer

@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import SortItem from './SortItem'
 import * as SC from '../../styles/common'
+import { sortButtons } from '../../data/sortElements'
 
-const SortSongs = ({ optionsArr, sortButtons }) => {
+const SortSongs = () => {
 	const [isVisible, setIsVisible] = useState({ author: false, year: false, genre: false })
+
 
 	return (
 		<SC.Flex $mB='51px' $row $alignC>
@@ -12,7 +14,6 @@ const SortSongs = ({ optionsArr, sortButtons }) => {
 				<SortItem
 					key={sort.title}
 					{...sort}
-					options={optionsArr}
 					isVisible={isVisible}
 					setIsVisible={setIsVisible}
 				/>
