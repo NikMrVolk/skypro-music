@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_ROUTE } from '../../utils/constants'
+import { setNeedRefresh } from '../../store/reducers/user'
 
 export const soundsApi = createApi({
 	reducerPath: 'soundsApi',
@@ -31,6 +32,13 @@ export const soundsApi = createApi({
 				},
 			}),
 			providesTags: () => ['Favorites'],
+			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+				try {
+					await queryFulfilled
+				} catch (err) {
+					dispatch(setNeedRefresh(true))
+				}
+			},
 		}),
 		addFavorite: builder.mutation({
 			query: ({ id, token }) => ({

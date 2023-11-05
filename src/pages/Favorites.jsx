@@ -1,15 +1,10 @@
-import { useDispatch } from 'react-redux'
 import CenterSubtitle from '../components/center/CenterSubtitle'
 import SongsList from '../components/center/SongsList'
-import { useGetAllFavoritesQuery } from '../services/sounds/SoundsService'
-import { setDisplayedPlaylist } from '../store/reducers/sounds'
 import SearchSongs from '../components/center/SearchSongs'
+import { useFavorites } from '../hooks/useFavorites'
 
 const Favorites = () => {
-	const { data, isLoading, error, isSuccess } = useGetAllFavoritesQuery(localStorage.getItem('access'))
-	const dispatch = useDispatch()
-
-	if (isSuccess) dispatch(setDisplayedPlaylist(data))
+	const [data, isLoading, error] = useFavorites(localStorage.getItem('access'))
 
 	return (
 		<>
