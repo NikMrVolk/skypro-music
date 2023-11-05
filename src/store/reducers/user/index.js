@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
 	user: {},
 	password: '',
+	needRefresh: false,
 }
 
 const userSlice = createSlice({
@@ -18,8 +19,11 @@ const userSlice = createSlice({
 		setPassword(state, action) {
 			state.password = action.payload
 		},
+		setNeedRefresh(state, action) {
+			state.needRefresh = action.payload
+		},
 	},
 })
 
-export const { setUser, removeUser, setPassword } = userSlice.actions
+export const { setUser, removeUser, setPassword, setNeedRefresh } = userSlice.actions
 export default userSlice.reducer
