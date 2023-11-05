@@ -13,11 +13,11 @@ Main tasks:
 
 1. Selections page: wait 40 minutes; real spend - 2 hours and 20 minutes
 2. Likes in playlist: wait 40 minutes; real spend - 2 hours
-3. Search, filter, sort: wait 3 hours (on hour to one task); real spend - ...
+3. Search, filter, sort: wait 3 hours (on hour to one task); real spend - 4 hours and 30 minutes
 
 Dop tasks:
 
-1. Displaying one ui element in player (like or dislike): wait 30 minutes; real spend - ...
+1. Displaying one ui element in player (like or dislike): wait 30 minutes; real spend - include to second main task
 2. Refresh after get user track list: wait 1 hour; real spend - ...
 
 Check up:
