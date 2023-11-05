@@ -10,7 +10,7 @@ import { useLocation } from 'react-router'
 import { FAVORITE_ROUTE } from '../../utils/constants'
 import { useLike } from '../../hooks/useLike'
 
-const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add, remove }) => {
+const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds}) => {
 	const { pathname } = useLocation()
 	const dispatch = useDispatch()
 	const { userDataWithContext } = useContext(AuthContext)
@@ -92,7 +92,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 						alt="time"
 						onClick={likeOrDis}
 					>
-						<use xlinkHref="img/icon/sprite.svg#icon-like" />
+						<use xlinkHref="../img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
 					<DurationTime duration={duration_in_seconds} />
 				</SC.Block>

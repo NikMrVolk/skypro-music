@@ -18,13 +18,17 @@ export const useLike = (data) => {
 	const [refresh, refreshResponse] = useRefreshMutation()
 
 	const like = () => {
-		if(song.id === data.id) dispatch(setIsSongLiked(true))
-		add(data)
+		if (song.id === data.id) add(data)
 	}
 
 	const disLike = () => {
-		if(song.id === data.id) dispatch(setIsSongLiked(false))
 		remove(data)
+	}
+
+	if ((addResponse.isSuccess || removeResponse.isSuccess) && song.id === data.id) {
+		dispatch(setIsSongLiked(!isSongLiked))
+		removeResponse.reset()
+		addResponse.reset()
 	}
 
 	if (addResponse?.error?.status === 401 || removeResponse?.error?.status === 401) {
@@ -49,7 +53,7 @@ export const useLike = (data) => {
 	}
 
 	if (refreshResponse.isError) {
-		if(song.id === data.id) dispatch(setIsSongLiked(!isSongLiked))
+		if (song.id === data.id) dispatch(setIsSongLiked(!isSongLiked))
 		navigate(LOGIN_ROUTE)
 	}
 

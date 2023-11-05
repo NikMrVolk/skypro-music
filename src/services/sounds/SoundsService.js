@@ -4,7 +4,7 @@ import { API_ROUTE } from '../../utils/constants'
 export const soundsApi = createApi({
 	reducerPath: 'soundsApi',
 	baseQuery: fetchBaseQuery({ baseUrl: API_ROUTE }),
-	tagTypes: ['AllTracks', 'Favorites'],
+	tagTypes: ['AllTracks', 'Favorites', 'Category'],
 	endpoints: (builder) => ({
 		getAllSounds: builder.query({
 			query: () => ({
@@ -21,6 +21,7 @@ export const soundsApi = createApi({
 			query: (id) => ({
 				url: `catalog/selection/${id}`,
 			}),
+			providesTags: () => ['Category'],
 		}),
 		getAllFavorites: builder.query({
 			query: (token) => ({
@@ -39,7 +40,7 @@ export const soundsApi = createApi({
 					Authorization: `Bearer ${token}`,
 				},
 			}),
-			invalidatesTags: (result) => (result ? ['AllTracks', 'Favorites'] : ''),
+			invalidatesTags: (result) => (result ? ['AllTracks', 'Favorites', 'Category'] : ''),
 		}),
 		removeFavorite: builder.mutation({
 			query: ({ id, token }) => ({
@@ -49,7 +50,7 @@ export const soundsApi = createApi({
 					Authorization: `Bearer ${token}`,
 				},
 			}),
-			invalidatesTags: (result) => (result ? ['AllTracks', 'Favorites'] : ''),
+			invalidatesTags: (result) => (result ? ['AllTracks', 'Favorites', 'Category'] : ''),
 		}),
 	}),
 })
