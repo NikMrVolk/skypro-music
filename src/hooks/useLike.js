@@ -18,7 +18,7 @@ export const useLike = (data) => {
 	const [refresh, refreshResponse] = useRefreshMutation()
 
 	const like = () => {
-		if (song.id === data.id) add(data)
+		add(data)
 	}
 
 	const disLike = () => {
