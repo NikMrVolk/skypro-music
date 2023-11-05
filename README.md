@@ -18,7 +18,7 @@ Main tasks:
 Dop tasks:
 
 1. Displaying one ui element in player (like or dislike): wait 30 minutes; real spend - include to second main task
-2. Refresh after get user track list: wait 1 hour; real spend - ...
+2. Refresh after get user track list: wait 1 hour; real spend - 50 minutes
 
 Check up:
 
