@@ -112,6 +112,7 @@ export const Block = styled.div`
 	letter-spacing: ${(props) => props.$lSpace};
 	text-transform: ${(props) => props.$tTransf};
 	text-align: ${(props) => props.$tAlign};
+	text-decoration: ${(props) => props.$tDec};
 	cursor: ${(props) => props.$point};
 	&:not(:last-child) {
 		margin-right: ${(props) => props.$mRnotL};
@@ -147,8 +148,10 @@ export const Absolute = styled.div`
 	left: ${(props) => props.$left};
 	bottom: ${(props) => props.$bottom};
 	top: ${(props) => props.$top};
+	right: ${(props) => props.$right};
 	opacity: ${(props) => props.$opacity};
 	background: ${(props) => props.$bG};
+	border-radius: ${(props) => props.$brRad};
 `
 
 export const Input = styled.input`
