@@ -8,7 +8,7 @@ import { LOGIN_ROUTE } from '../utils/constants'
 
 export const useLike = (data) => {
 	const dispatch = useDispatch()
-	const { isSongLiked } = useSelector((state) => state.songs)
+	const { isSongLiked, song } = useSelector((state) => state.songs)
 
 	const [requestData, setRequestData] = useState({})
 	const navigate = useNavigate()
@@ -18,12 +18,12 @@ export const useLike = (data) => {
 	const [refresh, refreshResponse] = useRefreshMutation()
 
 	const like = () => {
-		dispatch(setIsSongLiked(true))
+		if(song.id === data.id) dispatch(setIsSongLiked(true))
 		add(data)
 	}
 
 	const disLike = () => {
-		dispatch(setIsSongLiked(false))
+		if(song.id === data.id) dispatch(setIsSongLiked(false))
 		remove(data)
 	}
 
@@ -49,7 +49,7 @@ export const useLike = (data) => {
 	}
 
 	if (refreshResponse.isError) {
-		dispatch(setIsSongLiked(!isSongLiked))
+		if(song.id === data.id) dispatch(setIsSongLiked(!isSongLiked))
 		navigate(LOGIN_ROUTE)
 	}
 

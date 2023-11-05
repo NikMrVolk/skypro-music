@@ -8,12 +8,16 @@ import { TrackBubble } from '../../styles/trackBubble'
 import { AuthContext } from '../../context/AuthContext'
 import { useLocation } from 'react-router'
 import { FAVORITE_ROUTE } from '../../utils/constants'
+import { useLike } from '../../hooks/useLike'
 
 const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add, remove }) => {
 	const { pathname } = useLocation()
-	const { song, playing, displayedPlaylist, isSongLiked } = useSelector((state) => state.songs)
-	const { userDataWithContext } = useContext(AuthContext)
 	const dispatch = useDispatch()
+	const { userDataWithContext } = useContext(AuthContext)
+
+	const { song, playing, displayedPlaylist } = useSelector((state) => state.songs)
+	const [like, disLike] = useLike({ id, token: localStorage.getItem('access') })
+
 	let isLiked
 
 	if (pathname === FAVORITE_ROUTE) {
@@ -29,13 +33,9 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 		dispatch(setIsSongLiked(isLiked))
 	}
 
-	const like = (id) => {
-		const token = localStorage.getItem('access')
-		const data = { token, id }
-
-		dispatch(setIsSongLiked(!isSongLiked))
-		if (!!isLiked) return remove(data)
-		add(data)
+	const likeOrDis = () => {
+		if (!!isLiked) return disLike()
+		like()
 	}
 
 	return (
@@ -90,9 +90,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 						$fill={isLiked ? '#B672FF' : 'transparent'}
 						$stroke={isLiked ? '#B672FF' : '#696969'}
 						alt="time"
-						onClick={() => {
-							like(id)
-						}}
+						onClick={likeOrDis}
 					>
 						<use xlinkHref="img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
