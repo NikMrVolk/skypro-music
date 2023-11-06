@@ -25,7 +25,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds}) => 
 	} else {
 		isLiked = displayedPlaylist
 			.find((song) => song.id === id)
-			?.stared_user.find((user) => user.username === userDataWithContext.username)
+			?.stared_user.find((user) => user?.username === userDataWithContext.username)
 	}
 
 	const play = () => {
