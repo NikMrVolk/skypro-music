@@ -16,7 +16,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds}) => 
 	const { userDataWithContext } = useContext(AuthContext)
 
 	const { song, playing, displayedPlaylist } = useSelector((state) => state.songs)
-	const [like, disLike] = useLike({ id, token: localStorage.getItem('access') })
+	const [like, disLike] = useLike(id)
 
 	let isLiked
 

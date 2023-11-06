@@ -6,7 +6,7 @@ import { useRefreshMutation } from '../services/user/UserService'
 import { setIsSongLiked } from '../store/reducers/sounds'
 import { LOGIN_ROUTE } from '../utils/constants'
 
-export const useLike = (data) => {
+export const useLike = (id) => {
 	const dispatch = useDispatch()
 	const { isSongLiked, song } = useSelector((state) => state.songs)
 
@@ -18,14 +18,14 @@ export const useLike = (data) => {
 	const [refresh, refreshResponse] = useRefreshMutation()
 
 	const like = () => {
-		add(data)
+		add({ id, token: localStorage.getItem('access') })
 	}
 
 	const disLike = () => {
-		remove(data)
+		remove({ id, token: localStorage.getItem('access') })
 	}
 
-	if ((addResponse.isSuccess || removeResponse.isSuccess) && song.id === data.id) {
+	if ((addResponse.isSuccess || removeResponse.isSuccess) && song.id === id) {
 		dispatch(setIsSongLiked(!isSongLiked))
 		removeResponse.reset()
 		addResponse.reset()
@@ -53,7 +53,7 @@ export const useLike = (data) => {
 	}
 
 	if (refreshResponse.isError) {
-		if (song.id === data.id) dispatch(setIsSongLiked(!isSongLiked))
+		if (song.id === id) dispatch(setIsSongLiked(!isSongLiked))
 		navigate(LOGIN_ROUTE)
 	}
 

@@ -4,7 +4,7 @@ import { useLike } from '../../hooks/useLike'
 
 const SoundLike = () => {
 	const { song, isSongLiked } = useSelector((state) => state.songs)
-	const [like, disLike] = useLike({ id: song.id, token: localStorage.getItem('access') })
+	const [like, disLike] = useLike(song.id)
 
 	const likeOrDis = () => {
 		if (isSongLiked) return disLike()
