@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import { MAIN_ROUTE } from '../utils/constants'
 import { AuthContext } from '../context/AuthContext'
 import { useGetTokensMutation, useLoginMutation, useRegistrationMutation } from '../services/user/UserService'
-import { setPassword, setUser } from '../store/reducers/user'
+import {  setUser } from '../store/reducers/user'
 
 export const useAuth = (value, isLogin) => {
 	const navigate = useNavigate()
@@ -82,7 +82,6 @@ export const useAuth = (value, isLogin) => {
 		localStorage.setItem('refresh', tokens.data.refresh)
 		localStorage.setItem('access', tokens.data.access)
 
-		dispatch(setPassword(value.password))
 		navigate(MAIN_ROUTE)
 	}
 

@@ -1,16 +1,11 @@
-import { useNavigate } from 'react-router'
-import * as SC from '../../styles/common'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { useLogOut } from '../../hooks/useLogOut'
+import * as SC from '../../styles/common'
 
 const SidePerson = () => {
 	const { userDataWithContext } = useContext(AuthContext)
-	const navigate = useNavigate()
-
-	const logOut = () => {
-		navigate('/login')
-		localStorage.removeItem('user')
-	}
+	const logOut = useLogOut()
 
 	return (
 		<SC.Flex $p="12px 0 15px 0" $jstFE $alignC>
