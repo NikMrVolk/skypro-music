@@ -11,7 +11,7 @@ const SingleCategory = () => {
 	const { id } = useParams()
 	const { data, isLoading, error, isSuccess } = useGetOneSelectionQuery(id)
 
-	if (isSuccess) dispatch(setDisplayedPlaylist(data.items))
+	if (isSuccess) dispatch(setDisplayedPlaylist(data?.items))
 
 	return (
 		<>
