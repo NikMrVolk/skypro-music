@@ -1,21 +1,16 @@
-import { useDispatch } from 'react-redux'
 import CenterSubtitle from '../components/center/CenterSubtitle'
 import SongsList from '../components/center/SongsList'
-import { useGetAllFavoritesQuery } from '../services/sounds/SoundsService'
-import { setFavorites } from '../store/reducers/sounds'
 import SearchSongs from '../components/center/SearchSongs'
+import { useFavorites } from '../hooks/useFavorites'
 
 const Favorites = () => {
-	const { data, isLoading, error, isSuccess, refetch } = useGetAllFavoritesQuery(localStorage.getItem('access'))
-	const dispatch = useDispatch()
-
-	if (isSuccess) dispatch(setFavorites(data))
+	const [data, isLoading, error] = useFavorites(localStorage.getItem('access'))
 
 	return (
 		<>
 			<SearchSongs />
 			<CenterSubtitle>Мои треки</CenterSubtitle>
-			<SongsList data={data} isLoading={isLoading} error={error} refetch={refetch} />
+			<SongsList data={data} isLoading={isLoading} error={error} />
 		</>
 	)
 }

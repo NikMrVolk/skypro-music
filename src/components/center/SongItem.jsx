@@ -3,49 +3,62 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import * as SC from '../../styles/common'
 import DurationTime from './DurationTime'
-import { setSong, setWhatIsPlaylist } from '../../store/reducers/sounds'
+import { setIsSongLiked, setSong } from '../../store/reducers/sounds'
 import { TrackBubble } from '../../styles/trackBubble'
 import { AuthContext } from '../../context/AuthContext'
 import { useLocation } from 'react-router'
-import { FAVORITE_ROUTE, MAIN_ROUTE } from '../../utils/constants'
+import { FAVORITE_ROUTE } from '../../utils/constants'
+import { useLike } from '../../hooks/useLike'
 
-const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add, remove }) => {
+const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds}) => {
 	const { pathname } = useLocation()
-	const { song, playing, playlist } = useSelector((state) => state.songs)
-	const { userDataWithContext } = useContext(AuthContext)
 	const dispatch = useDispatch()
+	const { userDataWithContext } = useContext(AuthContext)
+
+	const { song, playing, displayedPlaylist } = useSelector((state) => state.songs)
+	const [like, disLike] = useLike(id)
+
 	let isLiked
 
-	if (pathname === MAIN_ROUTE)
-		isLiked = playlist
+	if (pathname === FAVORITE_ROUTE) {
+		isLiked = true
+	} else {
+		isLiked = displayedPlaylist
 			.find((song) => song.id === id)
-			?.stared_user.find((user) => user.username === userDataWithContext.username)
-	if (pathname === FAVORITE_ROUTE) isLiked = true
-
-	const play = (id) => {
-		if (pathname === MAIN_ROUTE) dispatch(setWhatIsPlaylist(MAIN_ROUTE))
-		if (pathname === FAVORITE_ROUTE) dispatch(setWhatIsPlaylist(FAVORITE_ROUTE))
-		dispatch(setSong(id))
+			?.stared_user.find((user) => user?.username === userDataWithContext.username)
 	}
 
-	const like = (id) => {
-		const token = localStorage.getItem('access')
-		const data = { token, id }
+	const play = () => {
+		dispatch(setSong(id))
+		dispatch(setIsSongLiked(isLiked))
+	}
 
-		if (!!isLiked) return remove(data)
-		add(data)
+	const likeOrDis = () => {
+		if (!!isLiked) return disLike()
+		like()
 	}
 
 	return (
 		<SC.Block $w="100%" $mB="12px">
 			<SC.Flex $row $jstSB $alignC>
-				<SC.Flex $w="447px" $row $alignC>
-					<SC.Flex $h="51px" $w="51px" $p="16px" $mR="17px" $back="#313131" $jstC $alignC onClick={play}>
+				<SC.Flex $w="360px" $row $alignC>
+					<SC.Flex
+						$h="51px"
+						$w="51px"
+						$p="16px"
+						$mR="17px"
+						$back="#313131"
+						$jstC
+						$alignC
+						onClick={() => {
+							play()
+						}}
+					>
 						{song.id === id ? (
 							<TrackBubble $active={playing} />
 						) : (
 							<SC.Svg $h="17px" $w="18px" $fill="transparent" $stroke="#4e4e4e" alt="music">
-								<use xlinkHref="img/icon/sprite.svg#icon-note" />
+								<use xlinkHref="../img/icon/sprite.svg#icon-note" />
 							</SC.Svg>
 						)}
 					</SC.Flex>
@@ -53,7 +66,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 						$color="#ffffff"
 						$point="pointer"
 						onClick={() => {
-							play(id)
+							play()
 						}}
 					>
 						{name} <SC.Span $color="#4e4e4e">{subTitle}</SC.Span>
@@ -69,7 +82,7 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 						{album}
 					</SC.LinkA>
 				</SC.Block>
-				<div>
+				<SC.Block $w="80px">
 					<SC.Svg
 						$h="12px"
 						$w="14px"
@@ -77,14 +90,12 @@ const SongItem = ({ id, name, subTitle, author, album, duration_in_seconds, add,
 						$fill={isLiked ? '#B672FF' : 'transparent'}
 						$stroke={isLiked ? '#B672FF' : '#696969'}
 						alt="time"
-						onClick={() => {
-							like(id)
-						}}
+						onClick={likeOrDis}
 					>
-						<use xlinkHref="img/icon/sprite.svg#icon-like" />
+						<use xlinkHref="../img/icon/sprite.svg#icon-like" />
 					</SC.Svg>
 					<DurationTime duration={duration_in_seconds} />
-				</div>
+				</SC.Block>
 			</SC.Flex>
 		</SC.Block>
 	)

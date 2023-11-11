@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_ROUTE } from '../../utils/constants'
+import { setNeedRefresh } from '../../store/reducers/user'
 
 export const soundsApi = createApi({
 	reducerPath: 'soundsApi',
 	baseQuery: fetchBaseQuery({ baseUrl: API_ROUTE }),
-	tagTypes: ['AllTracks', 'Favorites'],
+	tagTypes: ['AllTracks', 'Favorites', 'Category'],
 	endpoints: (builder) => ({
 		getAllSounds: builder.query({
 			query: () => ({
@@ -17,6 +18,12 @@ export const soundsApi = createApi({
 				url: `catalog/track/${id}`,
 			}),
 		}),
+		getOneSelection: builder.query({
+			query: (id) => ({
+				url: `catalog/selection/${id}`,
+			}),
+			providesTags: () => ['Category'],
+		}),
 		getAllFavorites: builder.query({
 			query: (token) => ({
 				url: 'catalog/track/favorite/all',
@@ -25,6 +32,13 @@ export const soundsApi = createApi({
 				},
 			}),
 			providesTags: () => ['Favorites'],
+			async onQueryStarted(_, { dispatch, queryFulfilled }) {
+				try {
+					await queryFulfilled
+				} catch (err) {
+					dispatch(setNeedRefresh(true))
+				}
+			},
 		}),
 		addFavorite: builder.mutation({
 			query: ({ id, token }) => ({
@@ -34,7 +48,7 @@ export const soundsApi = createApi({
 					Authorization: `Bearer ${token}`,
 				},
 			}),
-			invalidatesTags: (result) => result ? ['AllTracks', 'Favorites'] : '',
+			invalidatesTags: (result) => (result ? ['AllTracks', 'Favorites', 'Category'] : ''),
 		}),
 		removeFavorite: builder.mutation({
 			query: ({ id, token }) => ({
@@ -44,7 +58,7 @@ export const soundsApi = createApi({
 					Authorization: `Bearer ${token}`,
 				},
 			}),
-			invalidatesTags: (result) => result ? ['AllTracks', 'Favorites'] : '',
+			invalidatesTags: (result) => (result ? ['AllTracks', 'Favorites', 'Category'] : ''),
 		}),
 	}),
 })
@@ -52,7 +66,9 @@ export const soundsApi = createApi({
 export const {
 	useGetAllSoundsQuery,
 	useGetOneSoundQuery,
+	useGetOneSelectionQuery,
 	useGetAllFavoritesQuery,
 	useAddFavoriteMutation,
 	useRemoveFavoriteMutation,
+	useRef,
 } = soundsApi

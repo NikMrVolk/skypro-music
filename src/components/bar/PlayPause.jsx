@@ -20,7 +20,7 @@ const PlayPause = ({ audioPlayer }) => {
 					}}
 				>
 					<SC.Svg $h="15px" $w="19px" fill="#D9D9D9" alt="stop">
-						<use xlinkHref="img/icon/sprite.svg#icon-stop" />
+						<use xlinkHref="../img/icon/sprite.svg#icon-stop" />
 					</SC.Svg>
 				</SC.Flex>
 			) : (
@@ -35,7 +35,7 @@ const PlayPause = ({ audioPlayer }) => {
 					}}
 				>
 					<SC.Svg $h="20px" $w="22px" fill="#d9d9d9" alt="play">
-						<use xlinkHref="img/icon/sprite.svg#icon-play" />
+						<use xlinkHref="../img/icon/sprite.svg#icon-play" />
 					</SC.Svg>
 				</SC.Flex>
 			)}

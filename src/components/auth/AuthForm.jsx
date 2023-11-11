@@ -1,97 +1,28 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
-import { toast } from 'react-toastify'
-import { useDispatch } from 'react-redux'
 import Logo from '../logo/Logo'
 import LoginInput from '../UI/inputes/login/LoginInput'
 import LoginButton from '..//UI/buttons/login/LoginButton'
-import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/constants'
-import { useGetTokensMutation, useLoginMutation, useRegistrationMutation } from '../../services/user/UserService'
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/constants'
 import * as S from '../../styles/auth'
-import { setPassword, setUser } from '../../store/reducers/user'
-import { AuthContext } from '../../context/AuthContext'
+import { useAuth } from '../../hooks/useAuth'
 
 const AuthForm = () => {
-	const location = useLocation()
-	const isLogin = location.pathname === LOGIN_ROUTE
 	const navigate = useNavigate()
+	const { pathname } = useLocation()
+	const isLogin = pathname === LOGIN_ROUTE
 	const [value, setValue] = useState({
 		username: '',
 		email: '',
 		password: '',
 		secondPassword: '',
 	})
-	const dispatch = useDispatch()
-	const { setUserDataWithContext } = useContext(AuthContext)
-
-	const [
-		registration,
-		{ data: regData, isLoading: regIsLoading, error: regError, isSuccess: regIsSuccess, reset: regReset },
-	] = useRegistrationMutation()
-
-	const [
-		login,
-		{ data: logData, isLoading: logIsLoading, error: logError, isSuccess: logIsSuccess, reset: logReset },
-	] = useLoginMutation()
-
-	const [getToken, tokens] = useGetTokensMutation()
 
 	const handleChange = (e, name) => {
 		setValue({ ...value, [name]: e.target.value })
 	}
 
-	const regLog = () => {
-		const user = {
-			email: value.email,
-			password: value.password,
-		}
-
-		if ((!value.username || !value.email || !value.password) && !isLogin) {
-			toast('Заполните имя пользователя, почту или пароль')
-			return
-		}
-		if (value.password !== value.secondPassword && !isLogin) {
-			toast('Пароли не совпадают')
-			return
-		}
-		if ((!value.email || !value.password) && isLogin) {
-			toast('Заполните почту или пароль')
-			return
-		}
-
-		getToken(user)
-
-		if (isLogin) {
-			login(user)
-			return
-		} else {
-			registration({ ...user, username: value.username })
-		}
-	}
-
-	if (regError) {
-		const errorData = regError.data?.username ?? regError.data?.email ?? regError.data?.password
-		toast(errorData[0])
-		regReset()
-	}
-
-	if (logError) {
-		const errorData = logError.data.detail
-		toast(errorData)
-		logReset()
-	}
-
-	if ((regIsSuccess || logIsSuccess) && tokens.isSuccess) {
-		localStorage.setItem('refresh', tokens.data.refresh)
-		localStorage.setItem('access', tokens.data.access)
-		localStorage.setItem('user', JSON.stringify(regData || logData))
-		regReset()
-		logReset()
-		setUserDataWithContext(regData || logData)
-		dispatch(setUser(regData || logData))
-		dispatch(setPassword(value.password))
-		navigate(MAIN_ROUTE)
-	}
+	const [regLog, regIsLoading, logIsLoading] = useAuth(value, isLogin)
 
 	return (
 		<S.Form onSubmit={(e) => e.preventDefault()}>

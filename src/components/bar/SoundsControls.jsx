@@ -19,13 +19,13 @@ const SoundsControls = ({ audioPlayer, isLoop, setIsLoop, playNext, playPrevious
 		<SC.Flex $p="0 27px 0 31px">
 			<SC.Flex $m="0 23px 0 0" $p="5px" $alignC className="_btn" onClick={playPrevious}>
 				<SC.Svg $h="14px" $w="15px" alt="prev">
-					<use xlinkHref="img/icon/sprite.svg#icon-prev" />
+					<use xlinkHref="../img/icon/sprite.svg#icon-prev" />
 				</SC.Svg>
 			</SC.Flex>
 			<PlayPause audioPlayer={audioPlayer} />
 			<SC.Flex $m="0 28px 0 0" $p="5px" $alignC className="_btn" onClick={playNext}>
 				<SC.Svg $h="14px" $w="15px" fill="inherit" stroke="#d9d9d9" alt="next">
-					<use xlinkHref="img/icon/sprite.svg#icon-next" />
+					<use xlinkHref="../img/icon/sprite.svg#icon-next" />
 				</SC.Svg>
 			</SC.Flex>
 			<SC.Flex
@@ -43,7 +43,7 @@ const SoundsControls = ({ audioPlayer, isLoop, setIsLoop, playNext, playPrevious
 					stroke={isLoop ? '#ffffff' : '#696969'}
 					alt="next"
 				>
-					<use xlinkHref="img/icon/sprite.svg#icon-repeat" />
+					<use xlinkHref="../img/icon/sprite.svg#icon-repeat" />
 				</SC.Svg>
 			</SC.Flex>
 			<SC.Flex $p="5px" $alignC $point="pointer" onClick={shuffle} className={isShuffle ? '' : '_btn-icon'}>
@@ -54,7 +54,7 @@ const SoundsControls = ({ audioPlayer, isLoop, setIsLoop, playNext, playPrevious
 					stroke={isShuffle ? '#ffffff' : '#696969'}
 					alt="shuffle"
 				>
-					<use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
+					<use xlinkHref="../img/icon/sprite.svg#icon-shuffle" />
 				</SC.Svg>
 			</SC.Flex>
 		</SC.Flex>

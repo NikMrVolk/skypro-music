@@ -1,25 +1,50 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-	playlist: [],
-	isShuffle: false,
+	displayedPlaylist: [],
+	choosedPlaylist: [],
 	shuffledPlaylist: [],
 	song: {},
+	sortElements: { author: [], release_date: ['По умолчанию'], genre: [] },
+	searchValue: '',
+	isSongLiked: false,
 	playing: false,
-	favorites: [],
-	whatIsPlaylist: null,
+	isShuffle: false,
 }
 
 const soundsSlice = createSlice({
 	name: 'Sounds',
 	initialState,
 	reducers: {
-		setPlaylist(state, action) {
-			state.playlist = action.payload
+		setDisplayedPlaylist(state, action) {
+			state.displayedPlaylist = action.payload
+		},
+		setChoosedPlaylist(state, action) {
+			state.choosedPlaylist = action.payload
 		},
 		setSong(state, action) {
-			state.song = state.playlist.filter((el) => el.id === action.payload)[0]
+			state.choosedPlaylist = state.displayedPlaylist
+			state.song = state.choosedPlaylist.filter((el) => el.id === action.payload)[0]
 			state.playing = true
+		},
+		setSortElements(state, action) {
+			const key = action.payload.key
+			if (key === 'release_date') {
+				state.sortElements[key] = new Array(action.payload.value)
+			} else {
+				if (state.sortElements[key].includes(action.payload.value)) {
+					const index = state.sortElements[key].findIndex((el) => el === action.payload.value)
+					state.sortElements[key].splice(index, 1)
+				} else {
+					state.sortElements[key].push(action.payload.value)
+				}
+			}
+		},
+		setSearchValue(state, action) {
+			state.searchValue = action.payload
+		},
+		setIsSongLiked(state, action) {
+			state.isSongLiked = action.payload
 		},
 		setPlaying(state, action) {
 			state.playing = action.payload
@@ -30,15 +55,18 @@ const soundsSlice = createSlice({
 		setIsShuffle(state, action) {
 			state.isShuffle = action.payload
 		},
-		setFavorites(state, action) {
-			state.favorites = action.payload
-		},
-		setWhatIsPlaylist(state, action) {
-			state.whatIsPlaylist = action.payload
-		},
 	},
 })
 
-export const { setPlaylist, setSong, setPlaying, setShuffledPlaylist, setIsShuffle, setFavorites, setWhatIsPlaylist } =
-	soundsSlice.actions
+export const {
+	setDisplayedPlaylist,
+	setChoosedPlaylist,
+	setSong,
+	setPlaying,
+	setShuffledPlaylist,
+	setIsShuffle,
+	setIsSongLiked,
+	setSortElements,
+	setSearchValue,
+} = soundsSlice.actions
 export default soundsSlice.reducer
